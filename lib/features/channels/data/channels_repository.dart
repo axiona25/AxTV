@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'dart:convert';
 import '../../../config/env.dart';
 import '../model/channel.dart';
+import '../../../core/security/content_validator.dart';
 
 class ChannelsRepository {
   final Dio dio;
@@ -14,10 +15,26 @@ class ChannelsRepository {
       final String jsonString = await rootBundle.loadString('assets/channels.json');
       final List<dynamic> jsonData = json.decode(jsonString) as List<dynamic>;
       
-      return jsonData
+      // Valida anche i canali da assets locali
+      final channels = jsonData
           .whereType<Map<String, dynamic>>()
           .map(Channel.fromJson)
+          .where((channel) {
+            final isValid = ContentValidator.validateChannel(
+              streamUrl: channel.streamUrl,
+              name: channel.name,
+            );
+            if (!isValid) {
+              ContentValidator.logSecurityEvent(
+                'Channel blocked (from assets)',
+                {'name': channel.name},
+              );
+            }
+            return isValid;
+          })
           .toList(growable: false);
+      
+      return channels;
     } catch (e) {
       // Se l'asset locale fallisce, prova con URL remoto
       try {
@@ -41,10 +58,35 @@ class ChannelsRepository {
           throw Exception('channels.json deve essere un array JSON');
         }
 
-        return data
+        // Filtra e valida i canali per sicurezza
+        final channels = data
             .whereType<Map<String, dynamic>>()
             .map(Channel.fromJson)
+            .where((channel) {
+              // Valida ogni canale per sicurezza
+              final isValid = ContentValidator.validateChannel(
+                streamUrl: channel.streamUrl,
+                name: channel.name,
+              );
+              
+              if (!isValid) {
+                // Log per test di sicurezza
+                ContentValidator.logSecurityEvent(
+                  'Channel blocked',
+                  {
+                    'name': channel.name,
+                    'url': channel.streamUrl.length > 100 
+                        ? '${channel.streamUrl.substring(0, 100)}...'
+                        : channel.streamUrl,
+                  },
+                );
+              }
+              
+              return isValid;
+            })
             .toList(growable: false);
+
+        return channels;
       } catch (remoteError) {
         // Se anche il remoto fallisce, riprova con asset locale come ultimo tentativo
         try {
