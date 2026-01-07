@@ -123,6 +123,10 @@ class _PlayerPageState extends State<PlayerPage> {
       }
 
       // Configura il player con opzioni migliorate
+      // Se l'URL è dall'API Zappr, specifica il tipo HLS come fa Video.js
+      final isZapprApi = urlToPlay.contains('zappr.stream');
+      final isHlsUrl = urlToPlay.contains('.m3u8') || isZapprApi;
+      
       try {
         await _player.open(
           Media(
@@ -131,6 +135,8 @@ class _PlayerPageState extends State<PlayerPage> {
               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
               'Referer': 'https://zappr.stream/',
               'Accept': '*/*',
+              // Se è HLS, aggiungi header specifici
+              if (isHlsUrl) 'Accept': 'application/vnd.apple.mpegurl, application/x-mpegURL, */*',
             },
           ),
           play: true,
