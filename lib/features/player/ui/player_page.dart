@@ -113,7 +113,10 @@ class _PlayerPageState extends State<PlayerPage> {
           print('PlayerPage: URL risolto: ${urlToPlay.substring(0, urlToPlay.length > 150 ? 150 : urlToPlay.length)}...');
           
           // Verifica che per canali Rai l'URL contenga l'autenticazione
-          if (widget.channel.license == 'rai-akamai' && !urlToPlay.contains('hdnea=')) {
+          // MA: se usiamo API Vercel, l'auth è gestita internamente, quindi non contiene hdnea=
+          if (widget.channel.license == 'rai-akamai' && 
+              !urlToPlay.contains('hdnea=') && 
+              !urlToPlay.contains('vercel-api.zappr.stream')) {
             throw Exception('URL Rai senza autenticazione! L\'auth potrebbe non essere stata aggiunta correttamente.');
           }
         } catch (e) {
