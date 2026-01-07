@@ -90,10 +90,23 @@ class StreamResolver {
       
       // ignore: avoid_print
       print('StreamResolver: Autenticazione finale (lunghezza: ${auth.length}): ${auth.substring(0, auth.length > 80 ? 80 : auth.length)}...');
+      
+      // Chiudi il Dio instance dopo aver ottenuto l'auth
+      dio.close();
+      
       return auth;
     } catch (e, stackTrace) {
       // ignore: avoid_print
       print('StreamResolver: Errore nell\'ottenere autenticazione Rai: $e');
+      print('StreamResolver: Tipo errore: ${e.runtimeType}');
+      if (e is DioException) {
+        print('StreamResolver: DioException type: ${e.type}');
+        print('StreamResolver: DioException message: ${e.message}');
+        print('StreamResolver: DioException response: ${e.response?.statusCode}');
+        if (e.type == DioExceptionType.connectionError) {
+          print('StreamResolver: Errore di connessione - verifica connessione internet');
+        }
+      }
       print('StreamResolver: Stack trace: $stackTrace');
       rethrow;
     }
