@@ -172,11 +172,20 @@ class StreamResolver {
 
     // Se è un canale Rai con license rai-akamai
     if (license == 'rai-akamai') {
-      // Se l'URL è già un HLS diretto (es. akamaized.net), aggiungi auth
+      // Se è un URL mediapolis.rai.it, usa API Vercel (come fa Zappr)
+      if (url.contains('mediapolis.rai.it')) {
+        // ignore: avoid_print
+        print('StreamResolver: Canale Rai Mediapolis, uso API Vercel (come Zappr)');
+        final apiUrl = '${Env.vercelApiBase}?${Uri.encodeComponent(url)}';
+        // L'API Vercel gestisce l'autenticazione internamente
+        return Uri.parse(apiUrl);
+      }
+      
+      // Se l'URL è già un HLS diretto (es. akamaized.net), prova auth
       if (url.contains('akamaized.net')) {
         try {
           // ignore: avoid_print
-          print('StreamResolver: Canale Rai HLS diretto richiede autenticazione, URL originale: $url');
+          print('StreamResolver: Canale Rai HLS diretto, provo autenticazione...');
           final auth = await _getRaiAkamaiAuth();
           
           // L'auth restituisce già "?hdnea=..." quindi aggiungilo direttamente
@@ -192,22 +201,15 @@ class StreamResolver {
           }
           
           return uri;
-        } catch (e, stackTrace) {
-          // Se l'autenticazione fallisce, prova con API Vercel come fallback
+        } catch (e) {
+          // Se l'autenticazione fallisce, usa API Vercel come fallback
+          // L'API Vercel potrebbe gestire l'autenticazione internamente
           // ignore: avoid_print
           print('StreamResolver: Errore nell\'ottenere autenticazione Rai: $e');
-          print('StreamResolver: Provo fallback con API Vercel...');
-          // Continua sotto per usare API Vercel
+          print('StreamResolver: Fallback: uso API Vercel per canale Rai HLS');
+          final apiUrl = '${Env.vercelApiBase}?${Uri.encodeComponent(url)}';
+          return Uri.parse(apiUrl);
         }
-      }
-      
-      // Se è un URL mediapolis.rai.it, usa API Vercel (come fa Zappr)
-      if (url.contains('mediapolis.rai.it')) {
-        // ignore: avoid_print
-        print('StreamResolver: Canale Rai Mediapolis, uso API Vercel (come Zappr)');
-        final apiUrl = '${Env.vercelApiBase}?${Uri.encodeComponent(url)}';
-        // L'API Vercel gestisce l'autenticazione internamente
-        return Uri.parse(apiUrl);
       }
     }
     
