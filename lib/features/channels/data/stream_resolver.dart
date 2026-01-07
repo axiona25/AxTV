@@ -15,15 +15,17 @@ class StreamResolver {
     final isBabylonCloud = url.contains('/video/viewlivestreaming');
 
     // Casi che Zappr risolve con Cloudflare
-    // Zappr usa: ${backend.host[api]}/api?${url}
+    // Zappr costruisce: ${backend.host[api]}/api?${url}
+    // Env.cloudflareApiBase già include /api
     if (isDailymotion || isLivestream || isNetplus) {
-      return Uri.parse('${Env.cloudflareApiBase}/api?${Uri.encodeComponent(url)}');
+      return Uri.parse('${Env.cloudflareApiBase}?${Uri.encodeComponent(url)}');
     }
 
     // Casi che Zappr risolve con Vercel
-    // Zappr usa: ${backend.host[api]}/api?${url}
+    // Zappr costruisce: ${backend.host[api]}/api?${url}
+    // Env.vercelApiBase già include /api
     if (isRaiMediapolis || isBabylonCloud) {
-      return Uri.parse('${Env.vercelApiBase}/api?${Uri.encodeComponent(url)}');
+      return Uri.parse('${Env.vercelApiBase}?${Uri.encodeComponent(url)}');
     }
 
     // Già riproducibile (es. .m3u8 diretto)
@@ -45,11 +47,12 @@ class StreamResolver {
     String apiUrl;
     
     // Determina quale API usare
-    // Zappr costruisce l'URL come: ${backend.host[api]}/api?${url}
+    // Zappr costruisce: ${backend.host[api]}/api?${url}
+    // Env.cloudflareApiBase e Env.vercelApiBase già includono /api
     if (isDailymotion || isLivestream || isNetplus) {
-      apiUrl = '${Env.cloudflareApiBase}/api?${Uri.encodeComponent(url)}';
+      apiUrl = '${Env.cloudflareApiBase}?${Uri.encodeComponent(url)}';
     } else if (isRaiMediapolis || isBabylonCloud) {
-      apiUrl = '${Env.vercelApiBase}/api?${Uri.encodeComponent(url)}';
+      apiUrl = '${Env.vercelApiBase}?${Uri.encodeComponent(url)}';
     } else {
       // Già riproducibile direttamente
       return Uri.parse(url);
