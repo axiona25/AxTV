@@ -21,6 +21,8 @@ class _PlayerPageState extends State<PlayerPage> {
   bool _isLoading = true;
   String? _error;
   String? _resolvedUrl;
+  bool _hasTriedFallback = false; // Evita loop infiniti
+  bool _isRetrying = false; // Evita retry multipli
 
   @override
   void initState() {
@@ -59,16 +61,26 @@ class _PlayerPageState extends State<PlayerPage> {
     _loadVideo();
   }
 
-  Future<void> _loadVideo({bool useOriginalUrl = false}) async {
+  Future<void> _loadVideo({bool useOriginalUrl = false, bool isRetry = false}) async {
+    // Evita loop infiniti
+    if (_isRetrying) {
+      return;
+    }
+    
+    if (isRetry) {
+      _isRetrying = true;
+    }
+    
     try {
       String urlToPlay;
       
-      if (useOriginalUrl) {
-        // Prova con URL originale come fallback
+      if (useOriginalUrl || _hasTriedFallback) {
+        // Prova con URL originale come fallback (solo una volta)
         urlToPlay = widget.channel.streamUrl;
         _resolvedUrl = 'URL originale: $urlToPlay';
+        _hasTriedFallback = true;
       } else {
-        // Prova prima con risoluzione Zappr asincrona (segue redirect)
+        // Prova prima con risoluzione Zappr
         try {
           final playable = await _resolver.resolvePlayableUrlAsync(widget.channel.streamUrl);
           urlToPlay = playable.toString();
@@ -88,6 +100,11 @@ class _PlayerPageState extends State<PlayerPage> {
         });
       }
 
+      // Ferma il player se sta già riproducendo qualcosa
+      if (_player.state.playing) {
+        await _player.stop();
+      }
+
       // Configura il player con opzioni migliorate
       try {
         await _player.open(
@@ -102,26 +119,31 @@ class _PlayerPageState extends State<PlayerPage> {
           play: true,
         );
         
-        // Attendi per vedere se parte (ridotto a 3 secondi)
-        await Future.delayed(const Duration(seconds: 3));
+        // Attendi per vedere se parte (5 secondi)
+        await Future.delayed(const Duration(seconds: 5));
         
         if (mounted) {
           final isPlaying = _player.state.playing;
           if (!isPlaying && _error == null) {
-            // Se l'API Zappr fallisce, prova con URL originale
-            if (!useOriginalUrl && urlToPlay.contains('zappr.stream')) {
+            // Se l'API Zappr fallisce e non abbiamo ancora provato il fallback, prova con URL originale
+            if (!_hasTriedFallback && urlToPlay.contains('zappr.stream')) {
               // ignore: avoid_print
               print('PlayerPage: API Zappr non ha avviato lo stream, provo con URL originale');
+              _hasTriedFallback = true;
               await _loadVideo(useOriginalUrl: true);
               return;
             }
             
+            // Ferma il player e mostra errore
+            await _player.stop();
             setState(() {
               final urlPreview = urlToPlay.length > 80 ? '${urlToPlay.substring(0, 80)}...' : urlToPlay;
-              _error = 'Stream non disponibile.\n\nURL provato: $urlPreview';
+              _error = 'Stream non disponibile.\n\nURL provato: $urlPreview\n\n'
+                  'Lo stream potrebbe non essere disponibile o richiedere autenticazione.';
               _isLoading = false;
             });
-          } else {
+          } else if (isPlaying) {
+            // Funziona! Rimuovi errori
             setState(() {
               _isLoading = false;
               _error = null;
@@ -132,36 +154,57 @@ class _PlayerPageState extends State<PlayerPage> {
         // ignore: avoid_print
         print('PlayerPage: Errore nell\'apertura del player: $e');
         if (mounted) {
-          // Se l'API Zappr fallisce, prova con URL originale
-          if (!useOriginalUrl && urlToPlay.contains('zappr.stream')) {
+          // Ferma il player
+          try {
+            await _player.stop();
+          } catch (_) {}
+          
+          // Se l'API Zappr fallisce e non abbiamo ancora provato il fallback, prova con URL originale
+          if (!_hasTriedFallback && urlToPlay.contains('zappr.stream')) {
             // ignore: avoid_print
             print('PlayerPage: Errore con API Zappr, provo con URL originale');
+            _hasTriedFallback = true;
             await _loadVideo(useOriginalUrl: true);
             return;
           }
           
+          // Mostra errore e ferma
           setState(() {
-            final urlPreview = urlToPlay.length > 80 ? '${urlToPlay.substring(0, 80)}...' : urlToPlay;
-            _error = 'Errore nell\'apertura dello stream: $e\n\nURL provato: $urlPreview';
+            final errorStr = e.toString();
+            String errorMsg;
+            if (errorStr.contains('Failed to open')) {
+              errorMsg = 'Impossibile aprire lo stream.\n\n'
+                  'L\'API Zappr potrebbe non essere disponibile o lo stream non è accessibile.';
+            } else {
+              final urlPreview = urlToPlay.length > 80 ? '${urlToPlay.substring(0, 80)}...' : urlToPlay;
+              errorMsg = 'Errore: ${errorStr.split('\n').first}\n\nURL: $urlPreview';
+            }
+            _error = errorMsg;
             _isLoading = false;
           });
         }
       }
     } catch (e) {
       if (mounted) {
-        // Se l'API Zappr fallisce, prova con URL originale come fallback
-        if (!useOriginalUrl && _resolvedUrl != null && _resolvedUrl!.contains('zappr.stream')) {
+        // Ferma il player
+        try {
+          await _player.stop();
+        } catch (_) {}
+        
+        // Se l'API Zappr fallisce e non abbiamo ancora provato il fallback, prova con URL originale
+        if (!_hasTriedFallback && _resolvedUrl != null && _resolvedUrl!.contains('zappr.stream')) {
+          _hasTriedFallback = true;
           await _loadVideo(useOriginalUrl: true);
           return;
         }
         
-        String errorMsg = 'Errore nel caricamento';
+        String errorMsg = 'Errore nel caricamento dello stream';
         final errorStr = e.toString();
         
         if (errorStr.contains('Failed to open')) {
           errorMsg = 'Impossibile aprire lo stream.\n\n'
               'L\'API Zappr potrebbe non essere disponibile.\n'
-              'URL tentato: ${_resolvedUrl ?? widget.channel.streamUrl}';
+              'Prova a verificare la connessione o riprova più tardi.';
         } else {
           errorMsg = 'Errore: ${errorStr.split('\n').first}';
         }
@@ -170,6 +213,10 @@ class _PlayerPageState extends State<PlayerPage> {
           _error = errorMsg;
           _isLoading = false;
         });
+      }
+    } finally {
+      if (isRetry) {
+        _isRetrying = false;
       }
     }
   }
@@ -189,7 +236,7 @@ class _PlayerPageState extends State<PlayerPage> {
         title: Text(
           widget.channel.name,
           style: const TextStyle(
-            fontFamily: 'Poppins',
+            // fontFamily: 'Poppins', // Commentato per risolvere problemi di caricamento font
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -247,7 +294,7 @@ class _PlayerPageState extends State<PlayerPage> {
                           'Caricamento stream...',
                           style: TextStyle(
                             color: AppTheme.textSecondary,
-                            fontFamily: 'Poppins',
+                            // fontFamily: 'Poppins', // Commentato per risolvere problemi di caricamento font
                           ),
                         ),
                       ],
@@ -275,7 +322,7 @@ class _PlayerPageState extends State<PlayerPage> {
                           'Errore',
                           style: TextStyle(
                             color: AppTheme.textPrimary,
-                            fontFamily: 'Poppins',
+                            // fontFamily: 'Poppins', // Commentato per risolvere problemi di caricamento font
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -288,7 +335,7 @@ class _PlayerPageState extends State<PlayerPage> {
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: AppTheme.textSecondary,
-                              fontFamily: 'Poppins',
+                              // fontFamily: 'Poppins', // Commentato per risolvere problemi di caricamento font
                               fontSize: 12,
                             ),
                             maxLines: 5,
@@ -297,7 +344,12 @@ class _PlayerPageState extends State<PlayerPage> {
                         ),
                         const SizedBox(height: 16),
                         ElevatedButton.icon(
-                          onPressed: _loadVideo,
+                          onPressed: () {
+                            // Reset flags e riprova
+                            _hasTriedFallback = false;
+                            _isRetrying = false;
+                            _loadVideo(isRetry: true);
+                          },
                           icon: const Icon(Icons.refresh, size: 18),
                           label: const Text('Riprova'),
                           style: ElevatedButton.styleFrom(
