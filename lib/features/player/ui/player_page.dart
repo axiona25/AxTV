@@ -97,12 +97,25 @@ class _PlayerPageState extends State<PlayerPage> {
       } else {
         // Prova prima con risoluzione Zappr (gestisce anche autenticazione Rai)
         try {
+          // ignore: avoid_print
+          print('PlayerPage: Risolvo URL per canale ${widget.channel.name}');
+          print('PlayerPage: URL originale: ${widget.channel.streamUrl}');
+          print('PlayerPage: License: ${widget.channel.license ?? "nessuna"}');
+          
           final playable = await _resolver.resolvePlayableUrlAsync(
             widget.channel.streamUrl,
             license: widget.channel.license,
           );
           urlToPlay = playable.toString();
           _resolvedUrl = urlToPlay;
+          
+          // ignore: avoid_print
+          print('PlayerPage: URL risolto: ${urlToPlay.substring(0, urlToPlay.length > 150 ? 150 : urlToPlay.length)}...');
+          
+          // Verifica che per canali Rai l'URL contenga l'autenticazione
+          if (widget.channel.license == 'rai-akamai' && !urlToPlay.contains('hdnea=')) {
+            throw Exception('URL Rai senza autenticazione! L\'auth potrebbe non essere stata aggiunta correttamente.');
+          }
         } catch (e) {
           // Se la risoluzione fallisce (es. autenticazione Rai), mostra errore
           // Non provare con URL originale perché senza auth non funzionerà
