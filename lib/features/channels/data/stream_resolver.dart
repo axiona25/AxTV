@@ -40,7 +40,8 @@ class StreamResolver {
   Future<String> _getRaiAkamaiAuth() async {
     try {
       // ignore: avoid_print
-      print('StreamResolver: Richiedo autenticazione Rai Akamai...');
+      print('StreamResolver: Richiedo autenticazione Rai Akamai da ${Env.alwaysdataApiBase}/rai-akamai');
+      
       final response = await _dio.post(
         '${Env.alwaysdataApiBase}/rai-akamai',
         options: Options(
@@ -50,13 +51,10 @@ class StreamResolver {
       );
       
       // L'API restituisce direttamente la stringa di autenticazione (es. "?hdnea=...")
-      // response.data potrebbe essere una String o un ResponseBody
-      String auth;
-      if (response.data is String) {
-        auth = (response.data as String).trim();
-      } else {
-        auth = response.data.toString().trim();
-      }
+      String auth = response.data.toString().trim();
+      
+      // ignore: avoid_print
+      print('StreamResolver: Risposta raw (tipo: ${response.data.runtimeType}, lunghezza: ${auth.length}): ${auth.substring(0, auth.length > 80 ? 80 : auth.length)}...');
       
       // Verifica che l'auth non sia vuota
       if (auth.isEmpty) {
@@ -69,11 +67,12 @@ class StreamResolver {
       }
       
       // ignore: avoid_print
-      print('StreamResolver: Autenticazione ottenuta (lunghezza: ${auth.length}): ${auth.substring(0, auth.length > 60 ? 60 : auth.length)}...');
+      print('StreamResolver: Autenticazione finale (lunghezza: ${auth.length}): ${auth.substring(0, auth.length > 80 ? 80 : auth.length)}...');
       return auth;
-    } catch (e) {
+    } catch (e, stackTrace) {
       // ignore: avoid_print
       print('StreamResolver: Errore nell\'ottenere autenticazione Rai: $e');
+      print('StreamResolver: Stack trace: $stackTrace');
       rethrow;
     }
   }
@@ -94,19 +93,28 @@ class StreamResolver {
     // Se è un canale Rai con license rai-akamai, ottieni l'autenticazione e aggiungila all'URL
     if (license == 'rai-akamai') {
       try {
+        // ignore: avoid_print
+        print('StreamResolver: Canale Rai richiede autenticazione, URL originale: $url');
         final auth = await _getRaiAkamaiAuth();
+        
         // L'auth restituisce già "?hdnea=..." quindi aggiungilo direttamente
         final urlWithAuth = '$url$auth';
+        
         // ignore: avoid_print
-        print('StreamResolver: URL Rai originale: $url');
-        print('StreamResolver: Auth ottenuta: ${auth.substring(0, auth.length > 50 ? 50 : auth.length)}...');
-        print('StreamResolver: URL Rai completo: ${urlWithAuth.substring(0, urlWithAuth.length > 150 ? 150 : urlWithAuth.length)}...');
-        return Uri.parse(urlWithAuth);
-      } catch (e) {
-        // Se l'autenticazione fallisce, prova comunque con l'URL originale
+        print('StreamResolver: URL finale con auth: ${urlWithAuth.substring(0, urlWithAuth.length > 200 ? 200 : urlWithAuth.length)}...');
+        
+        // Verifica che l'URL sia valido
+        final uri = Uri.parse(urlWithAuth);
+        if (uri.scheme.isEmpty || uri.host.isEmpty) {
+          throw Exception('URL non valido dopo aggiunta autenticazione: $urlWithAuth');
+        }
+        
+        return uri;
+      } catch (e, stackTrace) {
+        // Se l'autenticazione fallisce, lancia eccezione
         // ignore: avoid_print
-        print('StreamResolver: Fallback a URL senza autenticazione: $e');
-        // Ma l'URL senza auth non funzionerà, quindi lancia eccezione
+        print('StreamResolver: Errore nell\'ottenere autenticazione Rai: $e');
+        print('StreamResolver: Stack trace: $stackTrace');
         throw Exception('Impossibile ottenere autenticazione Rai: $e');
       }
     }
