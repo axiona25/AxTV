@@ -63,7 +63,7 @@ class _PlayerPageState extends State<PlayerPage> {
 
   Future<void> _loadVideo({bool useOriginalUrl = false, bool isRetry = false}) async {
     // Evita loop infiniti
-    if (_isRetrying) {
+    if (_isRetrying && !isRetry) {
       return;
     }
     
@@ -74,20 +74,34 @@ class _PlayerPageState extends State<PlayerPage> {
     try {
       String urlToPlay;
       
-      if (useOriginalUrl || _hasTriedFallback) {
+      // Se abbiamo già provato entrambi, non riprovare
+      if (_hasTriedFallback && useOriginalUrl) {
+        // ignore: avoid_print
+        print('PlayerPage: Già provato entrambi gli URL, fermo il loop');
+        if (mounted) {
+          setState(() {
+            _error = 'Impossibile caricare lo stream.\n\n'
+                'Sia l\'API Zappr che l\'URL originale non sono disponibili.\n'
+                'Lo stream potrebbe essere offline o richiedere autenticazione.';
+            _isLoading = false;
+          });
+        }
+        return;
+      }
+      
+      if (useOriginalUrl) {
         // Prova con URL originale come fallback (solo una volta)
         urlToPlay = widget.channel.streamUrl;
         _resolvedUrl = 'URL originale: $urlToPlay';
         _hasTriedFallback = true;
       } else {
-        // Prova prima con risoluzione Zappr asincrona (segue redirect)
+        // Prova prima con risoluzione Zappr (restituisce URL API)
         try {
           final playable = await _resolver.resolvePlayableUrlAsync(widget.channel.streamUrl);
           urlToPlay = playable.toString();
           _resolvedUrl = urlToPlay;
         } catch (e) {
-          // Se la risoluzione asincrona fallisce (es. stream non disponibile),
-          // prova direttamente con l'URL originale come fallback
+          // Se la risoluzione fallisce, prova con URL originale
           // ignore: avoid_print
           print('PlayerPage: Risoluzione Zappr fallita: $e. Uso URL originale.');
           urlToPlay = widget.channel.streamUrl;
@@ -132,24 +146,32 @@ class _PlayerPageState extends State<PlayerPage> {
             if (!_hasTriedFallback && urlToPlay.contains('zappr.stream')) {
               // ignore: avoid_print
               print('PlayerPage: API Zappr non ha avviato lo stream, provo con URL originale');
+              await _player.stop();
               _hasTriedFallback = true;
               await _loadVideo(useOriginalUrl: true);
               return;
             }
             
-            // Ferma il player e mostra errore
+            // Se abbiamo già provato entrambi, mostra errore definitivo
             await _player.stop();
             setState(() {
               final urlPreview = urlToPlay.length > 80 ? '${urlToPlay.substring(0, 80)}...' : urlToPlay;
-              _error = 'Stream non disponibile.\n\nURL provato: $urlPreview\n\n'
-                  'Lo stream potrebbe non essere disponibile o richiedere autenticazione.';
+              if (_hasTriedFallback) {
+                _error = 'Impossibile caricare lo stream.\n\n'
+                    'Sia l\'API Zappr che l\'URL originale non sono disponibili.\n'
+                    'Lo stream potrebbe essere offline o richiedere autenticazione.';
+              } else {
+                _error = 'Stream non disponibile.\n\nURL provato: $urlPreview\n\n'
+                    'Lo stream potrebbe non essere disponibile o richiedere autenticazione.';
+              }
               _isLoading = false;
             });
           } else if (isPlaying) {
-            // Funziona! Rimuovi errori
+            // Funziona! Rimuovi errori e reset flag
             setState(() {
               _isLoading = false;
               _error = null;
+              _hasTriedFallback = false; // Reset per permettere retry
             });
           }
         }
@@ -166,8 +188,20 @@ class _PlayerPageState extends State<PlayerPage> {
           if (!_hasTriedFallback && urlToPlay.contains('zappr.stream')) {
             // ignore: avoid_print
             print('PlayerPage: Errore con API Zappr, provo con URL originale');
+            await _player.stop();
             _hasTriedFallback = true;
             await _loadVideo(useOriginalUrl: true);
+            return;
+          }
+          
+          // Se abbiamo già provato entrambi, mostra errore definitivo
+          if (_hasTriedFallback) {
+            setState(() {
+              _error = 'Impossibile caricare lo stream.\n\n'
+                  'Sia l\'API Zappr che l\'URL originale non sono disponibili.\n'
+                  'Lo stream potrebbe essere offline o richiedere autenticazione.';
+              _isLoading = false;
+            });
             return;
           }
           
@@ -196,8 +230,22 @@ class _PlayerPageState extends State<PlayerPage> {
         
         // Se l'API Zappr fallisce e non abbiamo ancora provato il fallback, prova con URL originale
         if (!_hasTriedFallback && _resolvedUrl != null && _resolvedUrl!.contains('zappr.stream')) {
+          try {
+            await _player.stop();
+          } catch (_) {}
           _hasTriedFallback = true;
           await _loadVideo(useOriginalUrl: true);
+          return;
+        }
+        
+        // Se abbiamo già provato entrambi, mostra errore definitivo
+        if (_hasTriedFallback) {
+          setState(() {
+            _error = 'Impossibile caricare lo stream.\n\n'
+                'Sia l\'API Zappr che l\'URL originale non sono disponibili.\n'
+                'Lo stream potrebbe essere offline o richiedere autenticazione.';
+            _isLoading = false;
+          });
           return;
         }
         
@@ -351,6 +399,7 @@ class _PlayerPageState extends State<PlayerPage> {
                             // Reset flags e riprova
                             _hasTriedFallback = false;
                             _isRetrying = false;
+                            _error = null;
                             _loadVideo(isRetry: true);
                           },
                           icon: const Icon(Icons.refresh, size: 18),
