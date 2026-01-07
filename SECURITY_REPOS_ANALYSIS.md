@@ -28,10 +28,31 @@
 - **fmovies-***: Pattern generico, non verificabile
 - **123movies-***: Pattern generico, non verificabile
 
+## Varianti Cercate
+
+### 6. movie-web-app/movie-web
+- **Status**: ❌ Non trovato
+- **Note**: Repository non disponibile
+
+### 7. popcorn-official/popcorn-desktop
+- **Status**: ✅ Trovato
+- **Stars**: 10,460
+- **Descrizione**: Popcorn Time™ puts everything in one place. Your favorite platforms, your shows, your movies-ready when you are.
+- **Note**: ⚠️ Repository pubblico trovato
+
+### 8. butterproject/butter-desktop
+- **Status**: ✅ Trovato
+- **Stars**: 4,279
+- **Descrizione**: All the free parts of Popcorn Time
+- **Note**: ⚠️ Repository pubblico trovato
+
 ## Risultati
 
-- **Repository trovati**: 1 (streamlink - tool legittimo)
-- **Repository non trovati/privati**: 3
+- **Repository trovati**: 3
+  - streamlink/streamlink (tool legittimo)
+  - popcorn-official/popcorn-desktop
+  - butterproject/butter-desktop
+- **Repository non trovati/privati**: 4
 - **Pattern generici**: 5
 
 ## Note Importanti
