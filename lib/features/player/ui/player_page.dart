@@ -59,10 +59,20 @@ class _PlayerPageState extends State<PlayerPage> {
     _loadVideo();
   }
 
-  Future<void> _loadVideo() async {
+  Future<void> _loadVideo({bool useOriginalUrl = false}) async {
     try {
-      final playable = _resolver.resolvePlayableUrl(widget.channel.streamUrl);
-      _resolvedUrl = playable.toString();
+      String urlToPlay;
+      
+      if (useOriginalUrl) {
+        // Prova con URL originale come fallback
+        urlToPlay = widget.channel.streamUrl;
+        _resolvedUrl = 'URL originale: $urlToPlay';
+      } else {
+        // Prova prima con risoluzione Zappr
+        final playable = _resolver.resolvePlayableUrl(widget.channel.streamUrl);
+        urlToPlay = playable.toString();
+        _resolvedUrl = urlToPlay;
+      }
       
       if (mounted) {
         setState(() {
@@ -74,37 +84,57 @@ class _PlayerPageState extends State<PlayerPage> {
       // Configura il player con opzioni migliorate
       await _player.open(
         Media(
-          playable.toString(),
+          urlToPlay,
           httpHeaders: {
-            'User-Agent': 'Mozilla/5.0',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
             'Referer': 'https://zappr.stream/',
+            'Accept': '*/*',
           },
         ),
         play: true,
       );
       
-      // Attendi un po' per vedere se parte
-      await Future.delayed(const Duration(seconds: 3));
+      // Attendi per vedere se parte
+      await Future.delayed(const Duration(seconds: 5));
       
       if (mounted) {
         final isPlaying = _player.state.playing;
-        setState(() {
-          _isLoading = !isPlaying;
-          if (!isPlaying && _error == null) {
-            _error = 'Stream non disponibile o non riproducibile.\n\n'
-                'URL: ${playable.toString().substring(0, playable.toString().length > 80 ? 80 : playable.toString().length)}...\n\n'
-                'Verifica che l\'API Zappr sia raggiungibile e che lo stream sia attivo.';
+        if (!isPlaying && _error == null) {
+          // Se l'API Zappr fallisce, prova con URL originale
+          if (!useOriginalUrl && urlToPlay.contains('zappr.stream')) {
+            await _loadVideo(useOriginalUrl: true);
+            return;
           }
-        });
+          
+          setState(() {
+            _error = 'Stream non disponibile.\n\n'
+                'L\'API Zappr potrebbe non essere disponibile.\n'
+                'Prova a verificare manualmente l\'URL dello stream.';
+            _isLoading = false;
+          });
+        } else {
+          setState(() {
+            _isLoading = false;
+          });
+        }
       }
     } catch (e) {
       if (mounted) {
+        // Se l'API Zappr fallisce, prova con URL originale come fallback
+        if (!useOriginalUrl && _resolvedUrl != null && _resolvedUrl!.contains('zappr.stream')) {
+          await _loadVideo(useOriginalUrl: true);
+          return;
+        }
+        
         String errorMsg = 'Errore nel caricamento';
-        if (e.toString().contains('Failed to open')) {
-          errorMsg = 'Impossibile aprire lo stream.\n'
-              'L\'API Zappr potrebbe non essere disponibile o lo stream non è attivo.';
+        final errorStr = e.toString();
+        
+        if (errorStr.contains('Failed to open')) {
+          errorMsg = 'Impossibile aprire lo stream.\n\n'
+              'L\'API Zappr potrebbe non essere disponibile.\n'
+              'URL tentato: ${_resolvedUrl ?? widget.channel.streamUrl}';
         } else {
-          errorMsg = 'Errore: ${e.toString().split('\n').first}';
+          errorMsg = 'Errore: ${errorStr.split('\n').first}';
         }
         
         setState(() {
