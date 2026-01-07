@@ -162,26 +162,45 @@ class _PlayerPageState extends State<PlayerPage> {
         await _player.stop();
       }
 
-      // Configura il player con opzioni migliorate
-      // Se l'URL è dall'API Zappr, specifica il tipo HLS come fa Video.js
-      final isZapprApi = urlToPlay.contains('zappr.stream');
-      final isHlsUrl = urlToPlay.contains('.m3u8') || isZapprApi;
-      
-      try {
-        await _player.open(
-          Media(
-            urlToPlay,
-            httpHeaders: {
-              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-              'Referer': 'https://zappr.stream/',
-              // Se è HLS o API Zappr, usa header specifici per HLS
-              'Accept': isHlsUrl 
-                  ? 'application/vnd.apple.mpegurl, application/x-mpegURL, */*'
-                  : '*/*',
-            },
-          ),
-          play: true,
-        );
+          // Configura il player con opzioni migliorate
+          // Se l'URL è dall'API Zappr, specifica il tipo HLS come fa Video.js
+          final isZapprApi = urlToPlay.contains('zappr.stream');
+          final isHlsUrl = urlToPlay.contains('.m3u8') || isZapprApi;
+          
+          try {
+            await _player.open(
+              Media(
+                urlToPlay,
+                httpHeaders: {
+                  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                  'Referer': 'https://zappr.stream/',
+                  // Se è HLS o API Zappr, usa header specifici per HLS
+                  'Accept': isHlsUrl 
+                      ? 'application/vnd.apple.mpegurl, application/x-mpegURL, */*'
+                      : '*/*',
+                },
+              ),
+              play: true,
+            );
+            
+            // Configura opzioni avanzate per gestire errori di decoding
+            // Ignora errori minori di timestamp e pacchetti corrotti
+            await _player.setPlaylistMode(PlaylistMode.none);
+            
+            // Configura opzioni per gestire meglio gli errori audio/video
+            // Queste opzioni vengono applicate tramite variabili d'ambiente per mpv
+            // media_kit usa mpv sotto, quindi possiamo passare opzioni mpv
+            try {
+              // Ignora errori di timestamp invalidi (comuni in stream live)
+              // e errori di decoding audio minori
+              await _player.setProperty('video-sync', 'display-resample');
+              await _player.setProperty('audio-buffer', '0.5');
+              await _player.setProperty('demuxer-lavf-o', 'fflags=+ignidx+discardcorrupt');
+            } catch (e) {
+              // Se le opzioni non sono supportate, continua comunque
+              // ignore: avoid_print
+              print('PlayerPage: Impossibile impostare opzioni avanzate: $e');
+            }
         
         // Attendi per vedere se parte (5 secondi)
         await Future.delayed(const Duration(seconds: 5));
