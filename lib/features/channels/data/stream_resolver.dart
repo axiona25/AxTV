@@ -3,6 +3,7 @@ import 'dart:io' show HttpClient, HttpClientRequest, HttpClientResponse;
 import 'dart:convert';
 import '../../../config/env.dart';
 import '../../../core/http/dio_client.dart';
+import '../../../core/security/content_validator.dart';
 
 class StreamResolver {
   final Dio _dio = dioProvider;
@@ -15,6 +16,15 @@ class StreamResolver {
   /// Se necessario, chiama le API Zappr per ottenere l'URL finale
   Uri resolvePlayableUrl(String originalUrl) {
     final url = originalUrl.trim();
+    
+    // Validazione sicurezza
+    if (!ContentValidator.validateUrl(url)) {
+      ContentValidator.logSecurityEvent(
+        'Blocked URL in resolvePlayableUrl',
+        {'url': url.substring(0, 100)},
+      );
+      throw Exception('URL non autorizzato rilevato per test di sicurezza');
+    }
 
     final isDailymotion = url.contains('dailymotion.com/video/');
     final isLivestream = url.contains('livestream.com/accounts/');
@@ -223,6 +233,15 @@ class StreamResolver {
   /// [license] può essere "rai-akamai" per canali Rai che richiedono autenticazione
   Future<Uri> resolvePlayableUrlAsync(String originalUrl, {String? license}) async {
     final url = originalUrl.trim();
+    
+    // Validazione sicurezza
+    if (!ContentValidator.validateUrl(url)) {
+      ContentValidator.logSecurityEvent(
+        'Blocked URL in resolvePlayableUrlAsync',
+        {'url': url.substring(0, 100), 'license': license},
+      );
+      throw Exception('URL non autorizzato rilevato per test di sicurezza');
+    }
 
     final isDailymotion = url.contains('dailymotion.com/video/');
     final isLivestream = url.contains('livestream.com/accounts/');
