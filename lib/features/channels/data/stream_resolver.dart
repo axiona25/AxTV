@@ -35,9 +35,33 @@ class StreamResolver {
     return Uri.parse(url);
   }
 
+  /// Ottiene l'autenticazione Rai Akamai dall'API Zappr
+  /// Restituisce la stringa di autenticazione da aggiungere all'URL
+  Future<String> _getRaiAkamaiAuth() async {
+    try {
+      // ignore: avoid_print
+      print('StreamResolver: Richiedo autenticazione Rai Akamai...');
+      final response = await _dio.post(
+        '${Env.alwaysdataApiBase}/rai-akamai',
+        options: Options(
+          validateStatus: (status) => status! < 500,
+        ),
+      );
+      final auth = response.data.toString();
+      // ignore: avoid_print
+      print('StreamResolver: Autenticazione ottenuta');
+      return auth;
+    } catch (e) {
+      // ignore: avoid_print
+      print('StreamResolver: Errore nell\'ottenere autenticazione Rai: $e');
+      rethrow;
+    }
+  }
+
   /// Risolve l'URL seguendo i redirect delle API Zappr
   /// Restituisce l'URL finale riproducibile
-  Future<Uri> resolvePlayableUrlAsync(String originalUrl) async {
+  /// [license] può essere "rai-akamai" per canali Rai che richiedono autenticazione
+  Future<Uri> resolvePlayableUrlAsync(String originalUrl, {String? license}) async {
     final url = originalUrl.trim();
 
     final isDailymotion = url.contains('dailymotion.com/video/');
@@ -47,6 +71,22 @@ class StreamResolver {
     final isRaiMediapolis = url.contains('mediapolis.rai.it/relinker/relinkerServlet');
     final isBabylonCloud = url.contains('/video/viewlivestreaming');
 
+    // Se è un canale Rai con license rai-akamai, ottieni l'autenticazione e aggiungila all'URL
+    if (license == 'rai-akamai') {
+      try {
+        final auth = await _getRaiAkamaiAuth();
+        final urlWithAuth = '$url$auth';
+        // ignore: avoid_print
+        print('StreamResolver: URL Rai con autenticazione: ${urlWithAuth.substring(0, urlWithAuth.length > 100 ? 100 : urlWithAuth.length)}...');
+        return Uri.parse(urlWithAuth);
+      } catch (e) {
+        // Se l'autenticazione fallisce, prova comunque con l'URL originale
+        // ignore: avoid_print
+        print('StreamResolver: Fallback a URL senza autenticazione: $e');
+        return Uri.parse(url);
+      }
+    }
+    
     String apiUrl;
     
     // Determina quale API usare
@@ -57,7 +97,7 @@ class StreamResolver {
     } else if (isRaiMediapolis || isBabylonCloud) {
       apiUrl = '${Env.vercelApiBase}?${Uri.encodeComponent(url)}';
     } else {
-      // Già riproducibile direttamente
+      // Già riproducibile direttamente (es. HLS diretto)
       return Uri.parse(url);
     }
 

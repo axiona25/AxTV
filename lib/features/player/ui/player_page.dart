@@ -95,9 +95,12 @@ class _PlayerPageState extends State<PlayerPage> {
         _resolvedUrl = 'URL originale: $urlToPlay';
         _hasTriedFallback = true;
       } else {
-        // Prova prima con risoluzione Zappr (restituisce URL API)
+        // Prova prima con risoluzione Zappr (gestisce anche autenticazione Rai)
         try {
-          final playable = await _resolver.resolvePlayableUrlAsync(widget.channel.streamUrl);
+          final playable = await _resolver.resolvePlayableUrlAsync(
+            widget.channel.streamUrl,
+            license: widget.channel.license,
+          );
           urlToPlay = playable.toString();
           _resolvedUrl = urlToPlay;
         } catch (e) {

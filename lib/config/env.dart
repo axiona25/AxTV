@@ -2,6 +2,7 @@ class Env {
   /// API pubbliche Zappr (nessun tuo server).
   static const cloudflareApiBase = 'https://cloudflare-api.zappr.stream/api';
   static const vercelApiBase = 'https://vercel-api.zappr.stream/api';
+  static const alwaysdataApiBase = 'https://zappr.alwaysdata.net';
 
   /// URL del file JSON dei canali.
   /// 
