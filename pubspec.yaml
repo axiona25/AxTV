@@ -30,6 +30,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  # Assets per canali (fallback locale)
+  assets:
+    - assets/channels.json
+
   # Font Poppins - decommenta quando aggiungi i file font
   # fonts:
   #   - family: Poppins
