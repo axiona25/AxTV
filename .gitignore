@@ -61,3 +61,6 @@ playlist.m3u
 
 # channels.json locale (usa channels.example.json come template)
 # channels.json
+
+# Credenziali GitHub (NON committare mai!)
+GITHUB_CREDENTIALS.md
