@@ -68,10 +68,17 @@ class _PlayerPageState extends State<PlayerPage> {
         urlToPlay = widget.channel.streamUrl;
         _resolvedUrl = 'URL originale: $urlToPlay';
       } else {
-        // Prova prima con risoluzione Zappr
-        final playable = _resolver.resolvePlayableUrl(widget.channel.streamUrl);
-        urlToPlay = playable.toString();
-        _resolvedUrl = urlToPlay;
+        // Prova prima con risoluzione Zappr asincrona (segue redirect)
+        try {
+          final playable = await _resolver.resolvePlayableUrlAsync(widget.channel.streamUrl);
+          urlToPlay = playable.toString();
+          _resolvedUrl = urlToPlay;
+        } catch (e) {
+          // Se la risoluzione asincrona fallisce, usa quella sincrona
+          final playable = _resolver.resolvePlayableUrl(widget.channel.streamUrl);
+          urlToPlay = playable.toString();
+          _resolvedUrl = '$urlToPlay (fallback sync)';
+        }
       }
       
       if (mounted) {
