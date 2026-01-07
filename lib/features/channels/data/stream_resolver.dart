@@ -64,8 +64,16 @@ class StreamResolver {
         ),
       );
       
+      // Verifica che la risposta sia valida
+      if (response.statusCode != 200) {
+        throw Exception('API autenticazione Rai restituisce status ${response.statusCode}');
+      }
+      
       // L'API restituisce direttamente la stringa di autenticazione (es. "?hdnea=...")
       String auth = response.data.toString().trim();
+      
+      // ignore: avoid_print
+      print('StreamResolver: Status code: ${response.statusCode}, Data type: ${response.data.runtimeType}');
       
       // ignore: avoid_print
       print('StreamResolver: Risposta raw (tipo: ${response.data.runtimeType}, lunghezza: ${auth.length}): ${auth.substring(0, auth.length > 80 ? 80 : auth.length)}...');
