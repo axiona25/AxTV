@@ -43,6 +43,7 @@ class StreamResolver {
       print('StreamResolver: Richiedo autenticazione Rai Akamai da ${Env.alwaysdataApiBase}/rai-akamai');
       
       // Crea un Dio instance separato con timeout più lunghi per questa richiesta
+      // Usa la stessa configurazione di Zappr web: fetch con POST e response.text()
       final dio = Dio(
         BaseOptions(
           connectTimeout: const Duration(seconds: 30),
@@ -50,17 +51,23 @@ class StreamResolver {
           sendTimeout: const Duration(seconds: 30),
           headers: {
             'Accept': '*/*',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Origin': 'https://zappr.stream',
+            'Referer': 'https://zappr.stream/',
           },
         ),
       );
       
+      // Zappr usa: fetch(`${window["zappr"].config.backend.host["alwaysdata"]}/rai-akamai`, { method: "POST" })
+      // Poi: response.text() per ottenere la stringa
+      // NON specifica contentType, quindi Dio userà il default
       final response = await dio.post(
         '${Env.alwaysdataApiBase}/rai-akamai',
         options: Options(
           validateStatus: (status) => status! < 500,
-          responseType: ResponseType.plain, // Restituisce testo, non JSON
+          responseType: ResponseType.plain, // Restituisce testo, non JSON (come response.text() in JS)
           followRedirects: true,
+          // NON specificare contentType - Zappr non lo fa
         ),
       );
       
