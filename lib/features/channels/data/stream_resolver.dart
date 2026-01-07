@@ -61,15 +61,59 @@ class StreamResolver {
       return Uri.parse(url);
     }
 
-    // L'API Zappr funziona come proxy: restituisce direttamente lo stream (HLS o MP4)
-    // Video.js sul web passa l'URL dell'API direttamente con tipo "application/x-mpegURL"
-    // e gestisce automaticamente redirect e stream
-    // 
-    // Facciamo lo stesso: passiamo l'URL dell'API direttamente a media_kit
-    // media_kit dovrebbe gestire i redirect e lo stream automaticamente
-    // ignore: avoid_print
-    print('StreamResolver: Usando URL API Zappr direttamente (come Video.js): $apiUrl');
-    return Uri.parse(apiUrl);
+    // L'API Zappr restituisce un redirect 302 allo stream finale
+    // Video.js gestisce i redirect automaticamente, ma media_kit potrebbe non farlo
+    // Quindi seguiamo i redirect manualmente per ottenere l'URL finale HLS
+    try {
+      // ignore: avoid_print
+      print('StreamResolver: Risolvo URL API Zappr: $apiUrl');
+      
+      // Usa GET con followRedirects per seguire i redirect
+      // Timeout breve per non scaricare tutto lo stream
+      final response = await _dio.get(
+        apiUrl,
+        options: Options(
+          followRedirects: true,
+          maxRedirects: 10,
+          validateStatus: (status) => status! < 500,
+          receiveTimeout: const Duration(seconds: 3),
+        ),
+      );
+      
+      // Ottieni l'URL finale dal redirect
+      String finalUrl = apiUrl; // Default all'URL API
+      
+      if (response.redirects.isNotEmpty) {
+        // Usa l'ultimo redirect (URL finale)
+        final lastRedirect = response.redirects.last;
+        finalUrl = lastRedirect.location.toString();
+        // ignore: avoid_print
+        print('StreamResolver: Redirect trovato: ${lastRedirect.statusCode} -> $finalUrl');
+      } else {
+        // Se non ci sono redirect, usa l'URL della risposta finale
+        finalUrl = response.realUri.toString();
+        // ignore: avoid_print
+        print('StreamResolver: Nessun redirect, URL finale: $finalUrl');
+      }
+      
+      // Verifica se è un URL di errore
+      if (finalUrl.contains('video_no_available') || 
+          finalUrl.contains('error') ||
+          finalUrl.contains('unavailable')) {
+        // ignore: avoid_print
+        print('StreamResolver: API restituisce URL di errore: $finalUrl');
+        throw Exception('Stream non disponibile: URL di errore restituito dall\'API');
+      }
+      
+      // ignore: avoid_print
+      print('StreamResolver: URL finale HLS: $finalUrl');
+      return Uri.parse(finalUrl);
+    } catch (e) {
+      // Se fallisce, lancia eccezione per permettere fallback all'URL originale
+      // ignore: avoid_print
+      print('StreamResolver: Errore nel risolvere URL: $e');
+      rethrow;
+    }
   }
 }
 
