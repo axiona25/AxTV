@@ -113,10 +113,18 @@ class _PlayerPageState extends State<PlayerPage> {
           print('PlayerPage: URL risolto: ${urlToPlay.substring(0, urlToPlay.length > 150 ? 150 : urlToPlay.length)}...');
           
           // Verifica che per canali Rai l'URL contenga l'autenticazione
-          // MA: se usiamo API Vercel, l'auth è gestita internamente, quindi non contiene hdnea=
+          // MA: 
+          // - Se usiamo API Vercel/Cloudflare, l'auth è gestita internamente (token JWT o redirect)
+          // - Se è URL akamaized.net diretto, deve contenere hdnea=
+          // - Se è URL da API (zappr.stream), l'auth è gestita dall'API
           if (widget.channel.license == 'rai-akamai' && 
               !urlToPlay.contains('hdnea=') && 
-              !urlToPlay.contains('vercel-api.zappr.stream')) {
+              !urlToPlay.contains('vercel-api.zappr.stream') &&
+              !urlToPlay.contains('cloudflare-api.zappr.stream') &&
+              !urlToPlay.contains('zappr.stream') &&
+              !urlToPlay.contains('tok_') && // Token JWT da API Cloudflare
+              urlToPlay.contains('akamaized.net')) {
+            // Solo per URL akamaized.net diretti (non passati da API) serve hdnea=
             throw Exception('URL Rai senza autenticazione! L\'auth potrebbe non essere stata aggiunta correttamente.');
           }
         } catch (e) {
