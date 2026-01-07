@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'dart:io' show HttpClient, HttpClientRequest, HttpClientResponse;
+import 'dart:convert';
 import '../../../config/env.dart';
 import '../../../core/http/dio_client.dart';
 
@@ -140,6 +142,65 @@ class StreamResolver {
       dio.close();
       
       return auth;
+    } on DioException catch (dioError) {
+      // Se Dio fallisce con connection error, prova con HttpClient standard
+      // ignore: avoid_print
+      print('StreamResolver: DioException: ${dioError.type} - ${dioError.message}');
+      if (dioError.type == DioExceptionType.connectionError || 
+          dioError.type == DioExceptionType.connectionTimeout) {
+        // ignore: avoid_print
+        print('StreamResolver: Errore di connessione Dio, provo con HttpClient standard...');
+        try {
+          final client = HttpClient();
+          final request = await client.postUrl(
+            Uri.parse('${Env.alwaysdataApiBase}/rai-akamai'),
+          );
+          request.headers.set('Accept', '*/*');
+          request.headers.set('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36');
+          request.headers.set('Origin', 'https://zappr.stream');
+          request.headers.set('Referer', 'https://zappr.stream/');
+          
+          final response = await request.close();
+          final responseBody = await response.transform(utf8.decoder).join();
+          
+          if (response.statusCode != 200) {
+            throw Exception('API autenticazione Rai restituisce status ${response.statusCode}');
+          }
+          
+          String auth = responseBody.trim();
+          
+          if (auth.isEmpty) {
+            throw Exception('Autenticazione Rai vuota ricevuta dall\'API');
+          }
+          
+          if (!auth.startsWith('?')) {
+            auth = '?$auth';
+          }
+          
+          // ignore: avoid_print
+          print('StreamResolver: Autenticazione ottenuta con HttpClient (lunghezza: ${auth.length})');
+          
+          // Estrai expiration e salva in cache
+          try {
+            final expMatch = RegExp(r'exp=(\d+)').firstMatch(auth);
+            if (expMatch != null) {
+              _cachedRaiAuthExpiration = int.parse(expMatch.group(1)!);
+              _cachedRaiAuth = auth;
+            }
+          } catch (e) {
+            // ignore: avoid_print
+            print('StreamResolver: Impossibile estrarre expiration da auth: $e');
+          }
+          
+          client.close();
+          return auth;
+        } catch (httpError) {
+          // ignore: avoid_print
+          print('StreamResolver: Anche HttpClient fallito: $httpError');
+          rethrow;
+        }
+      }
+      rethrow;
     } catch (e, stackTrace) {
       // ignore: avoid_print
       print('StreamResolver: Errore nell\'ottenere autenticazione Rai: $e');
