@@ -1,9 +1,6 @@
-import 'package:dio/dio.dart';
 import '../../../config/env.dart';
-import '../../../core/http/dio_client.dart';
 
 class StreamResolver {
-  final Dio _dio = dioProvider;
 
   /// Risolve l'URL originale in un URL riproducibile
   /// Se necessario, chiama le API Zappr per ottenere l'URL finale
@@ -58,6 +55,7 @@ class StreamResolver {
     // L'API Zappr funziona come proxy che restituisce direttamente lo stream
     // Non serve verificare, possiamo usare direttamente l'URL dell'API
     // Il player media_kit gestirà lo stream
+    // ignore: avoid_print
     print('StreamResolver: Usando URL API Zappr: $apiUrl');
     return Uri.parse(apiUrl);
   }

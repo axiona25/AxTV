@@ -89,38 +89,60 @@ class _PlayerPageState extends State<PlayerPage> {
       }
 
       // Configura il player con opzioni migliorate
-      await _player.open(
-        Media(
-          urlToPlay,
-          httpHeaders: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-            'Referer': 'https://zappr.stream/',
-            'Accept': '*/*',
-          },
-        ),
-        play: true,
-      );
-      
-      // Attendi per vedere se parte
-      await Future.delayed(const Duration(seconds: 5));
-      
-      if (mounted) {
-        final isPlaying = _player.state.playing;
-        if (!isPlaying && _error == null) {
+      try {
+        await _player.open(
+          Media(
+            urlToPlay,
+            httpHeaders: {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+              'Referer': 'https://zappr.stream/',
+              'Accept': '*/*',
+            },
+          ),
+          play: true,
+        );
+        
+        // Attendi per vedere se parte (ridotto a 3 secondi)
+        await Future.delayed(const Duration(seconds: 3));
+        
+        if (mounted) {
+          final isPlaying = _player.state.playing;
+          if (!isPlaying && _error == null) {
+            // Se l'API Zappr fallisce, prova con URL originale
+            if (!useOriginalUrl && urlToPlay.contains('zappr.stream')) {
+              // ignore: avoid_print
+              print('PlayerPage: API Zappr non ha avviato lo stream, provo con URL originale');
+              await _loadVideo(useOriginalUrl: true);
+              return;
+            }
+            
+            setState(() {
+              final urlPreview = urlToPlay.length > 80 ? '${urlToPlay.substring(0, 80)}...' : urlToPlay;
+              _error = 'Stream non disponibile.\n\nURL provato: $urlPreview';
+              _isLoading = false;
+            });
+          } else {
+            setState(() {
+              _isLoading = false;
+              _error = null;
+            });
+          }
+        }
+      } catch (e) {
+        // ignore: avoid_print
+        print('PlayerPage: Errore nell\'apertura del player: $e');
+        if (mounted) {
           // Se l'API Zappr fallisce, prova con URL originale
           if (!useOriginalUrl && urlToPlay.contains('zappr.stream')) {
+            // ignore: avoid_print
+            print('PlayerPage: Errore con API Zappr, provo con URL originale');
             await _loadVideo(useOriginalUrl: true);
             return;
           }
           
           setState(() {
-            _error = 'Stream non disponibile.\n\n'
-                'L\'API Zappr potrebbe non essere disponibile.\n'
-                'Prova a verificare manualmente l\'URL dello stream.';
-            _isLoading = false;
-          });
-        } else {
-          setState(() {
+            final urlPreview = urlToPlay.length > 80 ? '${urlToPlay.substring(0, 80)}...' : urlToPlay;
+            _error = 'Errore nell\'apertura dello stream: $e\n\nURL provato: $urlPreview';
             _isLoading = false;
           });
         }
