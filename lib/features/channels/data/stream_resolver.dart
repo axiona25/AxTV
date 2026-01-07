@@ -58,19 +58,28 @@ class StreamResolver {
       
       // Crea un Dio instance separato con timeout più lunghi per questa richiesta
       // Usa la stessa configurazione di Zappr web: fetch con POST e response.text()
-      final dio = Dio(
-        BaseOptions(
-          connectTimeout: const Duration(seconds: 30),
-          receiveTimeout: const Duration(seconds: 30),
-          sendTimeout: const Duration(seconds: 30),
-          headers: {
-            'Accept': '*/*',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            'Origin': 'https://zappr.stream',
-            'Referer': 'https://zappr.stream/',
-          },
-        ),
-      );
+      // Prova prima con configurazione minimale
+      Dio dio;
+      try {
+        dio = Dio(
+          BaseOptions(
+            connectTimeout: const Duration(seconds: 30),
+            receiveTimeout: const Duration(seconds: 30),
+            sendTimeout: const Duration(seconds: 30),
+            headers: {
+              'Accept': '*/*',
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+              'Origin': 'https://zappr.stream',
+              'Referer': 'https://zappr.stream/',
+            },
+          ),
+        );
+      } catch (e) {
+        // Se fallisce, prova con configurazione ancora più semplice
+        // ignore: avoid_print
+        print('StreamResolver: Errore creazione Dio, uso configurazione minimale: $e');
+        dio = Dio();
+      }
       
       // Zappr usa: fetch(`${window["zappr"].config.backend.host["alwaysdata"]}/rai-akamai`, { method: "POST" })
       // Poi: response.text() per ottenere la stringa
@@ -161,32 +170,44 @@ class StreamResolver {
     final isRaiMediapolis = url.contains('mediapolis.rai.it/relinker/relinkerServlet');
     final isBabylonCloud = url.contains('/video/viewlivestreaming');
 
-    // Se è un canale Rai con license rai-akamai, ottieni l'autenticazione e aggiungila all'URL
+    // Se è un canale Rai con license rai-akamai
     if (license == 'rai-akamai') {
-      try {
-        // ignore: avoid_print
-        print('StreamResolver: Canale Rai richiede autenticazione, URL originale: $url');
-        final auth = await _getRaiAkamaiAuth();
-        
-        // L'auth restituisce già "?hdnea=..." quindi aggiungilo direttamente
-        final urlWithAuth = '$url$auth';
-        
-        // ignore: avoid_print
-        print('StreamResolver: URL finale con auth: ${urlWithAuth.substring(0, urlWithAuth.length > 200 ? 200 : urlWithAuth.length)}...');
-        
-        // Verifica che l'URL sia valido
-        final uri = Uri.parse(urlWithAuth);
-        if (uri.scheme.isEmpty || uri.host.isEmpty) {
-          throw Exception('URL non valido dopo aggiunta autenticazione: $urlWithAuth');
+      // Se l'URL è già un HLS diretto (es. akamaized.net), aggiungi auth
+      if (url.contains('akamaized.net')) {
+        try {
+          // ignore: avoid_print
+          print('StreamResolver: Canale Rai HLS diretto richiede autenticazione, URL originale: $url');
+          final auth = await _getRaiAkamaiAuth();
+          
+          // L'auth restituisce già "?hdnea=..." quindi aggiungilo direttamente
+          final urlWithAuth = '$url$auth';
+          
+          // ignore: avoid_print
+          print('StreamResolver: URL finale con auth: ${urlWithAuth.substring(0, urlWithAuth.length > 200 ? 200 : urlWithAuth.length)}...');
+          
+          // Verifica che l'URL sia valido
+          final uri = Uri.parse(urlWithAuth);
+          if (uri.scheme.isEmpty || uri.host.isEmpty) {
+            throw Exception('URL non valido dopo aggiunta autenticazione: $urlWithAuth');
+          }
+          
+          return uri;
+        } catch (e, stackTrace) {
+          // Se l'autenticazione fallisce, prova con API Vercel come fallback
+          // ignore: avoid_print
+          print('StreamResolver: Errore nell\'ottenere autenticazione Rai: $e');
+          print('StreamResolver: Provo fallback con API Vercel...');
+          // Continua sotto per usare API Vercel
         }
-        
-        return uri;
-      } catch (e, stackTrace) {
-        // Se l'autenticazione fallisce, lancia eccezione
+      }
+      
+      // Se è un URL mediapolis.rai.it, usa API Vercel (come fa Zappr)
+      if (url.contains('mediapolis.rai.it')) {
         // ignore: avoid_print
-        print('StreamResolver: Errore nell\'ottenere autenticazione Rai: $e');
-        print('StreamResolver: Stack trace: $stackTrace');
-        throw Exception('Impossibile ottenere autenticazione Rai: $e');
+        print('StreamResolver: Canale Rai Mediapolis, uso API Vercel (come Zappr)');
+        final apiUrl = '${Env.vercelApiBase}?${Uri.encodeComponent(url)}';
+        // L'API Vercel gestisce l'autenticazione internamente
+        return Uri.parse(apiUrl);
       }
     }
     
