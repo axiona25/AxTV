@@ -42,11 +42,25 @@ class StreamResolver {
       // ignore: avoid_print
       print('StreamResolver: Richiedo autenticazione Rai Akamai da ${Env.alwaysdataApiBase}/rai-akamai');
       
-      final response = await _dio.post(
+      // Crea un Dio instance separato con timeout più lunghi per questa richiesta
+      final dio = Dio(
+        BaseOptions(
+          connectTimeout: const Duration(seconds: 30),
+          receiveTimeout: const Duration(seconds: 30),
+          sendTimeout: const Duration(seconds: 30),
+          headers: {
+            'Accept': '*/*',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          },
+        ),
+      );
+      
+      final response = await dio.post(
         '${Env.alwaysdataApiBase}/rai-akamai',
         options: Options(
           validateStatus: (status) => status! < 500,
           responseType: ResponseType.plain, // Restituisce testo, non JSON
+          followRedirects: true,
         ),
       );
       
