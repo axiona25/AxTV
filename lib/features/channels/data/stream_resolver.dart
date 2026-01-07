@@ -61,53 +61,15 @@ class StreamResolver {
       return Uri.parse(url);
     }
 
-    // L'API Zappr funziona come proxy: restituisce redirect 302 allo stream finale HLS
+    // L'API Zappr funziona come proxy: restituisce direttamente lo stream (HLS o MP4)
     // Video.js sul web passa l'URL dell'API direttamente con tipo "application/x-mpegURL"
-    // e gestisce i redirect automaticamente
+    // e gestisce automaticamente redirect e stream
     // 
-    // Per media_kit, proviamo a seguire il redirect manualmente per ottenere l'URL finale
-    // Se fallisce, restituiamo l'URL dell'API e lasciamo che media_kit provi
-    try {
-      // ignore: avoid_print
-      print('StreamResolver: Risolvo URL API Zappr: $apiUrl');
-      
-      // Fai una richiesta HEAD per seguire i redirect senza scaricare tutto
-      final response = await _dio.head(
-        apiUrl,
-        options: Options(
-          followRedirects: true,
-          maxRedirects: 5,
-          validateStatus: (status) => status! < 500,
-        ),
-      );
-      
-      // Ottieni l'URL finale
-      String finalUrl;
-      if (response.redirects.isNotEmpty) {
-        finalUrl = response.redirects.last.location.toString();
-      } else {
-        finalUrl = response.realUri.toString();
-      }
-      
-      // Verifica se è un URL di errore
-      if (finalUrl.contains('video_no_available') || 
-          finalUrl.contains('error') ||
-          finalUrl.contains('unavailable')) {
-        // ignore: avoid_print
-        print('StreamResolver: API restituisce URL di errore, uso URL API direttamente');
-        return Uri.parse(apiUrl);
-      }
-      
-      // ignore: avoid_print
-      print('StreamResolver: URL finale dopo redirect: $finalUrl');
-      return Uri.parse(finalUrl);
-    } catch (e) {
-      // Se fallisce, usa l'URL dell'API direttamente
-      // media_kit potrebbe gestirlo
-      // ignore: avoid_print
-      print('StreamResolver: Errore nel seguire redirect, uso URL API: $e');
-      return Uri.parse(apiUrl);
-    }
+    // Facciamo lo stesso: passiamo l'URL dell'API direttamente a media_kit
+    // media_kit dovrebbe gestire i redirect e lo stream automaticamente
+    // ignore: avoid_print
+    print('StreamResolver: Usando URL API Zappr direttamente (come Video.js): $apiUrl');
+    return Uri.parse(apiUrl);
   }
 }
 
