@@ -184,9 +184,9 @@ class _PlayerPageState extends State<PlayerPage> {
                           size: 48,
                         ),
                         const SizedBox(height: 16),
-                        Text(
+                        const Text(
                           'Errore',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textPrimary,
                             fontFamily: 'Poppins',
                             fontSize: 18,
