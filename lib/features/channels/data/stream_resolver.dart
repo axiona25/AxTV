@@ -55,31 +55,11 @@ class StreamResolver {
       return Uri.parse(url);
     }
 
-    try {
-      // Chiama l'API Zappr seguendo i redirect
-      final response = await _dio.get(
-        apiUrl,
-        options: Options(
-          followRedirects: true,
-          validateStatus: (status) => status! < 400,
-          headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-            'Referer': 'https://zappr.stream/',
-            'Accept': '*/*',
-          },
-        ),
-      );
-
-      // Se la risposta è un redirect, usa l'URL finale
-      final finalUrl = response.redirects.isNotEmpty
-          ? response.redirects.last.location.toString()
-          : response.realUri.toString();
-
-      return Uri.parse(finalUrl);
-    } catch (e) {
-      // Se l'API fallisce, restituisci l'URL dell'API (il player proverà comunque)
-      return Uri.parse(apiUrl);
-    }
+    // L'API Zappr funziona come proxy che restituisce direttamente lo stream
+    // Non serve verificare, possiamo usare direttamente l'URL dell'API
+    // Il player media_kit gestirà lo stream
+    print('StreamResolver: Usando URL API Zappr: $apiUrl');
+    return Uri.parse(apiUrl);
   }
 }
 
