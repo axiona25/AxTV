@@ -11,10 +11,12 @@ class Env {
   /// 
   /// Per produzione, carica channels.json su GitHub e usa l'URL RAW.
   /// 
-  /// ✅ Configurato: Gist GitHub con canali di esempio
-  static const channelsJsonUrl = 'https://gist.githubusercontent.com/axiona25/76be0f53dd8ee97efb8e7f642aed9379/raw/c14a3bb13be23f0e65d20647b09748ffdef2d64d/channels.json';
+  /// ✅ Configurato: File channels.json nel repository principale
+  static const channelsJsonUrl = 'https://raw.githubusercontent.com/axiona25/AxTV/main/channels.json';
   
-  /// Per aggiornare i canali, modifica il Gist su:
-  /// https://gist.github.com/axiona25/76be0f53dd8ee97efb8e7f642aed9379
+  /// Per aggiornare i canali:
+  /// 1. Modifica channels.json nel repository
+  /// 2. Fai commit e push
+  /// 3. L'app caricherà automaticamente i nuovi canali
 }
 

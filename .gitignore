@@ -59,8 +59,9 @@ __pycache__/
 # M3U files (opzionale, rimuovi se vuoi versionarli)
 playlist.m3u
 
-# channels.json locale (usa channels.example.json come template)
-# channels.json
+# channels.json - ora è nel repository per accesso diretto
+# Se vuoi una versione locale diversa, crea channels.local.json
+# channels.local.json
 
 # Credenziali GitHub (NON committare mai!)
 GITHUB_CREDENTIALS.md
