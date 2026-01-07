@@ -134,9 +134,10 @@ class _PlayerPageState extends State<PlayerPage> {
             httpHeaders: {
               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
               'Referer': 'https://zappr.stream/',
-              'Accept': '*/*',
-              // Se è HLS, aggiungi header specifici
-              if (isHlsUrl) 'Accept': 'application/vnd.apple.mpegurl, application/x-mpegURL, */*',
+              // Se è HLS o API Zappr, usa header specifici per HLS
+              'Accept': isHlsUrl 
+                  ? 'application/vnd.apple.mpegurl, application/x-mpegURL, */*'
+                  : '*/*',
             },
           ),
           play: true,
