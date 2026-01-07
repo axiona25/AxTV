@@ -165,11 +165,14 @@ class _PlayerPageState extends State<PlayerPage> {
               final urlPreview = urlToPlay.length > 80 ? '${urlToPlay.substring(0, 80)}...' : urlToPlay;
               if (_hasTriedFallback) {
                 _error = 'Impossibile caricare lo stream.\n\n'
-                    'Sia l\'API Zappr che l\'URL originale non sono disponibili.\n'
-                    'Lo stream potrebbe essere offline o richiedere autenticazione.';
+                    'L\'API Zappr restituisce "video non disponibile".\n'
+                    'L\'URL del canale potrebbe essere scaduto.\n\n'
+                    'Verifica sul sito zappr.stream se il canale funziona\n'
+                    'e aggiorna l\'URL nel channels.json.';
               } else {
                 _error = 'Stream non disponibile.\n\nURL provato: $urlPreview\n\n'
-                    'Lo stream potrebbe non essere disponibile o richiedere autenticazione.';
+                    'L\'API Zappr potrebbe restituire un errore.\n'
+                    'Verifica sul sito zappr.stream se il canale funziona.';
               }
               _isLoading = false;
             });

@@ -102,7 +102,9 @@ class StreamResolver {
           finalUrl.contains('unavailable')) {
         // ignore: avoid_print
         print('StreamResolver: API restituisce URL di errore: $finalUrl');
-        throw Exception('Stream non disponibile: URL di errore restituito dall\'API');
+        print('StreamResolver: L\'URL del canale potrebbe essere scaduto o non valido');
+        print('StreamResolver: Prova a verificare l\'URL sul sito zappr.stream');
+        throw Exception('Stream non disponibile: L\'API restituisce un video di errore. L\'URL del canale potrebbe essere scaduto.');
       }
       
       // ignore: avoid_print
