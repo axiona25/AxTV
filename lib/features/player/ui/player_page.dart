@@ -104,12 +104,25 @@ class _PlayerPageState extends State<PlayerPage> {
           urlToPlay = playable.toString();
           _resolvedUrl = urlToPlay;
         } catch (e) {
-          // Se la risoluzione fallisce, prova con URL originale
+          // Se la risoluzione fallisce (es. autenticazione Rai), mostra errore
+          // Non provare con URL originale perché senza auth non funzionerà
           // ignore: avoid_print
-          print('PlayerPage: Risoluzione Zappr fallita: $e. Uso URL originale.');
-          urlToPlay = widget.channel.streamUrl;
-          _resolvedUrl = 'URL originale (fallback): $urlToPlay';
-          _hasTriedFallback = true;
+          print('PlayerPage: Risoluzione Zappr fallita: $e');
+          if (mounted) {
+            await _player.stop();
+            setState(() {
+              if (widget.channel.license == 'rai-akamai') {
+                _error = 'Impossibile ottenere autenticazione Rai.\n\n'
+                    'Errore: ${e.toString().split('\n').first}\n\n'
+                    'L\'autenticazione è necessaria per i canali Rai.';
+              } else {
+                _error = 'Impossibile risolvere l\'URL dello stream.\n\n'
+                    'Errore: ${e.toString().split('\n').first}';
+              }
+              _isLoading = false;
+            });
+          }
+          return;
         }
       }
       

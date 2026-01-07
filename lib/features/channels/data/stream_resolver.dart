@@ -45,11 +45,20 @@ class StreamResolver {
         '${Env.alwaysdataApiBase}/rai-akamai',
         options: Options(
           validateStatus: (status) => status! < 500,
+          responseType: ResponseType.plain, // Restituisce testo, non JSON
         ),
       );
-      final auth = response.data.toString();
+      
+      // L'API restituisce direttamente la stringa di autenticazione (es. "?hdnea=...")
+      String auth = response.data.toString().trim();
+      
+      // Assicurati che inizi con "?" se non c'è già
+      if (!auth.startsWith('?')) {
+        auth = '?$auth';
+      }
+      
       // ignore: avoid_print
-      print('StreamResolver: Autenticazione ottenuta');
+      print('StreamResolver: Autenticazione ottenuta: ${auth.substring(0, auth.length > 50 ? 50 : auth.length)}...');
       return auth;
     } catch (e) {
       // ignore: avoid_print
@@ -75,15 +84,19 @@ class StreamResolver {
     if (license == 'rai-akamai') {
       try {
         final auth = await _getRaiAkamaiAuth();
+        // L'auth restituisce già "?hdnea=..." quindi aggiungilo direttamente
         final urlWithAuth = '$url$auth';
         // ignore: avoid_print
-        print('StreamResolver: URL Rai con autenticazione: ${urlWithAuth.substring(0, urlWithAuth.length > 100 ? 100 : urlWithAuth.length)}...');
+        print('StreamResolver: URL Rai originale: $url');
+        print('StreamResolver: Auth ottenuta: ${auth.substring(0, auth.length > 50 ? 50 : auth.length)}...');
+        print('StreamResolver: URL Rai completo: ${urlWithAuth.substring(0, urlWithAuth.length > 150 ? 150 : urlWithAuth.length)}...');
         return Uri.parse(urlWithAuth);
       } catch (e) {
         // Se l'autenticazione fallisce, prova comunque con l'URL originale
         // ignore: avoid_print
         print('StreamResolver: Fallback a URL senza autenticazione: $e');
-        return Uri.parse(url);
+        // Ma l'URL senza auth non funzionerà, quindi lancia eccezione
+        throw Exception('Impossibile ottenere autenticazione Rai: $e');
       }
     }
     
