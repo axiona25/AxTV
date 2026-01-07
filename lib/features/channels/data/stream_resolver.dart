@@ -50,7 +50,18 @@ class StreamResolver {
       );
       
       // L'API restituisce direttamente la stringa di autenticazione (es. "?hdnea=...")
-      String auth = response.data.toString().trim();
+      // response.data potrebbe essere una String o un ResponseBody
+      String auth;
+      if (response.data is String) {
+        auth = (response.data as String).trim();
+      } else {
+        auth = response.data.toString().trim();
+      }
+      
+      // Verifica che l'auth non sia vuota
+      if (auth.isEmpty) {
+        throw Exception('Autenticazione Rai vuota ricevuta dall\'API');
+      }
       
       // Assicurati che inizi con "?" se non c'è già
       if (!auth.startsWith('?')) {
@@ -58,7 +69,7 @@ class StreamResolver {
       }
       
       // ignore: avoid_print
-      print('StreamResolver: Autenticazione ottenuta: ${auth.substring(0, auth.length > 50 ? 50 : auth.length)}...');
+      print('StreamResolver: Autenticazione ottenuta (lunghezza: ${auth.length}): ${auth.substring(0, auth.length > 60 ? 60 : auth.length)}...');
       return auth;
     } catch (e) {
       // ignore: avoid_print
