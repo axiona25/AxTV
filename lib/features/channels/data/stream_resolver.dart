@@ -4,6 +4,10 @@ import '../../../core/http/dio_client.dart';
 
 class StreamResolver {
   final Dio _dio = dioProvider;
+  
+  // Cache per autenticazione Rai (come fa Zappr)
+  String? _cachedRaiAuth;
+  int? _cachedRaiAuthExpiration;
 
   /// Risolve l'URL originale in un URL riproducibile
   /// Se necessario, chiama le API Zappr per ottenere l'URL finale
@@ -38,6 +42,16 @@ class StreamResolver {
   /// Ottiene l'autenticazione Rai Akamai dall'API Zappr
   /// Restituisce la stringa di autenticazione da aggiungere all'URL
   Future<String> _getRaiAkamaiAuth() async {
+    // Cache check (come fa Zappr: expiration - Math.floor(Date.now() / 1000) > 10)
+    final now = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+    if (_cachedRaiAuth != null && 
+        _cachedRaiAuthExpiration != null && 
+        _cachedRaiAuthExpiration! - now > 10) {
+      // ignore: avoid_print
+      print('StreamResolver: Usa auth Rai dalla cache (expires in ${_cachedRaiAuthExpiration! - now}s)');
+      return _cachedRaiAuth!;
+    }
+    
     try {
       // ignore: avoid_print
       print('StreamResolver: Richiedo autenticazione Rai Akamai da ${Env.alwaysdataApiBase}/rai-akamai');
@@ -97,6 +111,21 @@ class StreamResolver {
       
       // ignore: avoid_print
       print('StreamResolver: Autenticazione finale (lunghezza: ${auth.length}): ${auth.substring(0, auth.length > 80 ? 80 : auth.length)}...');
+      
+      // Estrai expiration dall'auth (come fa Zappr)
+      // Format: ?hdnea=st=...~exp=1767796701~acl=...
+      try {
+        final expMatch = RegExp(r'exp=(\d+)').firstMatch(auth);
+        if (expMatch != null) {
+          _cachedRaiAuthExpiration = int.parse(expMatch.group(1)!);
+          _cachedRaiAuth = auth;
+          // ignore: avoid_print
+          print('StreamResolver: Auth Rai memorizzata in cache (expires: $_cachedRaiAuthExpiration)');
+        }
+      } catch (e) {
+        // ignore: avoid_print
+        print('StreamResolver: Impossibile estrarre expiration da auth: $e');
+      }
       
       // Chiudi il Dio instance dopo aver ottenuto l'auth
       dio.close();
