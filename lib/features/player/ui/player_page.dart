@@ -80,16 +80,19 @@ class _PlayerPageState extends State<PlayerPage> {
         _resolvedUrl = 'URL originale: $urlToPlay';
         _hasTriedFallback = true;
       } else {
-        // Prova prima con risoluzione Zappr
+        // Prova prima con risoluzione Zappr asincrona (segue redirect)
         try {
           final playable = await _resolver.resolvePlayableUrlAsync(widget.channel.streamUrl);
           urlToPlay = playable.toString();
           _resolvedUrl = urlToPlay;
         } catch (e) {
-          // Se la risoluzione asincrona fallisce, usa quella sincrona
-          final playable = _resolver.resolvePlayableUrl(widget.channel.streamUrl);
-          urlToPlay = playable.toString();
-          _resolvedUrl = '$urlToPlay (fallback sync)';
+          // Se la risoluzione asincrona fallisce (es. stream non disponibile),
+          // prova direttamente con l'URL originale come fallback
+          // ignore: avoid_print
+          print('PlayerPage: Risoluzione Zappr fallita: $e. Uso URL originale.');
+          urlToPlay = widget.channel.streamUrl;
+          _resolvedUrl = 'URL originale (fallback): $urlToPlay';
+          _hasTriedFallback = true;
         }
       }
       

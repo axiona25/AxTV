@@ -1,6 +1,9 @@
+import 'package:dio/dio.dart';
 import '../../../config/env.dart';
+import '../../../core/http/dio_client.dart';
 
 class StreamResolver {
+  final Dio _dio = dioProvider;
 
   /// Risolve l'URL originale in un URL riproducibile
   /// Se necessario, chiama le API Zappr per ottenere l'URL finale
@@ -58,12 +61,54 @@ class StreamResolver {
       return Uri.parse(url);
     }
 
-    // L'API Zappr funziona come proxy che restituisce direttamente lo stream HLS/M3U8
-    // Video.js sul web passa questo URL direttamente al player
-    // media_kit dovrebbe gestire automaticamente gli stream HLS
-    // ignore: avoid_print
-    print('StreamResolver: Usando URL API Zappr: $apiUrl');
-    return Uri.parse(apiUrl);
+    // L'API Zappr restituisce un redirect 302 allo stream finale
+    // Dobbiamo seguire il redirect per ottenere l'URL finale
+    try {
+      // ignore: avoid_print
+      print('StreamResolver: Risolvo URL API Zappr: $apiUrl');
+      
+      // Segui il redirect per ottenere l'URL finale
+      // Usa maxRedirects per limitare i redirect infiniti
+      final response = await _dio.get(
+        apiUrl,
+        options: Options(
+          followRedirects: true,
+          maxRedirects: 5,
+          validateStatus: (status) => status! < 500, // Accetta anche 4xx per vedere l'errore
+        ),
+      );
+      
+      // Ottieni l'URL finale dal redirect o dalla risposta
+      String finalUrl;
+      if (response.redirects.isNotEmpty) {
+        // Se ci sono redirect, usa l'URL finale del redirect
+        finalUrl = response.redirects.last.location.toString();
+      } else {
+        // Altrimenti usa l'URL della risposta
+        finalUrl = response.realUri.toString();
+      }
+      
+      // Verifica se l'URL finale è un video di errore
+      if (finalUrl.contains('video_no_available') || 
+          finalUrl.contains('error') ||
+          finalUrl.contains('unavailable')) {
+        // ignore: avoid_print
+        print('StreamResolver: L\'API ha restituito un URL di errore: $finalUrl');
+        // Lancia un'eccezione per permettere il fallback
+        throw Exception('Stream non disponibile dall\'API Zappr');
+      }
+      
+      // ignore: avoid_print
+      print('StreamResolver: URL finale dopo redirect: $finalUrl');
+      
+      return Uri.parse(finalUrl);
+    } catch (e) {
+      // Se il redirect fallisce o restituisce un errore, prova con l'URL originale
+      // ignore: avoid_print
+      print('StreamResolver: Errore nel seguire redirect: $e');
+      // Non restituire l'URL dell'API, ma lancia un'eccezione per permettere il fallback
+      rethrow;
+    }
   }
 }
 
