@@ -71,17 +71,44 @@ class _PlayerPageState extends State<PlayerPage> {
         });
       }
 
-      await _player.open(Media(playable.toString()));
+      // Configura il player con opzioni migliorate
+      await _player.open(
+        Media(
+          playable.toString(),
+          httpHeaders: {
+            'User-Agent': 'Mozilla/5.0',
+            'Referer': 'https://zappr.stream/',
+          },
+        ),
+        play: true,
+      );
+      
+      // Attendi un po' per vedere se parte
+      await Future.delayed(const Duration(seconds: 3));
       
       if (mounted) {
+        final isPlaying = _player.state.playing;
         setState(() {
-          _isLoading = false;
+          _isLoading = !isPlaying;
+          if (!isPlaying && _error == null) {
+            _error = 'Stream non disponibile o non riproducibile.\n\n'
+                'URL: ${playable.toString().substring(0, playable.toString().length > 80 ? 80 : playable.toString().length)}...\n\n'
+                'Verifica che l\'API Zappr sia raggiungibile e che lo stream sia attivo.';
+          }
         });
       }
     } catch (e) {
       if (mounted) {
+        String errorMsg = 'Errore nel caricamento';
+        if (e.toString().contains('Failed to open')) {
+          errorMsg = 'Impossibile aprire lo stream.\n'
+              'L\'API Zappr potrebbe non essere disponibile o lo stream non è attivo.';
+        } else {
+          errorMsg = 'Errore: ${e.toString().split('\n').first}';
+        }
+        
         setState(() {
-          _error = 'Errore nel caricamento: $e';
+          _error = errorMsg;
           _isLoading = false;
         });
       }
@@ -173,17 +200,18 @@ class _PlayerPageState extends State<PlayerPage> {
               if (_error != null)
                 Container(
                   color: AppTheme.darkBackground,
-                  padding: const EdgeInsets.all(24),
-                  child: Center(
+                  padding: const EdgeInsets.all(16),
+                  child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         const Icon(
                           Icons.error_outline,
                           color: AppTheme.liveRed,
                           size: 48,
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 12),
                         const Text(
                           'Errore',
                           style: TextStyle(
@@ -202,18 +230,24 @@ class _PlayerPageState extends State<PlayerPage> {
                             style: const TextStyle(
                               color: AppTheme.textSecondary,
                               fontFamily: 'Poppins',
-                              fontSize: 14,
+                              fontSize: 12,
                             ),
+                            maxLines: 5,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 16),
                         ElevatedButton.icon(
                           onPressed: _loadVideo,
-                          icon: const Icon(Icons.refresh),
+                          icon: const Icon(Icons.refresh, size: 18),
                           label: const Text('Riprova'),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppTheme.primaryBlue,
                             foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 12,
+                            ),
                           ),
                         ),
                       ],
