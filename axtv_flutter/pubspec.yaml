@@ -1,0 +1,54 @@
+name: axtv_flutter
+description: "AxTV User App"
+publish_to: 'none'
+version: 1.0.1+1
+
+environment:
+  sdk: ">=3.9.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  dio: ^5.7.0
+  flutter_riverpod: ^3.1.0
+  go_router: ^17.0.1
+
+  media_kit: ^1.1.11
+  media_kit_video: ^2.0.1
+  media_kit_libs_video: ^1.0.5
+
+  flutter_svg: ^2.0.9
+
+  json_annotation: ^4.9.0
+  shared_preferences: ^2.3.3
+  google_mobile_ads: ^5.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.4.12
+  json_serializable: ^6.8.0
+
+flutter:
+  uses-material-design: true
+
+  # Assets per canali (fallback locale)
+  assets:
+    - assets/channels.json
+    - assets/countries.json
+    - assets/logo.png
+    - assets/icona.png
+    - assets/background_home.jpg
+    - assets/backgrounds/background_07.jpg
+
+  # Font Poppins
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Regular.ttf
+        - asset: fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: fonts/Poppins-Bold.ttf
+          weight: 700
