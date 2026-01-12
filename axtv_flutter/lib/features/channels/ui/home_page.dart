@@ -99,10 +99,30 @@ class _HomePageState extends ConsumerState<HomePage> {
           ZapprBottomNavWithLogo(
             currentIndex: _currentBottomNavIndex,
             onTap: (index) {
+              // ignore: avoid_print
+              print('═══════════════════════════════════════════════════════════');
+              // ignore: avoid_print
+              print('HomePage: [FOOTER] Bottom nav tapped, index: $index');
+              
               setState(() {
                 _currentBottomNavIndex = index;
               });
-              // TODO: Navigazione tra pagine
+              
+              // Navigazione tra pagine
+              switch (index) {
+                case 0:
+                  context.go('/');
+                  break;
+                case 1:
+                  context.go('/radio');
+                  break;
+                case 2:
+                  context.go('/favorites');
+                  break;
+                case 3:
+                  context.go('/profile');
+                  break;
+              }
             },
             logoAssetPath: 'assets/icona.png',
           ),

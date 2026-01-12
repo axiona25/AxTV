@@ -1,0 +1,369 @@
+[
+  {
+    "code": "it",
+    "name": "Italia",
+    "flag": "🇮🇹",
+    "continent": "Europa",
+    "estimatedChannels": 200
+  },
+  {
+    "code": "fr",
+    "name": "Francia",
+    "flag": "🇫🇷",
+    "continent": "Europa",
+    "estimatedChannels": 150
+  },
+  {
+    "code": "de",
+    "name": "Germania",
+    "flag": "🇩🇪",
+    "continent": "Europa",
+    "estimatedChannels": 100
+  },
+  {
+    "code": "uk",
+    "name": "Regno Unito",
+    "flag": "🇬🇧",
+    "continent": "Europa",
+    "estimatedChannels": 150
+  },
+  {
+    "code": "es",
+    "name": "Spagna",
+    "flag": "🇪🇸",
+    "continent": "Europa",
+    "estimatedChannels": 100
+  },
+  {
+    "code": "pt",
+    "name": "Portogallo",
+    "flag": "🇵🇹",
+    "continent": "Europa",
+    "estimatedChannels": 50
+  },
+  {
+    "code": "nl",
+    "name": "Paesi Bassi",
+    "flag": "🇳🇱",
+    "continent": "Europa",
+    "estimatedChannels": 80
+  },
+  {
+    "code": "be",
+    "name": "Belgio",
+    "flag": "🇧🇪",
+    "continent": "Europa",
+    "estimatedChannels": 40
+  },
+  {
+    "code": "ch",
+    "name": "Svizzera",
+    "flag": "🇨🇭",
+    "continent": "Europa",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "at",
+    "name": "Austria",
+    "flag": "🇦🇹",
+    "continent": "Europa",
+    "estimatedChannels": 40
+  },
+  {
+    "code": "pl",
+    "name": "Polonia",
+    "flag": "🇵🇱",
+    "continent": "Europa",
+    "estimatedChannels": 60
+  },
+  {
+    "code": "ru",
+    "name": "Russia",
+    "flag": "🇷🇺",
+    "continent": "Europa",
+    "estimatedChannels": 100
+  },
+  {
+    "code": "gr",
+    "name": "Grecia",
+    "flag": "🇬🇷",
+    "continent": "Europa",
+    "estimatedChannels": 50
+  },
+  {
+    "code": "tr",
+    "name": "Turchia",
+    "flag": "🇹🇷",
+    "continent": "Europa",
+    "estimatedChannels": 80
+  },
+  {
+    "code": "ro",
+    "name": "Romania",
+    "flag": "🇷🇴",
+    "continent": "Europa",
+    "estimatedChannels": 40
+  },
+  {
+    "code": "cz",
+    "name": "Repubblica Ceca",
+    "flag": "🇨🇿",
+    "continent": "Europa",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "hu",
+    "name": "Ungheria",
+    "flag": "🇭🇺",
+    "continent": "Europa",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "se",
+    "name": "Svezia",
+    "flag": "🇸🇪",
+    "continent": "Europa",
+    "estimatedChannels": 40
+  },
+  {
+    "code": "no",
+    "name": "Norvegia",
+    "flag": "🇳🇴",
+    "continent": "Europa",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "dk",
+    "name": "Danimarca",
+    "flag": "🇩🇰",
+    "continent": "Europa",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "fi",
+    "name": "Finlandia",
+    "flag": "🇫🇮",
+    "continent": "Europa",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "ie",
+    "name": "Irlanda",
+    "flag": "🇮🇪",
+    "continent": "Europa",
+    "estimatedChannels": 20
+  },
+  {
+    "code": "us",
+    "name": "Stati Uniti",
+    "flag": "🇺🇸",
+    "continent": "Americhe",
+    "estimatedChannels": 500,
+    "hasSubdivisions": true
+  },
+  {
+    "code": "ca",
+    "name": "Canada",
+    "flag": "🇨🇦",
+    "continent": "Americhe",
+    "estimatedChannels": 100,
+    "hasSubdivisions": true
+  },
+  {
+    "code": "mx",
+    "name": "Messico",
+    "flag": "🇲🇽",
+    "continent": "Americhe",
+    "estimatedChannels": 80
+  },
+  {
+    "code": "br",
+    "name": "Brasile",
+    "flag": "🇧🇷",
+    "continent": "Americhe",
+    "estimatedChannels": 150
+  },
+  {
+    "code": "ar",
+    "name": "Argentina",
+    "flag": "🇦🇷",
+    "continent": "Americhe",
+    "estimatedChannels": 60
+  },
+  {
+    "code": "cl",
+    "name": "Cile",
+    "flag": "🇨🇱",
+    "continent": "Americhe",
+    "estimatedChannels": 40
+  },
+  {
+    "code": "co",
+    "name": "Colombia",
+    "flag": "🇨🇴",
+    "continent": "Americhe",
+    "estimatedChannels": 50
+  },
+  {
+    "code": "pe",
+    "name": "Perù",
+    "flag": "🇵🇪",
+    "continent": "Americhe",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "ve",
+    "name": "Venezuela",
+    "flag": "🇻🇪",
+    "continent": "Americhe",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "cn",
+    "name": "Cina",
+    "flag": "🇨🇳",
+    "continent": "Asia",
+    "estimatedChannels": 100
+  },
+  {
+    "code": "jp",
+    "name": "Giappone",
+    "flag": "🇯🇵",
+    "continent": "Asia",
+    "estimatedChannels": 80
+  },
+  {
+    "code": "kr",
+    "name": "Corea del Sud",
+    "flag": "🇰🇷",
+    "continent": "Asia",
+    "estimatedChannels": 50
+  },
+  {
+    "code": "in",
+    "name": "India",
+    "flag": "🇮🇳",
+    "continent": "Asia",
+    "estimatedChannels": 200
+  },
+  {
+    "code": "pk",
+    "name": "Pakistan",
+    "flag": "🇵🇰",
+    "continent": "Asia",
+    "estimatedChannels": 50
+  },
+  {
+    "code": "th",
+    "name": "Thailandia",
+    "flag": "🇹🇭",
+    "continent": "Asia",
+    "estimatedChannels": 40
+  },
+  {
+    "code": "vn",
+    "name": "Vietnam",
+    "flag": "🇻🇳",
+    "continent": "Asia",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "id",
+    "name": "Indonesia",
+    "flag": "🇮🇩",
+    "continent": "Asia",
+    "estimatedChannels": 50
+  },
+  {
+    "code": "my",
+    "name": "Malesia",
+    "flag": "🇲🇾",
+    "continent": "Asia",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "sg",
+    "name": "Singapore",
+    "flag": "🇸🇬",
+    "continent": "Asia",
+    "estimatedChannels": 20
+  },
+  {
+    "code": "ph",
+    "name": "Filippine",
+    "flag": "🇵🇭",
+    "continent": "Asia",
+    "estimatedChannels": 40
+  },
+  {
+    "code": "ae",
+    "name": "Emirati Arabi Uniti",
+    "flag": "🇦🇪",
+    "continent": "Asia",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "sa",
+    "name": "Arabia Saudita",
+    "flag": "🇸🇦",
+    "continent": "Asia",
+    "estimatedChannels": 40
+  },
+  {
+    "code": "il",
+    "name": "Israele",
+    "flag": "🇮🇱",
+    "continent": "Asia",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "au",
+    "name": "Australia",
+    "flag": "🇦🇺",
+    "continent": "Oceania",
+    "estimatedChannels": 80,
+    "hasSubdivisions": true
+  },
+  {
+    "code": "nz",
+    "name": "Nuova Zelanda",
+    "flag": "🇳🇿",
+    "continent": "Oceania",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "za",
+    "name": "Sudafrica",
+    "flag": "🇿🇦",
+    "continent": "Africa",
+    "estimatedChannels": 40
+  },
+  {
+    "code": "eg",
+    "name": "Egitto",
+    "flag": "🇪🇬",
+    "continent": "Africa",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "ng",
+    "name": "Nigeria",
+    "flag": "🇳🇬",
+    "continent": "Africa",
+    "estimatedChannels": 30
+  },
+  {
+    "code": "ke",
+    "name": "Kenya",
+    "flag": "🇰🇪",
+    "continent": "Africa",
+    "estimatedChannels": 20
+  },
+  {
+    "code": "ma",
+    "name": "Marocco",
+    "flag": "🇲🇦",
+    "continent": "Africa",
+    "estimatedChannels": 30
+  }
+]

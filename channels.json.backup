@@ -1,0 +1,4111 @@
+[
+  {
+    "id": "rai1",
+    "name": "Rai 1",
+    "logo": "https://channels.zappr.stream/logos/rai1.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/rai1/browser-HLS8/rai1.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "rai2",
+    "name": "Rai 2",
+    "logo": "https://channels.zappr.stream/logos/rai2.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/rai2/browser-HLS8/rai2.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "rai3",
+    "name": "Rai 3",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/rai3/browser-HLS8/rai3.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "rete4",
+    "name": "Rete 4",
+    "logo": "https://channels.zappr.stream/logos/rete4.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/rete4/browser-HLS8/rete4.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale5",
+    "name": "Canale 5",
+    "logo": "https://channels.zappr.stream/logos/canale5.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/canale5/browser-HLS8/canale5.m3u8",
+    "license": null
+  },
+  {
+    "id": "italia1",
+    "name": "Italia 1",
+    "logo": "https://channels.zappr.stream/logos/italia1.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/italia1/browser-HLS8/italia1.m3u8",
+    "license": null
+  },
+  {
+    "id": "la7",
+    "name": "LA7",
+    "logo": "https://channels.zappr.stream/logos/la7.svg",
+    "streamUrl": "https://d15umi5iaezxgx.cloudfront.net/LA7/DRM/DASH/Live.mpd",
+    "license": "clearkey"
+  },
+  {
+    "id": "tv8",
+    "name": "TV8",
+    "logo": "https://channels.zappr.stream/logos/tv8.svg",
+    "streamUrl": "zappr://sky/7",
+    "license": null
+  },
+  {
+    "id": "nove",
+    "name": "NOVE",
+    "logo": "https://channels.zappr.stream/logos/nove.svg",
+    "streamUrl": "https://d31mw7o1gs0dap.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-y5pbi2sq9r609/NOVE_IT.m3u8",
+    "license": null
+  },
+  {
+    "id": "20mediaset",
+    "name": "20 Mediaset",
+    "logo": "https://channels.zappr.stream/logos/20.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-lb/lb-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai4",
+    "name": "Rai 4",
+    "logo": "https://channels.zappr.stream/logos/rai4.svg",
+    "streamUrl": "https://raiquattro2-live.akamaized.net/hls/live/598316/raiquattro2/raiquattro2/playlist.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "iris",
+    "name": "Iris",
+    "logo": "https://channels.zappr.stream/logos/iris.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-ki/ki-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai5",
+    "name": "Rai 5",
+    "logo": "https://channels.zappr.stream/logos/rai5.svg",
+    "streamUrl": "https://raicinque1-live.akamaized.net/hls/live/598318/raicinque1/raicinque1/playlist_ma.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "raimovie",
+    "name": "Rai Movie",
+    "logo": "https://channels.zappr.stream/logos/raimovie.svg",
+    "streamUrl": "https://raimovie1-live.akamaized.net/hls/live/598324/raimovie1/raimovie1/playlist_ma.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "raipremium",
+    "name": "Rai Premium",
+    "logo": "https://channels.zappr.stream/logos/raipremium.svg",
+    "streamUrl": "https://raipremium1-live.akamaized.net/hls/live/598328/raipremium1/raipremium1/playlist_ma.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "cielo",
+    "name": "Cielo",
+    "logo": "https://channels.zappr.stream/logos/cielo.svg",
+    "streamUrl": "zappr://sky/2",
+    "license": null
+  },
+  {
+    "id": "twentyseven",
+    "name": "TwentySeven",
+    "logo": "https://channels.zappr.stream/logos/twentyseven.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-ts/ts-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "tv2000",
+    "name": "TV2000",
+    "logo": "https://channels.zappr.stream/logos/tv2000.svg",
+    "streamUrl": "https://hls.live2.meride.tv/hls/live/2028947/pu934tjb/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "la7cinema",
+    "name": "LA7 Cinema",
+    "logo": "https://channels.zappr.stream/logos/la7cinema.svg",
+    "streamUrl": "https://d15umi5iaezxgx.cloudfront.net/LA7D/DRM/DASH/Live.mpd",
+    "license": "clearkey"
+  },
+  {
+    "id": "la5",
+    "name": "La5",
+    "logo": "https://channels.zappr.stream/logos/la5.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-ka/ka-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "realtime",
+    "name": "Real Time",
+    "logo": "https://channels.zappr.stream/logos/realtime.svg",
+    "streamUrl": "https://d3562mgijzx0zq.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-kizqtzpvvl3i8/Realtime_IT.m3u8",
+    "license": null
+  },
+  {
+    "id": "qvc",
+    "name": "QVC",
+    "logo": "https://channels.zappr.stream/logos/qvc.svg",
+    "streamUrl": "https://qrg.akamaized.net/hls/live/2017383/lsqvc1it/master.m3u8",
+    "license": null
+  },
+  {
+    "id": "foodnetwork",
+    "name": "Food Network",
+    "logo": "https://channels.zappr.stream/logos/foodnetwork.svg",
+    "streamUrl": "https://dk3okdd5036kz.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-o4pw0nc02sthz/Foodnetwork_IT.m3u8",
+    "license": null
+  },
+  {
+    "id": "cine34",
+    "name": "Cine34",
+    "logo": "https://channels.zappr.stream/logos/cine34.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-b6/b6-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "focus",
+    "name": "Focus",
+    "logo": "https://channels.zappr.stream/logos/focus.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-fu/fu-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "rtl1025",
+    "name": "RTL 102.5",
+    "logo": "https://channels.zappr.stream/logos/rtl.svg",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S97044836/tbbP8T1ZRPBL/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "discovery",
+    "name": "Discovery",
+    "logo": "https://channels.zappr.stream/logos/discovery.svg",
+    "streamUrl": "https://d1941a53blim0r.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-75c5ipmzpicfd/Discovery_IT.m3u8",
+    "license": null
+  },
+  {
+    "id": "giallo",
+    "name": "Giallo",
+    "logo": "https://channels.zappr.stream/logos/giallo.svg",
+    "streamUrl": "https://d9fqo6nfqlv2h.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-ulukbrgm1n3yb/Giallo_IT.m3u8",
+    "license": null
+  },
+  {
+    "id": "topcrime",
+    "name": "Top Crime",
+    "logo": "https://channels.zappr.stream/logos/topcrime.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-lt/lt-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "boing",
+    "name": "Boing",
+    "logo": "https://channels.zappr.stream/logos/boing.svg",
+    "streamUrl": "https://feapi.turner.streamity.com/api/v1/Config/getConfig?platformId=ae56bf6a-c2b4-4b66-8330-19283f646d7e",
+    "license": null
+  },
+  {
+    "id": "k2",
+    "name": "K2",
+    "logo": "https://channels.zappr.stream/logos/k2.svg",
+    "streamUrl": "https://d1pmpe0hs35ka5.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-39hsskpppgf72/K2_IT.m3u8",
+    "license": null
+  },
+  {
+    "id": "raigulp",
+    "name": "Rai Gulp",
+    "logo": "https://channels.zappr.stream/logos/raigulp.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/raigulp/browser-HLS8/raigulp.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "raiyoyo",
+    "name": "Rai Yoyo",
+    "logo": "https://channels.zappr.stream/logos/raiyoyo.svg",
+    "streamUrl": "https://raiyoyo1-live.akamaized.net/hls/live/598330/raiyoyo1/raiyoyo1/playlist.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "frisbee",
+    "name": "Frisbee",
+    "logo": "https://channels.zappr.stream/logos/frisbee",
+    "streamUrl": "https://d6m7lubks416z.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-zmbstsedxme9s/Frisbee_IT.m3u8",
+    "license": null
+  },
+  {
+    "id": "boingplus",
+    "name": "Boing Plus",
+    "logo": "https://channels.zappr.stream/logos/boingplus.svg",
+    "streamUrl": "https://uvotv.zappr.stream/101.m3u8",
+    "license": null
+  },
+  {
+    "id": "cartoonito",
+    "name": "Cartoonito",
+    "logo": "https://channels.zappr.stream/logos/cartoonito.svg",
+    "streamUrl": "https://feapi.turner.streamity.com/api/v1/Config/getConfig?platformId=95e33995-d7ed-44cb-be3b-97bc6df93977",
+    "license": null
+  },
+  {
+    "id": "super!",
+    "name": "Super!",
+    "logo": "https://channels.zappr.stream/logos/super.svg",
+    "streamUrl": "https://495c5a85d9074f29acffeaea9e0215eb.msvdn.net/super/super_main/super_main_hbbtv/playlist_dvr.m3u8",
+    "license": null
+  },
+  {
+    "id": "rainews24",
+    "name": "Rai News 24",
+    "logo": "https://channels.zappr.stream/logos/rainews24.svg",
+    "streamUrl": "https://8e7439fdb1694c8da3a0fd63e4dda518.msvdn.net/rainews1/hls/playlist_mo.m3u8",
+    "license": null
+  },
+  {
+    "id": "italia2",
+    "name": "Italia 2",
+    "logo": "https://channels.zappr.stream/logos/italia2.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-i2/i2-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "skytg24",
+    "name": "Sky TG24",
+    "logo": "https://channels.zappr.stream/logos/skytg24.svg",
+    "streamUrl": "zappr://sky/1",
+    "license": null
+  },
+  {
+    "id": "tgcom24",
+    "name": "TGcom24",
+    "logo": "https://channels.zappr.stream/logos/tgcom24.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-kf/kf-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "dmax",
+    "name": "DMAX",
+    "logo": "https://channels.zappr.stream/logos/dmax.svg",
+    "streamUrl": "https://d2j2nqgg7bzth.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-02k1gv1j0ufwn/DMAX_IT.m3u8",
+    "license": null
+  },
+  {
+    "id": "casaitalia53",
+    "name": "Casa Italia 53",
+    "logo": "https://channels.zappr.stream/logos/casaitalia53.svg",
+    "streamUrl": "https://liveac915ha.streamcloud.it/channel09/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "raistoria",
+    "name": "Rai Storia",
+    "logo": "https://channels.zappr.stream/logos/raistoria.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/raistoria/browser-HLS8/raistoria.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "mediasetextra",
+    "name": "Mediaset Extra",
+    "logo": "https://channels.zappr.stream/logos/mediasetextra.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-kq/kq-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "hgtvhome&garden",
+    "name": "HGTV - Home & Garden",
+    "logo": "https://channels.zappr.stream/logos/hgtv.svg",
+    "streamUrl": "https://d1tidto9vz737l.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-joaw4f4kh2en1/HGTV_IT.m3u8",
+    "license": null
+  },
+  {
+    "id": "raiscuola",
+    "name": "Rai Scuola",
+    "logo": "https://channels.zappr.stream/logos/raiscuola.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/raiscuola/browser-HLS8/raiscuola.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "raisport",
+    "name": "Rai Sport",
+    "logo": "https://channels.zappr.stream/logos/raisport.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/raisport1/browser-HLS8/raisport1.m3u8",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "discoveryturbo",
+    "name": "Discovery Turbo",
+    "logo": "https://channels.zappr.stream/logos/discoveryturbo.svg",
+    "streamUrl": "https://d205m6k582pec4.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-asg5puyzdtnqu/Motortrend_IT.m3u8",
+    "license": null
+  },
+  {
+    "id": "sportitalia",
+    "name": "Sportitalia",
+    "logo": "https://channels.zappr.stream/logos/sportitalia.svg",
+    "streamUrl": "https://amg01370-italiansportcom-sportitalia-rakuten-3hmdb.amagi.tv/hls/amagi_hls_data_rakutenAA-sportitalia-rakuten/CDN/master.m3u8",
+    "license": null
+  },
+  {
+    "id": "il61",
+    "name": "il61",
+    "logo": "https://channels.zappr.stream/logos/il61.svg",
+    "streamUrl": "https://5a1178b42cc03.streamlock.net/travel/travel/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "donnatv",
+    "name": "Donna TV",
+    "logo": "https://channels.zappr.stream/logos/donnatv",
+    "streamUrl": "https://5a1178b42cc03.streamlock.net/donnatv/donnatv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "canale63",
+    "name": "Canale 63",
+    "logo": "https://channels.zappr.stream/logos/canale63.svg",
+    "streamUrl": "https://uvotv.zappr.stream/257.m3u8",
+    "license": null
+  },
+  {
+    "id": "supertennis",
+    "name": "SuperTennis",
+    "logo": "https://channels.zappr.stream/logos/supertennis.svg",
+    "streamUrl": "https://live-embed.supertennix.hiway.media/restreamer/supertennix_client/gpu-a-c0-16/restreamer/outgest/aa3673f1-e178-44a9-a947-ef41db73211a/manifest.m3u8",
+    "license": null
+  },
+  {
+    "id": "almatv",
+    "name": "Alma TV",
+    "logo": "https://channels.zappr.stream/logos/almatv.svg",
+    "streamUrl": "https://streaming.softwarecreation.it/AlmaTv/AlmaTv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radio105tv",
+    "name": "Radio 105 TV",
+    "logo": "https://channels.zappr.stream/logos/radio105.svg",
+    "streamUrl": "https://live02-col.msr.cdn.mediaset.net/live/ch-ec/ec-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "r101tv",
+    "name": "R101 TV",
+    "logo": "https://channels.zappr.stream/logos/r101.svg",
+    "streamUrl": "https://live02-col.msr.cdn.mediaset.net/live/ch-er/er-clr.isml/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "bomchannel",
+    "name": "BOM Channel",
+    "logo": "https://channels.zappr.stream/logos/bomchannel",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/canale6/canale6/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "deejaytv",
+    "name": "Deejay TV",
+    "logo": "https://channels.zappr.stream/logos/deejay.svg",
+    "streamUrl": "https://4c4b867c89244861ac216426883d1ad0.msvdn.net/live/S85984808/sMO0tz9Sr2Rk/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radioitaliatv",
+    "name": "Radio Italia TV",
+    "logo": "https://channels.zappr.stream/logos/radioitalia.svg",
+    "streamUrl": "https://radioitaliatv.akamaized.net/hls/live/2093117/RadioitaliaTV/master.m3u8",
+    "license": null
+  },
+  {
+    "id": "canaleitalia",
+    "name": "Canale Italia",
+    "logo": "https://channels.zappr.stream/logos/canaleitalia",
+    "streamUrl": "https://liveac915ha.streamcloud.it/channel11/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai4k",
+    "name": "Rai 4K",
+    "logo": "https://channels.zappr.stream/logos/rai4k.svg",
+    "streamUrl": "https://raievent10-dash-live.akamaized.net/dash/live/664000/raievent10/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "italia121",
+    "name": "Italia 121",
+    "logo": "https://channels.zappr.stream/logos/italia121",
+    "streamUrl": "https://liveac915ha.streamcloud.it/channel01/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale122",
+    "name": "Canale 122",
+    "logo": "https://channels.zappr.stream/logos/canale122",
+    "streamUrl": "https://router.xdevel.com/video0s975363-69/stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "italiachannel",
+    "name": "Italia Channel",
+    "logo": "https://channels.zappr.stream/logos/italiachannel",
+    "streamUrl": "https://uvotv.zappr.stream/71.m3u8",
+    "license": null
+  },
+  {
+    "id": "arteitalia124",
+    "name": "Arte Italia 124",
+    "logo": "https://channels.zappr.stream/logos/arteitalia124",
+    "streamUrl": "https://liveac915ha.streamcloud.it/channel02/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "arteitalia125",
+    "name": "Arte Italia 125",
+    "logo": "https://channels.zappr.stream/logos/arteitalia125",
+    "streamUrl": "https://liveac915ha.streamcloud.it/channel03/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "italia126",
+    "name": "Italia 126",
+    "logo": "https://channels.zappr.stream/logos/italia126",
+    "streamUrl": "https://liveac915ha.streamcloud.it/channel04/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "italia127",
+    "name": "Italia 127",
+    "logo": "https://channels.zappr.stream/logos/italia127",
+    "streamUrl": "https://liveac915ha.streamcloud.it/channel05/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "goldtvitalia",
+    "name": "Gold TV Italia",
+    "logo": "https://channels.zappr.stream/logos/goldtvitalia",
+    "streamUrl": "https://uvotv.zappr.stream/317.m3u8",
+    "license": null
+  },
+  {
+    "id": "la4italia",
+    "name": "La4 Italia",
+    "logo": "https://channels.zappr.stream/logos/la4italia",
+    "streamUrl": "https://uvotv.zappr.stream/320.m3u8",
+    "license": null
+  },
+  {
+    "id": "channel24",
+    "name": "Channel 24",
+    "logo": "https://channels.zappr.stream/logos/channel24.svg",
+    "streamUrl": "https://uvotv.zappr.stream/323.m3u8",
+    "license": null
+  },
+  {
+    "id": "reteitalia",
+    "name": "Rete Italia",
+    "logo": "https://channels.zappr.stream/logos/reteitalia.svg",
+    "streamUrl": "https://uvotv.zappr.stream/326.m3u8",
+    "license": null
+  },
+  {
+    "id": "lineagem",
+    "name": "Lineagem",
+    "logo": "https://channels.zappr.stream/logos/lineagem",
+    "streamUrl": "https://uvotv.zappr.stream/164.m3u8",
+    "license": null
+  },
+  {
+    "id": "artein",
+    "name": "ArteIN",
+    "logo": "https://channels.zappr.stream/logos/artein.svg",
+    "streamUrl": "https://5a1178b42cc03.streamlock.net/chiossone/chiossone/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "italia134",
+    "name": "Italia 134",
+    "logo": "https://channels.zappr.stream/logos/italia134",
+    "streamUrl": "https://liveac915ha.streamcloud.it/channel06/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "italia135",
+    "name": "Italia 135",
+    "logo": "https://channels.zappr.stream/logos/italia135",
+    "streamUrl": "https://liveac915ha.streamcloud.it/channel07/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "italia136",
+    "name": "Italia 136",
+    "logo": "https://channels.zappr.stream/logos/italia136",
+    "streamUrl": "https://liveac915ha.streamcloud.it/channel08/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "137",
+    "name": "137",
+    "logo": "https://channels.zappr.stream/logos/137",
+    "streamUrl": "https://uvotv.zappr.stream/332.m3u8",
+    "license": null
+  },
+  {
+    "id": "deluxe139",
+    "name": "Deluxe 139",
+    "logo": "https://channels.zappr.stream/logos/deluxe139.svg",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/pierstyle/pierstyle/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "starmarket",
+    "name": "StarMarket",
+    "logo": "https://channels.zappr.stream/logos/starmarket",
+    "streamUrl": "https://uvotv.zappr.stream/338.m3u8",
+    "license": null
+  },
+  {
+    "id": "padrepiotv",
+    "name": "Padre Pio TV",
+    "logo": "https://channels.zappr.stream/logos/padrepiotv",
+    "streamUrl": "https://600f07e114306.streamlock.net/PadrePioTV/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "firetv",
+    "name": "Fire TV",
+    "logo": "https://channels.zappr.stream/logos/firetv",
+    "streamUrl": "https://uvotv.zappr.stream/146.m3u8",
+    "license": null
+  },
+  {
+    "id": "primaset",
+    "name": "Primaset",
+    "logo": "https://channels.zappr.stream/logos/primaset",
+    "streamUrl": "https://primaset.servizistreaming.it/canale1/index.html",
+    "license": null
+  },
+  {
+    "id": "equtv",
+    "name": "EQUtv",
+    "logo": "https://channels.zappr.stream/logos/equtv",
+    "streamUrl": "https://livestream-epiqa.akamaized.net/hls/live/2039453/EQUTV/master.m3u8",
+    "license": null
+  },
+  {
+    "id": "fascinotv157",
+    "name": "Fascino TV 157",
+    "logo": "https://channels.zappr.stream/logos/fascinotv",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/canale157/canale157/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "kisskisstv",
+    "name": "Kiss Kiss TV",
+    "logo": "https://channels.zappr.stream/logos/kisskiss.svg",
+    "streamUrl": "https://kk.fluid.stream/KKMulti/smil:KissKissTV.smil/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale162",
+    "name": "Canale 162",
+    "logo": "https://channels.zappr.stream/logos/162",
+    "streamUrl": "https://uvotv.zappr.stream/335.m3u8",
+    "license": null
+  },
+  {
+    "id": "odeon24",
+    "name": "Odeon 24",
+    "logo": "https://channels.zappr.stream/logos/odeon24",
+    "streamUrl": "https://streaming.softwarecreation.it/Odeon/Odeon/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "fascinotv165",
+    "name": "Fascino TV 165",
+    "logo": "https://channels.zappr.stream/logos/fascinotv165",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/canale165/canale165/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "orlertv",
+    "name": "Orler TV",
+    "logo": "https://channels.zappr.stream/logos/orlertv",
+    "streamUrl": "https://w1.mediastreaming.it/orlertv/livestream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "fascinotv168",
+    "name": "Fascino TV 168",
+    "logo": "https://channels.zappr.stream/logos/canale168",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/canale168/canale168/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "fascinotv169",
+    "name": "Fascino TV 169",
+    "logo": "https://channels.zappr.stream/logos/canale169",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/canale169/canale169/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "primafree",
+    "name": "Prima Free",
+    "logo": "https://channels.zappr.stream/logos/primafree",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/primafree/primafree/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "raiplay",
+    "name": "RaiPlay",
+    "logo": "https://channels.zappr.stream/logos/raiplay.svg",
+    "streamUrl": "https://www.raiplay.it/hbbtv/RaiPlay2020/index.html",
+    "license": null
+  },
+  {
+    "id": "rairadio2visual",
+    "name": "Rai Radio 2 Visual",
+    "logo": "https://channels.zappr.stream/logos/rairadio2.svg",
+    "streamUrl": "https://visualradiodue3-live.akamaized.net/hls/live/2034078/visualradiodue3/visualradiodue3/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "raiplaysound",
+    "name": "RaiPlay Sound",
+    "logo": "https://channels.zappr.stream/logos/raiplaysound.svg",
+    "streamUrl": "https://www.raiplay.it/hbbtv/RaiPlaySound/index.html",
+    "license": null
+  },
+  {
+    "id": "radioromanetwork",
+    "name": "Radio Roma Network",
+    "logo": "https://channels.zappr.stream/logos/radioromanetwork",
+    "streamUrl": "https://www.dailymotion.com/video/x98v4v8",
+    "license": null
+  },
+  {
+    "id": "welcomein",
+    "name": "Welcome In",
+    "logo": "https://channels.zappr.stream/logos/welcomein",
+    "streamUrl": "https://fms.premio.link/welcomein/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "tesorychannel",
+    "name": "Tesory Channel",
+    "logo": "https://channels.zappr.stream/logos/tesorychannel",
+    "streamUrl": "https://uvotv.zappr.stream/140.m3u8",
+    "license": null
+  },
+  {
+    "id": "terreeuganeechannel",
+    "name": "Terre Euganee Channel",
+    "logo": "https://channels.zappr.stream/logos/terreeuganeechannel.svg",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/canale3/canale3/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rtl1025caliente",
+    "name": "RTL 102.5 Caliente",
+    "logo": "https://channels.zappr.stream/logos/rtlcaliente.svg",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S8448465/zTYa1Z5Op9ue/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "cusanonews7",
+    "name": "Cusano News 7",
+    "logo": "https://channels.zappr.stream/logos/cusanonews7",
+    "streamUrl": "https://router.xdevel.com/video1s975363-1596/stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "manga",
+    "name": "Man-ga",
+    "logo": "https://channels.zappr.stream/logos/man-ga",
+    "streamUrl": "https://c65b9e710bde44819015af98e72cd7ab.msvdn.net/live/S93572876/aILSQPYFY3pF/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "genius240",
+    "name": "Genius 240",
+    "logo": "https://channels.zappr.stream/logos/genius240",
+    "streamUrl": "https://uvotv.zappr.stream/149.m3u8",
+    "license": null
+  },
+  {
+    "id": "france24",
+    "name": "France 24",
+    "logo": "https://channels.zappr.stream/logos/france24.svg",
+    "streamUrl": "https://live.france24.com/hls/live/2037179/F24_FR_HI_HLS/master_5000.m3u8",
+    "license": null
+  },
+  {
+    "id": "sicilia242",
+    "name": "Sicilia 242",
+    "logo": "https://channels.zappr.stream/logos/sicilia242",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/sicilia24/sicilia24/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "paroledivita",
+    "name": "Parole di Vita",
+    "logo": "https://channels.zappr.stream/logos/paroledivita.svg",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/paroledivita/paroledivita/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radio24ilsole24oretv",
+    "name": "Radio 24 - Il Sole 24 Ore TV",
+    "logo": "https://channels.zappr.stream/logos/radio24tv",
+    "streamUrl": "https://760869f771b04ca8a1e4daa89dd6da3e.msvdn.net/live/S88650405/33lZG4owunfW/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "bejoykids",
+    "name": "BeJoy.Kids",
+    "logo": "https://channels.zappr.stream/logos/bejoykids",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/bejoy/bejoy/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "tci",
+    "name": "TCI",
+    "logo": "https://channels.zappr.stream/logos/tci",
+    "streamUrl": "https://cdn.jwplayer.com/live/broadcast/NXTAdMkM.mpd",
+    "license": null
+  },
+  {
+    "id": "radioradiotv",
+    "name": "Radio Radio TV",
+    "logo": "https://channels.zappr.stream/logos/radioradio",
+    "streamUrl": "https://200912.global.ssl.fastly.net/646b335e2291a2022444bb7c/live_abeef7b0903711eeb7c62796fbf7de76/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "mariavision",
+    "name": "Maria Vision",
+    "logo": "https://channels.zappr.stream/logos/mariavision",
+    "streamUrl": "https://1601580044.rsc.cdn77.org/live/_jcn_/amls:CHANNEL_2/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "onairitalia",
+    "name": "OnAir Italia",
+    "logo": "https://channels.zappr.stream/logos/onairitalia.svg",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/nauticachannel/nauticachannel/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "gamberorosso",
+    "name": "Gambero Rosso",
+    "logo": "https://channels.zappr.stream/logos/gamberorosso.svg",
+    "streamUrl": "https://www.dailymotion.com/cdn/live/video/x9u215s.mpd?sec=3FE6qHnAR5mSywqiY3XmMw",
+    "license": null
+  },
+  {
+    "id": "radiofreccia",
+    "name": "Radiofreccia",
+    "logo": "https://channels.zappr.stream/logos/radiofreccia.svg",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S3160845/0tuSetc8UFkF/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "urania",
+    "name": "Urania",
+    "logo": "https://channels.zappr.stream/logos/urania.svg",
+    "streamUrl": "https://69d6d7eab63943c4810c4098feaa0d9c.msvdn.net/live/S76542633/a8BwWIUxagF6/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "drpalmastv",
+    "name": "Dr. Palmas TV",
+    "logo": "https://channels.zappr.stream/logos/drpalmastv.svg",
+    "streamUrl": "https://streamer2.premio.link/dr_palmastv/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "byoblu",
+    "name": "Byoblu",
+    "logo": "https://channels.zappr.stream/logos/byoblu.svg",
+    "streamUrl": "https://09bd1346f7a44cc9ac230cc1cb22ca4f.msvdn.net/live/S39249178/EnTK3KeeN1Eg/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radiontr264",
+    "name": "Radio NTR 264",
+    "logo": "https://channels.zappr.stream/logos/ntr264",
+    "streamUrl": "https://primaset.servizistreaming.it/canale2/index.html",
+    "license": null
+  },
+  {
+    "id": "rdssocialtv",
+    "name": "RDS Social TV",
+    "logo": "https://channels.zappr.stream/logos/rdssocialtv.svg",
+    "streamUrl": "https://stream.rdstv.radio/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiozeta",
+    "name": "Radio Zeta",
+    "logo": "https://channels.zappr.stream/logos/radiozeta.svg",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S9346184/XEx1LqlYbNic/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "2settantatv",
+    "name": "2Settanta TV",
+    "logo": "https://channels.zappr.stream/logos/2settantatv",
+    "streamUrl": "http://185.132.71.134:1935/live/cdn5/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "satisfactiontv",
+    "name": "Satisfaction TV",
+    "logo": "https://channels.zappr.stream/logos/sct",
+    "streamUrl": "https://stream10.xdevel.com/video22s975955-2186/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "nexumchannel",
+    "name": "Nexum Channel",
+    "logo": "https://channels.zappr.stream/logos/nexumchannel",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/nexumchannel/nexumchannel/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "imprese",
+    "name": "Imprese",
+    "logo": "https://channels.zappr.stream/logos/imprese",
+    "streamUrl": "https://streamer2.premio.link/imprese/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "italianfishingtv",
+    "name": "Italian Fishing TV",
+    "logo": "https://channels.zappr.stream/logos/italianfishingtv",
+    "streamUrl": "https://fms.premio.link/fishingtv/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "automoto",
+    "name": "Automoto",
+    "logo": "https://channels.zappr.stream/logos/automoto.svg",
+    "streamUrl": "https://3f70a96a11dd4da88ee87c52fdd0521c.msvdn.net/live/S75749031/EYqrcmlFWlJD/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "sanmarinortv",
+    "name": "San Marino RTV",
+    "logo": "https://channels.zappr.stream/logos/sanmarinortv.svg",
+    "streamUrl": "zappr://acdsolutions/0",
+    "license": null
+  },
+  {
+    "id": "rairadio1",
+    "name": "Rai Radio 1",
+    "logo": "https://channels.zappr.stream/logos/rairadio1.svg",
+    "streamUrl": "https://8e7439fdb1694c8da3a0fd63e4dda518.msvdn.net/radiounoita1/hls/playlist_mo.m3u8",
+    "license": null
+  },
+  {
+    "id": "rairadio2",
+    "name": "Rai Radio 2",
+    "logo": "https://channels.zappr.stream/logos/rairadio2.svg",
+    "streamUrl": "https://8e7439fdb1694c8da3a0fd63e4dda518.msvdn.net/radiodue1/hls/playlist_mo.m3u8",
+    "license": null
+  },
+  {
+    "id": "rairadio3",
+    "name": "Rai Radio 3",
+    "logo": "https://channels.zappr.stream/logos/rairadio3.svg",
+    "streamUrl": "https://8e7439fdb1694c8da3a0fd63e4dda518.msvdn.net/radiotre1/hls/playlist_mo.m3u8",
+    "license": null
+  },
+  {
+    "id": "raigrparlamento",
+    "name": "Rai GR Parlamento",
+    "logo": "https://channels.zappr.stream/logos/raigrparlamento.svg",
+    "streamUrl": "https://radioparlamento-live.akamaized.net/hls/live/2032597/radioparlamento/radioparlamento/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "raiisoradio",
+    "name": "Rai Isoradio",
+    "logo": "https://channels.zappr.stream/logos/raiisoradio.svg",
+    "streamUrl": "https://isoradioita-live.akamaized.net/hls/live/2032601/isoradioita/isoradioita/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rairadio3classica",
+    "name": "Rai Radio 3 Classica",
+    "logo": "https://channels.zappr.stream/logos/rairadio3classica.svg",
+    "streamUrl": "https://radiotreclassica-live.akamaized.net/hls/live/2032595/radiotreclassica/radiotreclassica/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rairadiokids",
+    "name": "Rai Radio Kids",
+    "logo": "https://channels.zappr.stream/logos/rairadiokids.svg",
+    "streamUrl": "https://radiokids-live.akamaized.net/hls/live/2032600/radiokids/radiokids/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rairadiolivenapoli",
+    "name": "Rai Radio Live Napoli",
+    "logo": "https://channels.zappr.stream/logos/rairadiolivenapoli.svg",
+    "streamUrl": "https://radiolive-live.akamaized.net/hls/live/2032599/radiolive/radiolive/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rairadiotechetè",
+    "name": "Rai Radio Techetè",
+    "logo": "https://channels.zappr.stream/logos/rairadiotechetè.svg",
+    "streamUrl": "https://radiotechete-live.akamaized.net/hls/live/2032598/radiotechete/radiotechete/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rairadiotuttaitaliana",
+    "name": "Rai Radio Tutta Italiana",
+    "logo": "https://channels.zappr.stream/logos/rairadiotuttaitaliana.svg",
+    "streamUrl": "https://radiotuttaitaliana-live.akamaized.net/hls/live/2032596/radiotuttaitaliana/radiotuttaitaliana/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rairadio1sport",
+    "name": "Rai Radio 1 Sport",
+    "logo": "https://channels.zappr.stream/logos/rairadio1sport.svg",
+    "streamUrl": "https://radiounosportita-live.akamaized.net/hls/live/2032590/radiounosportita/radiounosportita/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "nonameradio",
+    "name": "No Name Radio",
+    "logo": "https://channels.zappr.stream/logos/nonameradio.svg",
+    "streamUrl": "https://radiodueindie-live.akamaized.net/hls/live/2032593/radiodueindie/radiodueindie/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiocapital",
+    "name": "Radio Capital",
+    "logo": "https://channels.zappr.stream/logos/radiocapital.svg",
+    "streamUrl": "https://4c4b867c89244861ac216426883d1ad0.msvdn.net/radiocapital/radiocapital/master_ma2.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiodeejay",
+    "name": "Radio Deejay",
+    "logo": "https://channels.zappr.stream/logos/deejay.svg",
+    "streamUrl": "https://4c4b867c89244861ac216426883d1ad0.msvdn.net/radiodeejay/radiodeejay/master_ma.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiom2o",
+    "name": "Radio m2o",
+    "logo": "https://channels.zappr.stream/logos/m2o.svg",
+    "streamUrl": "https://4c4b867c89244861ac216426883d1ad0.msvdn.net/radiom2o/radiom2o/master_ma.m3u8",
+    "license": null
+  },
+  {
+    "id": "rds",
+    "name": "RDS",
+    "logo": "https://channels.zappr.stream/logos/rds.svg",
+    "streamUrl": "https://stream.rds.radio/audio/rds.stream_aac/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "inblu2000",
+    "name": "InBlu2000",
+    "logo": "https://channels.zappr.stream/logos/inblu2000.svg",
+    "streamUrl": "https://www.radioinblu.it/live-stream/inblu2000-playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiovaticanaitalia",
+    "name": "Radio Vaticana Italia",
+    "logo": "https://channels.zappr.stream/logos/radiovaticana.svg",
+    "streamUrl": "https://radio.vaticannews.va/stream-it",
+    "license": null
+  },
+  {
+    "id": "rtl1025traffic",
+    "name": "RTL 102.5 Traffic",
+    "logo": "https://channels.zappr.stream/logos/rtltraffic.svg",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S38122967/2lyQRIAAGgRR/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rtl1025best",
+    "name": "RTL 102.5 Best",
+    "logo": "https://channels.zappr.stream/logos/rtlbest.svg",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S76960628/OEPHRUIctA0M/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rtl1025napulè",
+    "name": "RTL 102.5 Napulè",
+    "logo": "https://channels.zappr.stream/logos/rtlnapulè.svg",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S27134503/0f9AhuwKlhnZ/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rtl1025disco",
+    "name": "RTL 102.5 Disco",
+    "logo": "https://channels.zappr.stream/logos/rtldisco.svg",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S51100361/0Fb4R3k82b5Z/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rtl1025bro&sis",
+    "name": "RTL 102.5 Bro&Sis",
+    "logo": "https://channels.zappr.stream/logos/rtlbrosis.svg",
+    "streamUrl": "https://dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S75007890/MUGHuxc9dQ3b/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radioitalia",
+    "name": "Radio Italia",
+    "logo": "https://channels.zappr.stream/logos/radioitalia.svg",
+    "streamUrl": "https://radioitaliasmi.akamaized.net/hls/live/2093120/RISMI/master.m3u8",
+    "license": null
+  },
+  {
+    "id": "r101",
+    "name": "R101",
+    "logo": "https://channels.zappr.stream/logos/r101.svg",
+    "streamUrl": "https://icecast.unitedradio.it/r101",
+    "license": null
+  },
+  {
+    "id": "radiomontecarlo",
+    "name": "Radio Monte Carlo",
+    "logo": "https://channels.zappr.stream/logos/radiomontecarlo",
+    "streamUrl": "https://icy.unitedradio.it/RMC.mp3",
+    "license": null
+  },
+  {
+    "id": "radio105",
+    "name": "Radio 105",
+    "logo": "https://channels.zappr.stream/logos/radio105.svg",
+    "streamUrl": "https://icecast.unitedradio.it/Radio105.mp3",
+    "license": null
+  },
+  {
+    "id": "virginradio",
+    "name": "Virgin Radio",
+    "logo": "https://channels.zappr.stream/logos/virginradio.svg",
+    "streamUrl": "https://icecast.unitedradio.it/Virgin.mp3",
+    "license": null
+  },
+  {
+    "id": "radiomaria",
+    "name": "Radio Maria",
+    "logo": "https://channels.zappr.stream/logos/radiomaria",
+    "streamUrl": "https://dreamsiteradiocp6.com/proxy/rmusait?mp=/stream",
+    "license": null
+  },
+  {
+    "id": "radiomargheritapiù",
+    "name": "Radio Margherita Più",
+    "logo": "https://channels.zappr.stream/logos/radiomargheritapiù",
+    "streamUrl": "https://648026e87a75e.streamlock.net/radiomargherita/radiomargherita/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "classcnbc",
+    "name": "Class CNBC",
+    "logo": "https://channels.zappr.stream/logos/classcnbc.svg",
+    "streamUrl": "https://www.dailymotion.com/cdn/live/video/x9h54mc.mpd?sec=u2zQSu-L_6-XRH0l0hJt4w",
+    "license": null
+  },
+  {
+    "id": "supersix",
+    "name": "SuperSix",
+    "logo": "https://channels.zappr.stream/logos/supersix",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/supersixnew/supersixnew/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "classtvmoda",
+    "name": "Class TV Moda",
+    "logo": "https://channels.zappr.stream/logos/classtvmoda",
+    "streamUrl": "https://www.dailymotion.com/cdn/live/video/x9gjcsc.mpd?sec=TvanlgS3XnAOVoMuWBcmVw",
+    "license": null
+  },
+  {
+    "id": "cacciaepesca",
+    "name": "Caccia e Pesca",
+    "logo": "https://channels.zappr.stream/logos/cacciaepesca.svg",
+    "streamUrl": "https://app.cacciaepesca.tv/hbbtv-cp/",
+    "license": null
+  },
+  {
+    "id": "rai3tgrabruzzo",
+    "name": "Rai 3 TGR Abruzzo",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrabruzzo-live.akamaized.net/hls/live/2025558/tgrabruzzo/tgrabruzzo/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rete8",
+    "name": "Rete 8",
+    "logo": "https://channels.zappr.stream/logos/rete8.svg",
+    "streamUrl": "https://edge.live-rete8.cdn.netrw.it/rete8/hls/live/rete8/master.m3u8",
+    "license": null
+  },
+  {
+    "id": "telemolise",
+    "name": "Telemolise",
+    "logo": "https://channels.zappr.stream/logos/telemolise",
+    "streamUrl": "https://654be07bf207c.streamlock.net/Telemolise4K/Telemolise4K/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "laqtv",
+    "name": "LaQtv",
+    "logo": "https://channels.zappr.stream/logos/laqtv",
+    "streamUrl": "https://vimeo.com/event/4648215/embed",
+    "license": null
+  },
+  {
+    "id": "tvsei",
+    "name": "TVSEI",
+    "logo": "https://channels.zappr.stream/logos/tvsei",
+    "streamUrl": "https://654be07bf207c.streamlock.net/TvSeiHBBTV/tvseiWebPresenter/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telemax",
+    "name": "Telemax",
+    "logo": "https://channels.zappr.stream/logos/telemax",
+    "streamUrl": "https://livetv.telemaxtv.it/hls/mystream.m3u8",
+    "license": null
+  },
+  {
+    "id": "infomedianews",
+    "name": "Info Media News",
+    "logo": "https://channels.zappr.stream/logos/infomedianews",
+    "streamUrl": "https://64ede947d2367.streamlock.net/IMN/_definst_/IMN_source/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "superj",
+    "name": "Super J",
+    "logo": "https://channels.zappr.stream/logos/superj",
+    "streamUrl": "https://59d39900ebfb8.streamlock.net/SuperJtv/SuperJtv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleregione",
+    "name": "TeleRegione",
+    "logo": "https://channels.zappr.stream/logos/teleregioneabruzzo.svg",
+    "streamUrl": "zappr://wp-yt-iframe/teleregionetv.it/38935",
+    "license": null
+  },
+  {
+    "id": "diciotto",
+    "name": "Diciotto",
+    "logo": "https://channels.zappr.stream/logos/diciotto",
+    "streamUrl": "https://654be07bf207c.streamlock.net/Telemolise2-FB/Telemolise2/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rete8sport",
+    "name": "Rete 8 Sport",
+    "logo": "https://channels.zappr.stream/logos/rete8sport",
+    "streamUrl": "https://edge.live-rete8.cdn.netrw.it/rete8/hls/live/rete8sport/master.m3u8",
+    "license": null
+  },
+  {
+    "id": "telesirio",
+    "name": "TeleSirio",
+    "logo": "https://channels.zappr.stream/logos/telesirio.svg",
+    "streamUrl": "https://www.telesirio.it/live/stream.m3u8",
+    "license": null
+  },
+  {
+    "id": "tltmolise",
+    "name": "TLT Molise",
+    "logo": "https://channels.zappr.stream/logos/tlt77",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/tltmolise/tltmolise/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "veraabruzzo",
+    "name": "Vera Abruzzo",
+    "logo": "https://channels.zappr.stream/logos/veraabruzzo",
+    "streamUrl": "https://uvotv.zappr.stream/56.m3u8",
+    "license": null
+  },
+  {
+    "id": "lecronachetv",
+    "name": "Le Cronache TV",
+    "logo": "https://channels.zappr.stream/logos/lecronache",
+    "streamUrl": "https://stream7.livinlive.it/lecronache/live/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "gustotv",
+    "name": "Gusto TV",
+    "logo": "https://channels.zappr.stream/logos/gustotv",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/gustotv/gustotv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "6onair",
+    "name": "6 OnAir",
+    "logo": "https://channels.zappr.stream/logos/6onair",
+    "streamUrl": "https://uvotv.zappr.stream/35.m3u8",
+    "license": null
+  },
+  {
+    "id": "veratv",
+    "name": "Vera TV",
+    "logo": "https://channels.zappr.stream/logos/veratv.svg",
+    "streamUrl": "https://cdn9.streamshow.it/cloud-veratv/veratv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "teleuniverso",
+    "name": "Teleuniverso",
+    "logo": "https://channels.zappr.stream/logos/teleuniverso",
+    "streamUrl": "https://stream.ets-sistemi.it:19360/teleuniverso/teleuniverso.m3u8",
+    "license": null
+  },
+  {
+    "id": "antenna2",
+    "name": "Antenna 2",
+    "logo": "https://channels.zappr.stream/logos/antenna2abruzzo",
+    "streamUrl": "https://dlive.tv/Onda_Tv",
+    "license": null
+  },
+  {
+    "id": "tvyes",
+    "name": "TV Yes",
+    "logo": "https://channels.zappr.stream/logos/tvyesitalia",
+    "streamUrl": "https://tsw.streamingwebtv24.it:1936/inteccdn6/inteccdn6/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "turismotv",
+    "name": "Turismo TV",
+    "logo": "https://channels.zappr.stream/logos/turismotv",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/turismotv/turismotv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "ondatv",
+    "name": "Onda TV",
+    "logo": "https://channels.zappr.stream/logos/ondatv",
+    "streamUrl": "OndaTVCalabria",
+    "license": null
+  },
+  {
+    "id": "soveratounotv",
+    "name": "Soverato Uno TV",
+    "logo": "https://channels.zappr.stream/logos/soveratounotv",
+    "streamUrl": "SoveratoUnoTV",
+    "license": null
+  },
+  {
+    "id": "telemagnagraecia",
+    "name": "Tele Magna Graecia",
+    "logo": "https://channels.zappr.stream/logos/telemagnagraecia",
+    "streamUrl": "tmg_calabria",
+    "license": null
+  },
+  {
+    "id": "radioparsifaltv",
+    "name": "Radio Parsifal TV",
+    "logo": "https://channels.zappr.stream/logos/radioparsifaltv",
+    "streamUrl": "https://stream9.xdevel.com/video0s976542-1303/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "trsp",
+    "name": "TRSP",
+    "logo": "https://channels.zappr.stream/logos/trsp",
+    "streamUrl": "https://5a1178b42cc03.streamlock.net/trsptv/trsptv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "adn24",
+    "name": "ADN24",
+    "logo": "https://channels.zappr.stream/logos/adn24",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/adn24tv/adn24tv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rai3tgrbasilicata",
+    "name": "Rai 3 TGR Basilicata",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrbasilicata-live.akamaized.net/hls/live/2025559/tgrbasilicata/tgrbasilicata/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telenorba",
+    "name": "Telenorba",
+    "logo": "https://channels.zappr.stream/logos/telenorba.svg",
+    "streamUrl": "https://router.xdevel.com/video2s976570-2117/stream/playlist_dvr.m3u8",
+    "license": null
+  },
+  {
+    "id": "radionorbatelevision",
+    "name": "Radio Norba Television",
+    "logo": "https://channels.zappr.stream/logos/radionorba.svg",
+    "streamUrl": "https://router.xdevel.com/video0s975885-462/stream/playlist_dvr.m3u8",
+    "license": null
+  },
+  {
+    "id": "tgnorba24",
+    "name": "TG Norba 24",
+    "logo": "https://channels.zappr.stream/logos/tgnorba24.svg",
+    "streamUrl": "https://router.xdevel.com/video0s976570-1326/stream/playlist_dvr.m3u8",
+    "license": null
+  },
+  {
+    "id": "antennasud",
+    "name": "Antenna Sud",
+    "logo": "https://channels.zappr.stream/logos/antennasud.svg",
+    "streamUrl": "https://stream.antennasudwebtv.it:9443/hls/vod.m3u8",
+    "license": null
+  },
+  {
+    "id": "telerama",
+    "name": "Telerama",
+    "logo": "https://channels.zappr.stream/logos/telerama",
+    "streamUrl": "https://58d921499d3d3.streamlock.net/TeleRama/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "trmh24",
+    "name": "TRM h24",
+    "logo": "https://channels.zappr.stream/logos/trmh24",
+    "streamUrl": "UCWxP-YJ_4OVmcKuwzmhW42Q",
+    "license": null
+  },
+  {
+    "id": "telebari",
+    "name": "Telebari",
+    "logo": "https://channels.zappr.stream/logos/telebari.svg",
+    "streamUrl": "https://w1.mediastreaming.it/telebari/livestream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telesveva",
+    "name": "Telesveva",
+    "logo": "https://channels.zappr.stream/logos/telesveva",
+    "streamUrl": "https://live2.telesveva.com/hls/svevahd.m3u8",
+    "license": null
+  },
+  {
+    "id": "teledehon",
+    "name": "Tele Dehon",
+    "logo": "https://channels.zappr.stream/logos/teledehon.svg",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/rtmpteledehon/smil:rtmpteledehon.smil/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "italia2news",
+    "name": "Italia 2 News",
+    "logo": "https://channels.zappr.stream/logos/italia2news",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/italia2/italia2/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleregionecolor",
+    "name": "Teleregione Color",
+    "logo": "https://channels.zappr.stream/logos/teleregionecolor",
+    "streamUrl": "https://stream.antennasudwebtv.it:9443/hls/vodtele.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale7",
+    "name": "Canale 7",
+    "logo": "https://channels.zappr.stream/logos/canale7.svg",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/canale7/canale7/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "lanuovatv",
+    "name": "La Nuova TV",
+    "logo": "https://channels.zappr.stream/logos/lanuovatv.svg",
+    "streamUrl": "https://5dcabf026b188.streamlock.net/lanuovatvbas/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiocarinatv",
+    "name": "Radio Carina TV",
+    "logo": "https://channels.zappr.stream/logos/radiocarina",
+    "streamUrl": "https://samson.streamerr.co:8081/carinatv/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "trc",
+    "name": "TRC",
+    "logo": "https://channels.zappr.stream/logos/trc",
+    "streamUrl": "https://stream7.livinlive.it/trc/trc/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telefoggia",
+    "name": "TeleFoggia",
+    "logo": "https://channels.zappr.stream/logos/telefoggia",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/telefoggia/telefoggia/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiocittàtv",
+    "name": "Radio Città TV",
+    "logo": "https://channels.zappr.stream/logos/radiocittàtv",
+    "streamUrl": "https://stream10.xdevel.com/video0s977971-2391/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "mediasud",
+    "name": "Mediasud",
+    "logo": "https://channels.zappr.stream/logos/mediasud",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/mediasud/mediasud/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai3tgrcalabria",
+    "name": "Rai 3 TGR Calabria",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrcalabria-live.akamaized.net/hls/live/2025561/tgrcalabria/tgrcalabria/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "videocalabria",
+    "name": "Video Calabria",
+    "logo": "https://channels.zappr.stream/logos/videocalabria.svg",
+    "streamUrl": "https://a8a02dd9a49a4fc9810743615c65ab73.msvdn.net/live/S76734991/i6NeNqLYaspb/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "lac",
+    "name": "LaC",
+    "logo": "https://channels.zappr.stream/logos/lactv.svg",
+    "streamUrl": "https://f5842579ff984c1c98d63b8d789673eb.msvdn.net/live/S47282891/JWjL3xqPf4bX/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "ten",
+    "name": "TEN",
+    "logo": "https://channels.zappr.stream/logos/teleuropanetwork",
+    "streamUrl": "https://7640f9b3494e4d1fb307f886e3b60402.msvdn.net/live/S41081260/ohLhSxDNpDNC/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "calabriatv",
+    "name": "Calabria TV",
+    "logo": "https://channels.zappr.stream/logos/calabriatv",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/calabriatv/calabriatv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rti",
+    "name": "RTI",
+    "logo": "https://channels.zappr.stream/logos/rticalabria",
+    "streamUrl": "https://stream.ets-sistemi.it:8081/rticalabria/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "esperiatv",
+    "name": "Esperia TV",
+    "logo": "https://channels.zappr.stream/logos/esperiatv",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/esperiatv/esperiatv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telespaziotv",
+    "name": "Telespazio TV",
+    "logo": "https://channels.zappr.stream/logos/telespaziotv",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/Telespaziotv/Telespaziotv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "laconair",
+    "name": "LaC On Air",
+    "logo": "https://channels.zappr.stream/logos/laconair.svg",
+    "streamUrl": "https://f5842579ff984c1c98d63b8d789673eb.msvdn.net/live/100197/SOrBDPy/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telea1",
+    "name": "Tele A1",
+    "logo": "https://channels.zappr.stream/logos/telea1",
+    "streamUrl": "https://stream.ets-sistemi.it:8081/telea1-live/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "laltrocorriere",
+    "name": "L'Altro Corriere",
+    "logo": "https://channels.zappr.stream/logos/laltrocorriere.svg",
+    "streamUrl": "https://52ee6512fee4427889eba89957975fa0.msvdn.net/live/S24350460/BEj8ZmQiQ9UG/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telemia",
+    "name": "Telemia",
+    "logo": "https://channels.zappr.stream/logos/telemia",
+    "streamUrl": "https://playerssl.telemia.tv/fileadmin/hls/TelemiaHD/telemia85_mediachunks.m3u8",
+    "license": null
+  },
+  {
+    "id": "reggiotv",
+    "name": "Reggio TV",
+    "logo": "https://channels.zappr.stream/logos/reggiotv.svg",
+    "streamUrl": "https://cdn10.streamshow.it/cloud-reggiotv/reggiotv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rtctelecalabria",
+    "name": "RTC Telecalabria",
+    "logo": "https://channels.zappr.stream/logos/rtctelecalabria",
+    "streamUrl": "https://w1.mediastreaming.it/calabriachannel/livestream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telemormanno",
+    "name": "Telemormanno",
+    "logo": "https://channels.zappr.stream/logos/telemormanno",
+    "streamUrl": "https://uvotv.zappr.stream/425.m3u8",
+    "license": null
+  },
+  {
+    "id": "jonicaradiotv",
+    "name": "Jonica Radio TV",
+    "logo": "https://channels.zappr.stream/logos/jonicaradiotv",
+    "streamUrl": "https://5a1178b42cc03.streamlock.net/jonica/jonica/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "gschannel",
+    "name": "GS Channel",
+    "logo": "https://channels.zappr.stream/logos/gschannel",
+    "streamUrl": "https://rst.saiuzwebnetwork.it:8081/retereggio/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "eccellenzacalabria",
+    "name": "Eccellenza Calabria",
+    "logo": "https://channels.zappr.stream/logos/eccellenzacalabria.svg",
+    "streamUrl": "https://604e46ac2bdee.streamlock.net:1936/eccelenzacalabria/eccelenzacalabria/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "videotouring",
+    "name": "VideoTouring",
+    "logo": "https://channels.zappr.stream/logos/videotouring",
+    "streamUrl": "https://streamingvideo.auranex.cloud/70baacad-47c6-41a6-aee0-86530c31e080.html",
+    "license": null
+  },
+  {
+    "id": "radioricorditv",
+    "name": "Radio Ricordi TV",
+    "logo": "https://channels.zappr.stream/logos/radioricordi",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/radioricorditv/radioricorditv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "tv99",
+    "name": "TV99",
+    "logo": "https://channels.zappr.stream/logos/tv99",
+    "streamUrl": "https://playerssl.telemia.tv/fileadmin/hls/TelemiaExtra/telemiaextra_mediachunks.m3u8",
+    "license": null
+  },
+  {
+    "id": "lacnetwork",
+    "name": "LaC Network",
+    "logo": "https://channels.zappr.stream/logos/lacnetwork.svg",
+    "streamUrl": "https://f5842579ff984c1c98d63b8d789673eb.msvdn.net/live/S27391994/HVvPMzy/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "motoritv",
+    "name": "Motori TV",
+    "logo": "https://channels.zappr.stream/logos/motoritvadn",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/motoritv/motoritv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radiojukeboxtv",
+    "name": "Radio JukeBox TV",
+    "logo": "https://channels.zappr.stream/logos/radiojukeboxcalabria",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/radiojukeboxtv/radiojukeboxtv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "pianatv",
+    "name": "Piana TV",
+    "logo": "https://channels.zappr.stream/logos/pianatv",
+    "streamUrl": "https://playerssl.telemia.tv/fileadmin/hls/PianaTV/pianatv_mediachunks.m3u8",
+    "license": null
+  },
+  {
+    "id": "lagrandeitalia",
+    "name": "La Grande Italia",
+    "logo": "https://channels.zappr.stream/logos/lagrandeitalia",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/grandeitaliatv/grandeitaliatv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "businesschannel",
+    "name": "Business Channel",
+    "logo": "https://channels.zappr.stream/logos/businesschannel",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/businesschannel/businesschannel/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "7080it",
+    "name": "70-80.it",
+    "logo": "https://channels.zappr.stream/logos/70-80",
+    "streamUrl": "https://585b674743bbb.streamlock.net/9050/9050/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rai3tgrcampania",
+    "name": "Rai 3 TGR Campania",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrcampania-live.akamaized.net/hls/live/2025562/tgrcampania/tgrcampania/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale21",
+    "name": "Canale 21",
+    "logo": "https://channels.zappr.stream/logos/canale21",
+    "streamUrl": "https://0ff9dd7fe9b64bc08a5fc4ed525454c3.msvdn.net/live/S38994111/B7j0ql4XaZtE/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "televomero",
+    "name": "Televomero",
+    "logo": "https://channels.zappr.stream/logos/televomero",
+    "streamUrl": "https://stream2.xdevel.com/video0s100-23/stream/playlist.m3u8",
+    "license": "xdevel-wms"
+  },
+  {
+    "id": "canale9",
+    "name": "Canale 9",
+    "logo": "https://channels.zappr.stream/logos/canale9",
+    "streamUrl": "https://comvideo.it/hls/canale9/video.m3u8",
+    "license": null
+  },
+  {
+    "id": "telea",
+    "name": "Tele A",
+    "logo": "https://channels.zappr.stream/logos/telea",
+    "streamUrl": "https://lostream.it/hls/telea/video.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale8",
+    "name": "Canale 8",
+    "logo": "https://channels.zappr.stream/logos/canale8",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/canale8/canale8/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telecapri",
+    "name": "Telecapri",
+    "logo": "https://channels.zappr.stream/logos/telecapri",
+    "streamUrl": "UCye6SHysnzA8G8uZgqEuj_Q",
+    "license": null
+  },
+  {
+    "id": "ottochannel",
+    "name": "Otto Channel",
+    "logo": "https://channels.zappr.stream/logos/ottochannel",
+    "streamUrl": "https://load-balancer.azotosolutions.com/cdnedge/smil:live.smil/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "primativvù",
+    "name": "Primativvù",
+    "logo": "https://channels.zappr.stream/logos/primativvù",
+    "streamUrl": "UC8wvte8OOeNsfVJOeIDR8_A",
+    "license": null
+  },
+  {
+    "id": "liratv",
+    "name": "LiraTV",
+    "logo": "https://channels.zappr.stream/logos/liratv",
+    "streamUrl": "https://a928c0678d284da5b383f29ecc5dfeec.msvdn.net/live/S57315730/8kTBWibNteJA/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "irpiniatv",
+    "name": "Irpinia TV",
+    "logo": "https://channels.zappr.stream/logos/irpiniatv.svg",
+    "streamUrl": "UCvEuxIJ_yKBo5c_EPQyYrhw",
+    "license": null
+  },
+  {
+    "id": "fltelevision",
+    "name": "FL Television",
+    "logo": "https://channels.zappr.stream/logos/fltelevision",
+    "streamUrl": "https://tv.radiosaiuz.com:3596/stream/play.m3u8",
+    "license": null
+  },
+  {
+    "id": "easytv",
+    "name": "Easy TV",
+    "logo": "https://channels.zappr.stream/logos/easytv",
+    "streamUrl": "https://diretta.arcapuglia.it:8080/live/easytv/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "telecolore",
+    "name": "Telecolore",
+    "logo": "https://channels.zappr.stream/logos/telecolore",
+    "streamUrl": "https://stream10.xdevel.com/video14s975955-1911/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "kisskissnapolitv",
+    "name": "Kiss Kiss Napoli TV",
+    "logo": "https://channels.zappr.stream/logos/kisskissnapoli",
+    "streamUrl": "https://kkcdn02.fluid.stream/KKTVNapoli/smil:KKTVNapoli.smil/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleclubitalia",
+    "name": "TeleClubItalia",
+    "logo": "https://channels.zappr.stream/logos/teleclubitalia",
+    "streamUrl": "https://teleclubitalia.iostream.it/teleclubitalia.m3u8",
+    "license": null
+  },
+  {
+    "id": "stiletv",
+    "name": "StileTV",
+    "logo": "https://channels.zappr.stream/logos/stiletv.svg",
+    "streamUrl": "https://proxy.media.convergenze.it/stiletv/streams/oQOFd7JglHjO1631525551097.m3u8",
+    "license": null
+  },
+  {
+    "id": "calcionapoli24",
+    "name": "CalcioNapoli24",
+    "logo": "https://channels.zappr.stream/logos/calcionapoli24",
+    "streamUrl": "UCFZaLPCquo5ROTGiayRS8LQ",
+    "license": null
+  },
+  {
+    "id": "noratv",
+    "name": "Nora TV",
+    "logo": "https://channels.zappr.stream/logos/noratv",
+    "streamUrl": "https://57068da1deb21.streamlock.net/noratv/noratv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "infocilento",
+    "name": "InfoCilento",
+    "logo": "https://channels.zappr.stream/logos/infocilento",
+    "streamUrl": "https://nrvideo1.newradio.it:1936/pskfvahhcs/pskfvahhcs/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "nuvolatv",
+    "name": "Nuvola TV",
+    "logo": "https://channels.zappr.stream/logos/nuvolatv",
+    "streamUrl": "https://stream.nuvola.tv:8181/memfs/4aaa6328-1879-4ebf-b18a-498146d0c61c.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleischia",
+    "name": "TeleIschia",
+    "logo": "https://channels.zappr.stream/logos/teleischia",
+    "streamUrl": "https://rst.saiuzwebnetwork.it:8081/teleischia/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "mediatv",
+    "name": "Media TV",
+    "logo": "https://channels.zappr.stream/logos/mediatv",
+    "streamUrl": "https://stream3.aswifi.it/mediatv/stream/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "tvluna",
+    "name": "TV Luna",
+    "logo": "https://channels.zappr.stream/logos/tvluna",
+    "streamUrl": "https://diretta.arcapuglia.it:8080/live/teleluna/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiocrctv",
+    "name": "Radio CRC TV",
+    "logo": "https://channels.zappr.stream/logos/radiocrc",
+    "streamUrl": "https://rst2.saiuzwebnetwork.it:8081/crc/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "labtv",
+    "name": "LabTV",
+    "logo": "https://channels.zappr.stream/logos/labtv",
+    "streamUrl": "https://customer-yzibk50951uq418a.cloudflarestream.com/a58893dee4b9922a75e41b4ec4243f84/manifest/video.mpd",
+    "license": null
+  },
+  {
+    "id": "canale58",
+    "name": "Canale 58",
+    "logo": "https://channels.zappr.stream/logos/canale58",
+    "streamUrl": "zappr://wim/5cb5e611-9473-4b0c-98c9-f23b4a1d6ebf",
+    "license": null
+  },
+  {
+    "id": "tvoggi",
+    "name": "TV Oggi",
+    "logo": "https://channels.zappr.stream/logos/tvoggi",
+    "streamUrl": "zappr://wim/cfb54b0e-b5fb-4ed5-9ae0-bec1dc02e596",
+    "license": null
+  },
+  {
+    "id": "telestabia",
+    "name": "TeleStabia",
+    "logo": "https://channels.zappr.stream/logos/telestabia",
+    "streamUrl": "https://stream3.aswifi.it/giglitv/live/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "telelaser",
+    "name": "Telelaser",
+    "logo": "https://channels.zappr.stream/logos/telelaser",
+    "streamUrl": "https://585b674743bbb.streamlock.net/9022/9022/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telenuova",
+    "name": "Telenuova",
+    "logo": "https://channels.zappr.stream/logos/telenuova",
+    "streamUrl": "telenuovatv",
+    "license": null
+  },
+  {
+    "id": "radiocapri",
+    "name": "Radio Capri",
+    "logo": "https://channels.zappr.stream/logos/radiocapri",
+    "streamUrl": "https://live.radiocapri.it/memfs/8ea0b12f-3624-4a80-8079-3d26747ae55b.m3u8",
+    "license": null
+  },
+  {
+    "id": "videonola",
+    "name": "Videonola",
+    "logo": "https://channels.zappr.stream/logos/videonola",
+    "streamUrl": "https://videonola.aswifi.it/videonolaabr/live.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale95",
+    "name": "Canale 95",
+    "logo": "https://channels.zappr.stream/logos/canale95",
+    "streamUrl": "zappr://wim/93bfc6f4-558c-44af-8415-81bbec6284ca",
+    "license": null
+  },
+  {
+    "id": "tv7",
+    "name": "TV7",
+    "logo": "https://channels.zappr.stream/logos/tv7benevento",
+    "streamUrl": "https://msh0320.stream.seeweb.it/live/tv7.sdp/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "campaniatv",
+    "name": "Campania TV",
+    "logo": "https://channels.zappr.stream/logos/campaniatv",
+    "streamUrl": "https://rst2.saiuzwebnetwork.it:8081/telemiracoli/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "settv",
+    "name": "SET TV",
+    "logo": "https://channels.zappr.stream/logos/settv",
+    "streamUrl": "https://stream1.aswifi.it/settv/live/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "primatvnapoli",
+    "name": "Prima TV Napoli",
+    "logo": "https://channels.zappr.stream/logos/primatvnapoli",
+    "streamUrl": "https://57068da1deb21.streamlock.net/primatvnapoli/primatvnapoli/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "campiflegrei",
+    "name": "Campi Flegrei",
+    "logo": "https://channels.zappr.stream/logos/campiflegrei",
+    "streamUrl": "https://rst2.saiuzwebnetwork.it:8081/campiflegreitv/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "sudtv",
+    "name": "Sud TV",
+    "logo": "https://channels.zappr.stream/logos/sudtv.svg",
+    "streamUrl": "sudtv_114",
+    "license": null
+  },
+  {
+    "id": "gtchannel",
+    "name": "GT Channel",
+    "logo": "https://channels.zappr.stream/logos/gtchannel",
+    "streamUrl": "gtchanneltwitch",
+    "license": null
+  },
+  {
+    "id": "rtcquartarete",
+    "name": "RTC Quarta Rete",
+    "logo": "https://channels.zappr.stream/logos/rtcquartarete",
+    "streamUrl": "https://msh0232.stream.seeweb.it/live/stream00.sdp/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radiomartetv",
+    "name": "Radio Marte TV",
+    "logo": "https://channels.zappr.stream/logos/radiomarte",
+    "streamUrl": "https://router.xdevel.com/video0s975753-750/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "partenopetv",
+    "name": "Partenope TV",
+    "logo": "https://channels.zappr.stream/logos/partenopetv",
+    "streamUrl": "https://diretta.arcapuglia.it:8080/live/partenope/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "sportchannel214",
+    "name": "Sport Channel 214",
+    "logo": "https://channels.zappr.stream/logos/sportchannel214",
+    "streamUrl": "sportchannelnews",
+    "license": null
+  },
+  {
+    "id": "radioclub91",
+    "name": "Radio Club 91",
+    "logo": "https://channels.zappr.stream/logos/radioclub91",
+    "streamUrl": "https://stream5.xdevel.com/audio0s976546-1307/stream/icecast.audio",
+    "license": null
+  },
+  {
+    "id": "radiocastelluccio",
+    "name": "Radio Castelluccio",
+    "logo": "https://channels.zappr.stream/logos/radiocastelluccio",
+    "streamUrl": "https://stream3.xdevel.com/audio0s975429-130/stream/icecast.audio",
+    "license": null
+  },
+  {
+    "id": "romanticaradio",
+    "name": "Romantica Radio",
+    "logo": "https://channels.zappr.stream/logos/romanticaradio.svg",
+    "streamUrl": "https://onair18.xdevel.com/proxy/romantica_ice?mp=/romantica",
+    "license": null
+  },
+  {
+    "id": "rai3tgremiliaromagna",
+    "name": "Rai 3 TGR Emilia-Romagna",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgremiliaromagna-live.akamaized.net/hls/live/2025563/tgremiliaromagna/tgremiliaromagna/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "ètvrete7",
+    "name": "èTV Rete 7",
+    "logo": "https://channels.zappr.stream/logos/ètvrete7.svg",
+    "streamUrl": "https://live.ipstream.it/etv/etv.stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "trcmodena",
+    "name": "TRC Modena",
+    "logo": "https://channels.zappr.stream/logos/trcmodena",
+    "streamUrl": "https://vimeo.com/event/4861826/embed",
+    "license": null
+  },
+  {
+    "id": "7goldsestarete",
+    "name": "7 Gold Sestarete",
+    "logo": "https://channels.zappr.stream/logos/7gold",
+    "streamUrl": "https://dddfac816632463dac50b21109dc1bb3.msvdn.net/live/S58803518/OOZape6Nxp4H/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telereggio",
+    "name": "TeleReggio",
+    "logo": "https://channels.zappr.stream/logos/telereggio",
+    "streamUrl": "https://vimeo.com/event/4893321/embed",
+    "license": null
+  },
+  {
+    "id": "teleromagna",
+    "name": "Teleromagna",
+    "logo": "https://channels.zappr.stream/logos/teleromagna.svg",
+    "streamUrl": "https://livetr.teleromagna.it/teleromagna/live/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "trcbologna",
+    "name": "TRC Bologna",
+    "logo": "https://channels.zappr.stream/logos/trcbologna",
+    "streamUrl": "https://vimeo.com/event/4893199/embed",
+    "license": null
+  },
+  {
+    "id": "12tvparma",
+    "name": "12 TV Parma",
+    "logo": "https://channels.zappr.stream/logos/12tvparma",
+    "streamUrl": "https://12tvparma.fluid.stream/12TVParma/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "tvqui",
+    "name": "TV Qui",
+    "logo": "https://channels.zappr.stream/logos/tvqui",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/tvqui/tvqui/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "icarotv",
+    "name": "Icaro TV",
+    "logo": "https://channels.zappr.stream/logos/icarotv.svg",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/icarotv/icarotv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telestense",
+    "name": "Telestense",
+    "logo": "https://channels.zappr.stream/logos/telestense",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/teleestense/teleestense/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiobruno",
+    "name": "Radio Bruno",
+    "logo": "https://channels.zappr.stream/logos/radiobruno",
+    "streamUrl": "https://router.xdevel.com/video0s975758-473/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telesanterno",
+    "name": "Telesanterno",
+    "logo": "https://channels.zappr.stream/logos/telesanterno",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/telesanterno/telesanterno/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "trsport",
+    "name": "TR Sport",
+    "logo": "https://channels.zappr.stream/logos/trsport",
+    "streamUrl": "https://livetr.teleromagna.it/mia/live/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "giovannipaolotv",
+    "name": "Giovanni Paolo TV",
+    "logo": "https://channels.zappr.stream/logos/giovannipaolotv",
+    "streamUrl": "https://media2021.rtvweb.com/giovannipaolotv/web/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "ditv",
+    "name": "DI.TV",
+    "logo": "https://channels.zappr.stream/logos/ditv",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/ditv80/ditv80/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radioitaliaanni60tv",
+    "name": "Radio Italia Anni 60 TV",
+    "logo": "https://channels.zappr.stream/logos/radioitaliaanni60tv",
+    "streamUrl": "https://dddfac816632463dac50b21109dc1bb3.msvdn.net/live/S29887338/irn4sIk4aeF2/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telecolor",
+    "name": "Telecolor",
+    "logo": "https://channels.zappr.stream/logos/telecolor.svg",
+    "streamUrl": "https://1aadf145546f475282c5b4e658c0ac4b.msvdn.net/live/324149/hlbAWtl/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radiobirikinatv",
+    "name": "Radio Birikina TV",
+    "logo": "https://channels.zappr.stream/logos/radiobirikinatv",
+    "streamUrl": "https://56b50ada2d659.streamlock.net/RadioBirikinaTV_dash/RadioBirikinaTV_dash.stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "madeinbotv",
+    "name": "MadeinBO TV",
+    "logo": "https://channels.zappr.stream/logos/madeinbotv",
+    "streamUrl": "https://srvx1.selftv.video/dmchannel/live/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rtavideotaro",
+    "name": "RTA Videotaro",
+    "logo": "https://channels.zappr.stream/logos/rtavideotaro",
+    "streamUrl": "rtavideotaro",
+    "license": null
+  },
+  {
+    "id": "magazinetv",
+    "name": "Magazine TV",
+    "logo": "https://channels.zappr.stream/logos/magazinetv",
+    "streamUrl": "https://media2021.rtvweb.com/magazinetv/web/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "ditv92",
+    "name": "DI.TV 92",
+    "logo": "https://channels.zappr.stream/logos/ditv92",
+    "streamUrl": "https://media2021.rtvweb.com/di_tv_92/live/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rtr99tv",
+    "name": "RTR 99 TV",
+    "logo": "https://channels.zappr.stream/logos/rtr99tv",
+    "streamUrl": "https://rtr99.fluid.stream/RTR99_hbb/RTR99_hbb.stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "sanmarinortvsport",
+    "name": "San Marino RTV Sport",
+    "logo": "https://channels.zappr.stream/logos/sanmarinortvsport.svg",
+    "streamUrl": "zappr://acdsolutions/1",
+    "license": null
+  },
+  {
+    "id": "nettunobolognauno",
+    "name": "Nettuno Bologna Uno",
+    "logo": "https://channels.zappr.stream/logos/nettunobolognauno",
+    "streamUrl": "nettunobolognauno",
+    "license": null
+  },
+  {
+    "id": "italia8prestige",
+    "name": "Italia 8 Prestige",
+    "logo": "https://channels.zappr.stream/logos/italia8prestige",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/italia8prestige/italia8prestige/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teletricolore",
+    "name": "TeleTricolore",
+    "logo": "https://channels.zappr.stream/logos/teletricolore",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/rs2/rs2/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "videoregione",
+    "name": "Videoregione",
+    "logo": "https://channels.zappr.stream/logos/videoregione",
+    "streamUrl": "https://stream.videoregione.it/vr99.mp4",
+    "license": null
+  },
+  {
+    "id": "radiosanmarinoclassic",
+    "name": "Radio San Marino Classic",
+    "logo": "https://channels.zappr.stream/logos/radiosanmarinoclassic",
+    "streamUrl": "https://d18ufyp3q60j7u.cloudfront.net/radio-ch01/radio-ch02/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiomontekanate",
+    "name": "Radio Monte Kanate",
+    "logo": "https://channels.zappr.stream/logos/radiomontekanate",
+    "streamUrl": "https://nrf1.newradio.it:10182/streaming",
+    "license": null
+  },
+  {
+    "id": "radiostudiodelta",
+    "name": "Radio Studio Delta",
+    "logo": "https://channels.zappr.stream/logos/radiostudiodelta",
+    "streamUrl": "https://rsd.streamingmedia.it/play.aac",
+    "license": null
+  },
+  {
+    "id": "rai3tgrfriuliveneziagiulia",
+    "name": "Rai 3 TGR Friuli-Venezia Giulia",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrfriuli-live.akamaized.net/hls/live/2025564/tgrfriuli/tgrfriuli/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telequattro",
+    "name": "Telequattro",
+    "logo": "https://channels.zappr.stream/logos/telequattro.svg",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/telequattro/telequattro/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telefriuli",
+    "name": "Telefriuli",
+    "logo": "https://channels.zappr.stream/logos/telefriuli",
+    "streamUrl": "https://5757bf2aa08e42248fb9b9d620f5d900.msvdn.net/live/S11646715/pE3ax0lT0rBd/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "tv12",
+    "name": "TV12",
+    "logo": "https://channels.zappr.stream/logos/tv12",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/tv12/tv12/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "7goldtelepadova",
+    "name": "7 Gold Telepadova",
+    "logo": "https://channels.zappr.stream/logos/7goldtelepadova",
+    "streamUrl": "https://uvotv.zappr.stream/530.m3u8",
+    "license": null
+  },
+  {
+    "id": "il13",
+    "name": "il13",
+    "logo": "https://channels.zappr.stream/logos/il13.svg",
+    "streamUrl": "https://www.gruppotv7.com:8090/hls/il13.m3u8",
+    "license": null
+  },
+  {
+    "id": "antennatre",
+    "name": "Antenna Tre",
+    "logo": "https://channels.zappr.stream/logos/antennatrenordest.svg",
+    "streamUrl": "https://uvotv.zappr.stream/536.m3u8",
+    "license": null
+  },
+  {
+    "id": "telechiara",
+    "name": "Telechiara",
+    "logo": "https://channels.zappr.stream/logos/telechiara",
+    "streamUrl": "https://fms.telemar.it:1936/telechiara/diretta/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radiosorrrisotv",
+    "name": "Radio SorRriso TV",
+    "logo": "https://channels.zappr.stream/logos/radiosorrrisotv",
+    "streamUrl": "https://56b50ada2d659.streamlock.net/RadioSorrrisoTV_dash/RadioSorrrisoTV_dash.stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radiopiterpantv",
+    "name": "Radio Piterpan TV",
+    "logo": "https://channels.zappr.stream/logos/radiopiterpantv",
+    "streamUrl": "https://58d921499d3d3.streamlock.net/RadioPiterpanTV_dash/RadioPiterpanTV_dash.stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "media24",
+    "name": "Media24",
+    "logo": "https://channels.zappr.stream/logos/media24",
+    "streamUrl": "https://load-balancer.azotosolutions.com/cdnedge16/smil:live16.smil/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radiobelllaemonellatv",
+    "name": "Radio Bellla e Monella TV",
+    "logo": "https://channels.zappr.stream/logos/radiobelllaemonellatv",
+    "streamUrl": "https://58d921499d3d3.streamlock.net/RadioBelllaemonellaTV_dash/RadioBelllaemonellaTV_dash.stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "tuachannel",
+    "name": "TUA Channel",
+    "logo": "https://channels.zappr.stream/logos/tuachannel",
+    "streamUrl": "https://media2021.rtvweb.com/promovideo_web/tuachannel/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "promovideotv",
+    "name": "PromovideoTV",
+    "logo": "https://channels.zappr.stream/logos/promovideotv",
+    "streamUrl": "https://media2021.rtvweb.com/promovideo_web/promovideo/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "friulitv24",
+    "name": "FriuliTV24",
+    "logo": "https://channels.zappr.stream/logos/friulitv24",
+    "streamUrl": "https://585b674743bbb.streamlock.net/9080/9080/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "ranfriul",
+    "name": "RAN Friul",
+    "logo": "https://channels.zappr.stream/logos/ranfriul",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/RanFriul/RanFriul/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rangerm",
+    "name": "RAN Germ",
+    "logo": "https://channels.zappr.stream/logos/rangerm",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/RanGem/RanGem/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "ranslo",
+    "name": "RAN Slo",
+    "logo": "https://channels.zappr.stream/logos/ranslo",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/ranslo/ranslo/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiodiffusioneeuropea",
+    "name": "Radio Diffusione Europea",
+    "logo": "https://channels.zappr.stream/logos/radiodiffusioneeuropea",
+    "streamUrl": "https://tv2.radiosaiuz.com:3496/live/rdelive.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai3tgrlazio",
+    "name": "Rai 3 TGR Lazio",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrlazio-live.akamaized.net/hls/live/2025147/tgrlazio/tgrlazio/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale10",
+    "name": "Canale 10",
+    "logo": "https://channels.zappr.stream/logos/canale10",
+    "streamUrl": "https://nrvideo1.newradio.it:1936/desxcerbht/desxcerbht/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "goldtv",
+    "name": "Gold TV",
+    "logo": "https://channels.zappr.stream/logos/goldtv.svg",
+    "streamUrl": "https://streaming.softwarecreation.it/GoldTv/GoldTv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "laziotv",
+    "name": "Lazio TV",
+    "logo": "https://channels.zappr.stream/logos/laziotv.svg",
+    "streamUrl": "https://streaming.softwarecreation.it/LazioTv/LazioTv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radioromanews",
+    "name": "Radio Roma News",
+    "logo": "https://channels.zappr.stream/logos/radioromanews",
+    "streamUrl": "https://www.dailymotion.com/video/x96kf9k",
+    "license": null
+  },
+  {
+    "id": "radioroma",
+    "name": "Radio Roma",
+    "logo": "https://channels.zappr.stream/logos/radioroma",
+    "streamUrl": "https://www.dailymotion.com/video/x96kfby",
+    "license": null
+  },
+  {
+    "id": "teleroma56",
+    "name": "Teleroma 56",
+    "logo": "https://channels.zappr.stream/logos/teleroma56",
+    "streamUrl": "teleroma_56",
+    "license": null
+  },
+  {
+    "id": "t9",
+    "name": "T9",
+    "logo": "https://channels.zappr.stream/logos/t9",
+    "streamUrl": "https://streaming.softwarecreation.it/tnove/tnove/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleambiente",
+    "name": "TeleAmbiente",
+    "logo": "https://channels.zappr.stream/logos/teleambiente",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/teleambiente3/teleambiente3/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale21extra",
+    "name": "Canale 21 Extra",
+    "logo": "https://channels.zappr.stream/logos/canale21extra",
+    "streamUrl": "https://0ff9dd7fe9b64bc08a5fc4ed525454c3.msvdn.net/live/S42170132/sT6C3LFaD1iA/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "canale19frosinone",
+    "name": "Canale 19 Frosinone",
+    "logo": "https://channels.zappr.stream/logos/canale19frosinone",
+    "streamUrl": "https://5a1178b42cc03.streamlock.net/RRomaNetwork/RRomaNetwork/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telepace",
+    "name": "Telepace",
+    "logo": "https://channels.zappr.stream/logos/telepace.svg",
+    "streamUrl": "https://www.dailymotion.com/video/x9pha96",
+    "license": null
+  },
+  {
+    "id": "teleroma56sport",
+    "name": "Teleroma 56 Sport",
+    "logo": "https://channels.zappr.stream/logos/teleroma56sport",
+    "streamUrl": "TeleRadioStereo",
+    "license": null
+  },
+  {
+    "id": "reteoro",
+    "name": "Rete Oro",
+    "logo": "https://channels.zappr.stream/logos/reteoro",
+    "streamUrl": "https://5926fc9c7c5b2.streamlock.net/9094/9094/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "trl",
+    "name": "TRL",
+    "logo": "https://channels.zappr.stream/logos/trl",
+    "streamUrl": "https://5db313b643fd8.streamlock.net/TRL/TRL/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale81lazio",
+    "name": "Canale 81 Lazio",
+    "logo": "https://channels.zappr.stream/logos/canale81lazio",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/canale81lazio/canale81lazio/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "manàmanàsport",
+    "name": "Manà Manà Sport",
+    "logo": "https://channels.zappr.stream/logos/manàmanàsport",
+    "streamUrl": "https://router.xdevel.com/video2s975363-2370/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleroma2",
+    "name": "Teleroma2",
+    "logo": "https://channels.zappr.stream/logos/teleroma2",
+    "streamUrl": "https://57068da1deb21.streamlock.net/teletibur/teletibur/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "ts2000",
+    "name": "TS2000",
+    "logo": "https://channels.zappr.stream/logos/ts2000",
+    "streamUrl": "https://streaming.ts2000tv.it:30443/ts2000tv/ts2000tv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "cittàcelestetv",
+    "name": "Cittàceleste TV",
+    "logo": "https://channels.zappr.stream/logos/cittàcelestetv",
+    "streamUrl": "https://cittaceleste.tv/video/viewlivestreaming?rel=42323&cntr=0",
+    "license": null
+  },
+  {
+    "id": "anita",
+    "name": "Anita",
+    "logo": "https://channels.zappr.stream/logos/anita.svg",
+    "streamUrl": "https://srvx1.selftv.video/anitatv/live/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rc88",
+    "name": "RC88",
+    "logo": "https://channels.zappr.stream/logos/rc88.svg",
+    "streamUrl": "https://giatv.bozztv.com/giatv/giatv-centroitalia/centroitalia/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleitalia41",
+    "name": "Teleitalia 41",
+    "logo": "https://channels.zappr.stream/logos/teleitalia41",
+    "streamUrl": "https://streaming.softwarecreation.it/teleitalia/teleitalia/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "romittv",
+    "name": "Romit TV",
+    "logo": "https://channels.zappr.stream/logos/romittv",
+    "streamUrl": "https://stream10.xdevel.com/video21s975955-2185/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "retesole",
+    "name": "Retesole",
+    "logo": "https://channels.zappr.stream/logos/retesole",
+    "streamUrl": "https://5926fc9c7c5b2.streamlock.net/9332/9332/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "larockafortetv",
+    "name": "La Rockaforte TV",
+    "logo": "https://channels.zappr.stream/logos/larockaforte",
+    "streamUrl": "https://5926fc9c7c5b2.streamlock.net/npwsqkmzjp/npwsqkmzjp/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "tuday",
+    "name": "TU Day",
+    "logo": "https://channels.zappr.stream/logos/tuday",
+    "streamUrl": "https://stream.ets-sistemi.it:19360/tuday/tuday.m3u8",
+    "license": null
+  },
+  {
+    "id": "sl48",
+    "name": "SL48",
+    "logo": "https://channels.zappr.stream/logos/sl48",
+    "streamUrl": "https://streaming.softwarecreation.it/sl48/sl48/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "easy&italy",
+    "name": "Easy & Italy",
+    "logo": "https://channels.zappr.stream/logos/easyanditaly",
+    "streamUrl": "https://5926fc9c7c5b2.streamlock.net/bjxypgjasy/bjxypgjasy/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radiorocktv",
+    "name": "Radio Rock TV",
+    "logo": "https://channels.zappr.stream/logos/radiorocktv",
+    "streamUrl": "https://rr.fluid.stream/RadioRockTV/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rtgtelegolfo",
+    "name": "RTG Telegolfo",
+    "logo": "https://channels.zappr.stream/logos/rtgtelegolfo",
+    "streamUrl": "https://nrvideo1.newradio.it:1936/vmbjrayngd/vmbjrayngd/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "teleradioorte",
+    "name": "Tele Radio Orte",
+    "logo": "https://channels.zappr.stream/logos/teleradioorte",
+    "streamUrl": "https://stream10.xdevel.com/video0s977516-2077/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "lavocetv",
+    "name": "La Voce TV",
+    "logo": "https://channels.zappr.stream/logos/lavocetv",
+    "streamUrl": "https://stream9.xdevel.com/video0s977001-1746/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rietilifetv",
+    "name": "Rieti Life TV",
+    "logo": "https://channels.zappr.stream/logos/rietilifetv",
+    "streamUrl": "UCDkZimxGVZ5wvoqzpOrvNnQ",
+    "license": null
+  },
+  {
+    "id": "radioimmaginetv",
+    "name": "Radio Immagine TV",
+    "logo": "https://channels.zappr.stream/logos/radioimmaginetv",
+    "streamUrl": "https://media.velcom.it:8081/RadioImmagineTV/index.fmp4.m3u8",
+    "license": null
+  },
+  {
+    "id": "standbytv",
+    "name": "Standby TV",
+    "logo": "https://channels.zappr.stream/logos/standbytv",
+    "streamUrl": "https://5926fc9c7c5b2.streamlock.net/standbytv/standbytv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "vaticanmedia",
+    "name": "Vatican Media",
+    "logo": "https://channels.zappr.stream/logos/vaticanmedia.svg",
+    "streamUrl": "UCkwbN2a1L1H6P9rcA7FhAqg",
+    "license": null
+  },
+  {
+    "id": "radioquattro",
+    "name": "Radio Quattro",
+    "logo": "https://channels.zappr.stream/logos/radioquattro",
+    "streamUrl": "http://188.165.206.81:28001/stream",
+    "license": null
+  },
+  {
+    "id": "rai3tgrliguria",
+    "name": "Rai 3 TGR Liguria",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrliguria-live.akamaized.net/hls/live/2025565/tgrliguria/tgrliguria/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "primocanale",
+    "name": "Primocanale",
+    "logo": "https://channels.zappr.stream/logos/primocanale.svg",
+    "streamUrl": "https://msh0203.stream.seeweb.it/live/stream2.sdp/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telenord",
+    "name": "Telenord",
+    "logo": "https://channels.zappr.stream/logos/telenord",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/telenord/telenord/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleradiopace1",
+    "name": "TeleRadioPace 1",
+    "logo": "https://channels.zappr.stream/logos/teleradiopace1",
+    "streamUrl": "https://jk3lz2bwlw79-hls-live.mariatvcdn.it/teleradiopace1/efcc8fc46cab26315ce3f5845d76008f.sdp/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telecityliguria",
+    "name": "Telecity Liguria",
+    "logo": "https://channels.zappr.stream/logos/telecity",
+    "streamUrl": "https://uvotv.zappr.stream/353.m3u8",
+    "license": null
+  },
+  {
+    "id": "telegenova",
+    "name": "Telegenova",
+    "logo": "https://channels.zappr.stream/logos/telegenova.svg",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/telegenova/telegenova/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleliguriasud",
+    "name": "Tele Liguria Sud",
+    "logo": "https://channels.zappr.stream/logos/teleliguriasud",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/tls/tls/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "primocanaleprimopiano",
+    "name": "Primocanale Primo Piano",
+    "logo": "https://channels.zappr.stream/logos/primocanaleprimopiano",
+    "streamUrl": "https://uvotv.zappr.stream/362.m3u8",
+    "license": null
+  },
+  {
+    "id": "telecupoleliguria",
+    "name": "Telecupole Liguria",
+    "logo": "https://channels.zappr.stream/logos/telecupole.svg",
+    "streamUrl": "telecupoleliguria",
+    "license": null
+  },
+  {
+    "id": "entellatv",
+    "name": "Entella TV",
+    "logo": "https://channels.zappr.stream/logos/entellatv",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/EntellaTV/EntellaTV/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "valenzatv",
+    "name": "Valenza TV",
+    "logo": "https://channels.zappr.stream/logos/valenzatv",
+    "streamUrl": "https://uvotv.zappr.stream/368.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleradiopace3",
+    "name": "TeleRadioPace 3",
+    "logo": "https://channels.zappr.stream/logos/teleradiopace3",
+    "streamUrl": "https://932y4273djv8-hls-live.mariatvcdn.it/teleradiopace3/d2274c22e9ee09eb2eda01ed0496f8f5.sdp/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "primantenna",
+    "name": "Primantenna",
+    "logo": "https://channels.zappr.stream/logos/primantenna",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/primantenna14/primantenna14/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "lunatv",
+    "name": "Luna TV",
+    "logo": "https://channels.zappr.stream/logos/lunatv",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/lunatv/lunatv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telereporter",
+    "name": "Telereporter",
+    "logo": "https://channels.zappr.stream/logos/telereporter",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/telereporter/telereporter/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rete7",
+    "name": "Rete 7",
+    "logo": "https://channels.zappr.stream/logos/rete7.svg",
+    "streamUrl": "https://uvotv.zappr.stream/374.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleradiopace2",
+    "name": "TeleRadioPace 2",
+    "logo": "https://channels.zappr.stream/logos/teleradiopace2",
+    "streamUrl": "https://zkpywrbgdbeg-hls-live.mariatvcdn.it/teleradiopace2/254c9b5c52a73a94ef0f6169cbd05dc2.sdp/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai3tgrlombardia",
+    "name": "Rai 3 TGR Lombardia",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrlombardia-live.akamaized.net/hls/live/2025566/tgrlombardia/tgrlombardia/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telelombardia",
+    "name": "Telelombardia",
+    "logo": "https://channels.zappr.stream/logos/telelombardia.svg",
+    "streamUrl": "https://telelombardia.video/video/viewlivestreaming?rel=66074&cntr=0",
+    "license": null
+  },
+  {
+    "id": "antenna3",
+    "name": "Antenna 3",
+    "logo": "https://channels.zappr.stream/logos/antennatre.svg",
+    "streamUrl": "https://telelombardia.video/video/viewlivestreaming?rel=66075&cntr=0",
+    "license": null
+  },
+  {
+    "id": "topcalcio24",
+    "name": "Top Calcio 24",
+    "logo": "https://channels.zappr.stream/logos/topcalcio24",
+    "streamUrl": "https://telelombardia.video/video/viewlivestreaming?rel=2497&cntr=0",
+    "license": null
+  },
+  {
+    "id": "telecitylombardia",
+    "name": "Telecity Lombardia",
+    "logo": "https://channels.zappr.stream/logos/telecity",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/telecitylombardia/telecitylombardia/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "espansionetv",
+    "name": "Espansione TV",
+    "logo": "https://channels.zappr.stream/logos/espansionetv",
+    "streamUrl": "https://srvx1.selftv.video/espansione/smil:live/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "bergamotv",
+    "name": "Bergamo TV",
+    "logo": "https://channels.zappr.stream/logos/bergamotv.svg",
+    "streamUrl": "https://db142859fd5541b09de25d6507f1f2d3.msvdn.net/live/S17501676/oIxAsgEEA46M/playlist_dvr.m3u8",
+    "license": null
+  },
+  {
+    "id": "teletutto",
+    "name": "Teletutto",
+    "logo": "https://channels.zappr.stream/logos/teletutto",
+    "streamUrl": "https://3177cee185284d2990021eccc8b06ae6.msvdn.net/live/S55287570/tq6PELOcQoAf/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telenova",
+    "name": "Telenova",
+    "logo": "https://channels.zappr.stream/logos/telenova.svg",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/telenova/telenova/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "cr1",
+    "name": "CR1",
+    "logo": "https://channels.zappr.stream/logos/cr1",
+    "streamUrl": "https://embed.streamshow.net/live-player/?token=CoMY4MG42Kpl4WpU3aU7Vo4MSHPbtskWCEoMyAUdEONnWA41BlXRLQUkTCrse4wO-xYQpQBEpPaE|p41nyMUPA==",
+    "license": null
+  },
+  {
+    "id": "unicatv",
+    "name": "Unica TV",
+    "logo": "https://channels.zappr.stream/logos/unicatv.svg",
+    "streamUrl": "https://db142859fd5541b09de25d6507f1f2d3.msvdn.net/live/S84376118/gnJqPnxrsLcY/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telelibertà",
+    "name": "Telelibertà",
+    "logo": "https://channels.zappr.stream/logos/telelibertà",
+    "streamUrl": "https://liberta.cdn.streamup.eu/origin/teleliberta_abr/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "milanopaviatv",
+    "name": "Milano Pavia TV",
+    "logo": "https://channels.zappr.stream/logos/milanopaviatv",
+    "streamUrl": "https://cdn7.streamshow.it/hbbtv-milanopaviatv/milanopaviatv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale1lombardia",
+    "name": "Canale1 Lombardia",
+    "logo": "https://channels.zappr.stream/logos/canale1lombardia",
+    "streamUrl": "https://media2.streambrothers.com:19360/8160/8160.m3u8",
+    "license": null
+  },
+  {
+    "id": "lombardiatv",
+    "name": "Lombardia TV",
+    "logo": "https://channels.zappr.stream/logos/lombardiatv",
+    "streamUrl": "https://5db313b643fd8.streamlock.net/lmbiatv/lmbiatv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleboario",
+    "name": "TeleBoario",
+    "logo": "https://channels.zappr.stream/logos/teleboario",
+    "streamUrl": "https://router.xdevel.com/video0s976425-1205/stream/playlist_dvr.m3u8",
+    "license": null
+  },
+  {
+    "id": "piùvallitv",
+    "name": "Più Valli TV",
+    "logo": "https://channels.zappr.stream/logos/piùvallitv",
+    "streamUrl": "https://5db313b643fd8.streamlock.net/piuvallitv/piuvallitv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "tsn",
+    "name": "TSN",
+    "logo": "https://channels.zappr.stream/logos/telesondrionews",
+    "streamUrl": "https://189790-castr.akamaized.net/633d685a281cd401ae82c2f7/live_bc04bf70449f11ed80952100db9e5fd9/rewind-18000.m3u8",
+    "license": null
+  },
+  {
+    "id": "rete55",
+    "name": "Rete 55",
+    "logo": "https://channels.zappr.stream/logos/rete55",
+    "streamUrl": "https://live1.giocabet.tv/stream/6/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "seilatvbergamo",
+    "name": "SeilaTV Bergamo",
+    "logo": "https://channels.zappr.stream/logos/seilatvbergamo",
+    "streamUrl": "https://nrvideo1.newradio.it:1936/efstzahwew/efstzahwew/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "supertv",
+    "name": "SuperTV",
+    "logo": "https://channels.zappr.stream/logos/supertv",
+    "streamUrl": "https://cdn12.streamshow.it/hbbtv-supertv/supertv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "orobikchannel",
+    "name": "Orobik Channel",
+    "logo": "https://channels.zappr.stream/logos/orobikchannel98",
+    "streamUrl": "orobiktv2025",
+    "license": null
+  },
+  {
+    "id": "mylivignotv",
+    "name": "My Livigno TV",
+    "logo": "https://channels.zappr.stream/logos/mylivignotv",
+    "streamUrl": "UCyGR8utQqyiEWSoXPFG_kIg",
+    "license": null
+  },
+  {
+    "id": "cafè24",
+    "name": "Cafè24",
+    "logo": "https://channels.zappr.stream/logos/cafè24",
+    "streamUrl": "https://srvx1.selftv.video/cafe/smil:live/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "giocabettv",
+    "name": "Giocabet TV",
+    "logo": "https://channels.zappr.stream/logos/giocabet",
+    "streamUrl": "https://live1.giocabet.tv/stream/1/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "televallassina",
+    "name": "Televallassina",
+    "logo": "https://channels.zappr.stream/logos/televallassina",
+    "streamUrl": "televallassina",
+    "license": null
+  },
+  {
+    "id": "teleleonessa",
+    "name": "Teleleonessa",
+    "logo": "https://channels.zappr.stream/logos/teleleonessa",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/teleleonessa/teleleonessa/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "mylivignotvnews",
+    "name": "My Livigno TV News",
+    "logo": "https://channels.zappr.stream/logos/mylivignotvnews",
+    "streamUrl": "vEv39eehsQI",
+    "license": null
+  },
+  {
+    "id": "èlivebrescia",
+    "name": "È Live Brescia",
+    "logo": "https://channels.zappr.stream/logos/èlivebrescia",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/elivebresciatv/elivebresciatv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "milanow",
+    "name": "Milanow",
+    "logo": "https://channels.zappr.stream/logos/milanow",
+    "streamUrl": "https://telelombardia.video/video/viewlivestreaming?rel=66076&cntr=0",
+    "license": null
+  },
+  {
+    "id": "telemantova",
+    "name": "Telemantova",
+    "logo": "https://channels.zappr.stream/logos/telemantova.svg",
+    "streamUrl": "https://5ce9406b73c33.streamlock.net/TeleMantova/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radio4youtv",
+    "name": "Radio 4 You TV",
+    "logo": "https://channels.zappr.stream/logos/radio4youtv",
+    "streamUrl": "https://streamsrv2.nets-sr.com:19360/4youtv/4youtv.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiomater",
+    "name": "Radio Mater",
+    "logo": "https://channels.zappr.stream/logos/radiomater",
+    "streamUrl": "https://s2.shoutitaly.com/listen/radiomater/radio.mp3",
+    "license": null
+  },
+  {
+    "id": "radiosuper",
+    "name": "Radio Super",
+    "logo": "https://channels.zappr.stream/logos/radiosuper",
+    "streamUrl": "https://audio.streamshow.it/proxy/supertv?mp=/stream;",
+    "license": null
+  },
+  {
+    "id": "rai3tgrmarche",
+    "name": "Rai 3 TGR Marche",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrmarche-live.akamaized.net/hls/live/2025567/tgrmarche/tgrmarche/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "tvcentromarche",
+    "name": "TV Centro Marche",
+    "logo": "https://channels.zappr.stream/logos/tvcentromarche",
+    "streamUrl": "https://uvotv.zappr.stream/455.m3u8",
+    "license": null
+  },
+  {
+    "id": "ètvmarche",
+    "name": "èTV Marche",
+    "logo": "https://channels.zappr.stream/logos/ètvmarche.svg",
+    "streamUrl": "https://live.ipstream.it/etvmarche/etvmarche.stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "tvrs",
+    "name": "TVRS",
+    "logo": "https://channels.zappr.stream/logos/tvrs.svg",
+    "streamUrl": "https://cdn8.streamshow.it/cloud-tvrs/tvrs/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "7goldmarche",
+    "name": "7 Gold Marche",
+    "logo": "https://channels.zappr.stream/logos/7goldmarche",
+    "streamUrl": "https://uvotv.zappr.stream/467.m3u8",
+    "license": null
+  },
+  {
+    "id": "videotolentino",
+    "name": "VideoTolentino",
+    "logo": "https://channels.zappr.stream/logos/canale16marche",
+    "streamUrl": "https://5c389faa13be3.streamlock.net:9553/8006/8006/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "ètv+",
+    "name": "èTV+",
+    "logo": "https://channels.zappr.stream/logos/ètv+",
+    "streamUrl": "https://live.ipstream.it/etvmarche2/etvmarche2.stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "tele2000",
+    "name": "Tele2000",
+    "logo": "https://channels.zappr.stream/logos/tele2000",
+    "streamUrl": "tele2000live",
+    "license": null
+  },
+  {
+    "id": "fanotv",
+    "name": "Fano TV",
+    "logo": "https://channels.zappr.stream/logos/fanotv",
+    "streamUrl": "https://diretta.arcapuglia.it:8080/live/fanotv/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "fmtv",
+    "name": "FMTV",
+    "logo": "https://channels.zappr.stream/logos/fmtv75.svg",
+    "streamUrl": "https://bbtv.intvstream.net:3988/hybrid/play.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiolinean°1tv",
+    "name": "Radio Linea n°1 TV",
+    "logo": "https://channels.zappr.stream/logos/radiolinean1",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/radiolineatv/radiolineatv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "studio7tv",
+    "name": "Studio 7 TV",
+    "logo": "https://channels.zappr.stream/logos/studio7tv",
+    "streamUrl": "https://stream9.xdevel.com/video0s976596-1371/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rossinitv",
+    "name": "Rossini TV",
+    "logo": "https://channels.zappr.stream/logos/rossinitv",
+    "streamUrl": "https://stream.rossinitv.it/memfs/3bca4ad7-adfc-4610-ac0e-e826743ddc57.m3u8",
+    "license": null
+  },
+  {
+    "id": "607080tv",
+    "name": "60 70 80 TV",
+    "logo": "https://channels.zappr.stream/logos/607080radio",
+    "streamUrl": "https://5a1178b42cc03.streamlock.net/607080stream/607080stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "emmetv",
+    "name": "EmmeTV",
+    "logo": "https://channels.zappr.stream/logos/emmetv",
+    "streamUrl": "https://live20.bozztv.com/akamaissh101/ssh101/emmetv89/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radioskylinetv",
+    "name": "Radio Skyline TV",
+    "logo": "https://channels.zappr.stream/logos/radioskyline",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/skylinetv/skylinetv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rtm",
+    "name": "RTM",
+    "logo": "https://channels.zappr.stream/logos/rtm",
+    "streamUrl": "https://cdn17.streamshow.it/cloud-rtmtv/rtmtv.stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rai3tgrmolise",
+    "name": "Rai 3 TGR Molise",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrmolise-live.akamaized.net/hls/live/2025568/tgrmolise/tgrmolise/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "italiacable",
+    "name": "ItaliaCable",
+    "logo": "https://channels.zappr.stream/logos/italiacable",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/italiacable/italiacable/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rai3tgrpiemonte",
+    "name": "Rai 3 TGR Piemonte",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrpiemonte-live.akamaized.net/hls/live/2025569/tgrpiemonte/tgrpiemonte/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telecitypiemonte",
+    "name": "Telecity Piemonte",
+    "logo": "https://channels.zappr.stream/logos/telecity",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/telecitypiemonte/telecitypiemonte/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telecupolepiemonte",
+    "name": "Telecupole Piemonte",
+    "logo": "https://channels.zappr.stream/logos/telecupole.svg",
+    "streamUrl": "https://nrvideo1.newradio.it:1936/euhsbdamnx/euhsbdamnx/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "grpveratv",
+    "name": "GRP Vera TV",
+    "logo": "https://channels.zappr.stream/logos/grpveratv.svg",
+    "streamUrl": "https://webstream.multistream.it/memfs/a3195c96-f884-4c74-924f-2648814fc0b5.m3u8",
+    "license": null
+  },
+  {
+    "id": "sestarete",
+    "name": "Sesta Rete",
+    "logo": "https://channels.zappr.stream/logos/sestaretepiemonte",
+    "streamUrl": "https://stream10.xdevel.com/video0s977089-1792/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "vcoazzurratv",
+    "name": "VCO Azzurra TV",
+    "logo": "https://channels.zappr.stream/logos/vcoazzurratv",
+    "streamUrl": "https://wb.top-ix.org/redirect/avtvlive/azzurra/streaming?type=dash",
+    "license": null
+  },
+  {
+    "id": "videonovara",
+    "name": "Videonovara",
+    "logo": "https://channels.zappr.stream/logos/videonovara",
+    "streamUrl": "https://wb.top-ix.org/redirect/avtvlive/videonovara/streaming?type=dash",
+    "license": null
+  },
+  {
+    "id": "ondanovaratv",
+    "name": "Onda Novara TV",
+    "logo": "https://channels.zappr.stream/logos/ondanovaratv",
+    "streamUrl": "https://585b674743bbb.streamlock.net/9006/9006/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rbetv",
+    "name": "RBE TV",
+    "logo": "https://channels.zappr.stream/logos/rbetv",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/rbetv/rbetv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleradiopace4",
+    "name": "TeleRadioPace 4",
+    "logo": "https://channels.zappr.stream/logos/teleradiopace4",
+    "streamUrl": "https://j78dpr7nyq5r-hls-live.mariatvcdn.it/teleradiopace4/13d74f2cfe921bfbc262697203d47d8f.sdp/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai3tgrpuglia",
+    "name": "Rai 3 TGR Puglia",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrpuglia-live.akamaized.net/hls/live/2025570/tgrpuglia/tgrpuglia/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telemajg",
+    "name": "Telemajg",
+    "logo": "https://channels.zappr.stream/logos/telemajg",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/telemajg/telemajg/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "teletrullo",
+    "name": "Teletrullo",
+    "logo": "https://channels.zappr.stream/logos/teletrullo",
+    "streamUrl": "https://80.teletrullo.tv/hls/teletrullo2.m3u8",
+    "license": null
+  },
+  {
+    "id": "deltatv",
+    "name": "Delta TV",
+    "logo": "https://channels.zappr.stream/logos/deltatv",
+    "streamUrl": "http://hbbtv-server.zivoli.it:8080/hls/deltatv/deltatv/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "politicaltv",
+    "name": "Political TV",
+    "logo": "https://channels.zappr.stream/logos/politicaltv",
+    "streamUrl": "https://cloudtv.azotosolutions.com:9553/politicaltv/politicaltv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "mediterraneatv",
+    "name": "Mediterranea TV",
+    "logo": "https://channels.zappr.stream/logos/mediterraneatv",
+    "streamUrl": "https://stream10.xdevel.com/video1s975675-1403/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale2",
+    "name": "Canale 2",
+    "logo": "https://channels.zappr.stream/logos/canale2",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/canale2/canale2/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "amica9",
+    "name": "Amica 9",
+    "logo": "https://channels.zappr.stream/logos/amica9",
+    "streamUrl": "UClNHmlTW9rZHdU5kLrcEg2A",
+    "license": null
+  },
+  {
+    "id": "antennasudextra",
+    "name": "Antenna Sud Extra",
+    "logo": "https://channels.zappr.stream/logos/antennasud.svg",
+    "streamUrl": "https://stream.antennasudwebtv.it:9443/hls/vod92.m3u8",
+    "license": null
+  },
+  {
+    "id": "reginadellapacetv",
+    "name": "Regina della Pace TV",
+    "logo": "https://channels.zappr.stream/logos/reginadellapace",
+    "streamUrl": "UCmVp1ZRry5E5Oh3obKi1ECg",
+    "license": null
+  },
+  {
+    "id": "azzurratvitalia",
+    "name": "Azzurra TV Italia",
+    "logo": "https://channels.zappr.stream/logos/azzurratvitalia.svg",
+    "streamUrl": "https://stream4.xdevel.com/video5s975955-1727/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "studio100",
+    "name": "Studio 100",
+    "logo": "https://channels.zappr.stream/logos/studio100",
+    "streamUrl": "https://cdn16.streamshow.it/cloud-studio100/studio100/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "barinews",
+    "name": "BariNews",
+    "logo": "https://channels.zappr.stream/logos/barinews",
+    "streamUrl": "https://stream.ets-sistemi.it:19360/barinews111/barinews111.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai3tgrsardegna",
+    "name": "Rai 3 TGR Sardegna",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrsardegna-live.akamaized.net/hls/live/2025572/tgrsardegna/tgrsardegna/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "videolina",
+    "name": "Videolina",
+    "logo": "https://channels.zappr.stream/logos/videolina",
+    "streamUrl": "https://7e1cc2454f2242afabe05cc0a2f483cd.msvdn.net/videolina/videolina_live/videolina_live/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telecostasmeralda",
+    "name": "Tele Costa Smeralda",
+    "logo": "https://channels.zappr.stream/logos/telecostasmeralda",
+    "streamUrl": "https://7e1cc2454f2242afabe05cc0a2f483cd.msvdn.net/tcs_live/tcs/tcs/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telesardegna",
+    "name": "TeleSardegna",
+    "logo": "https://channels.zappr.stream/logos/telesardegna",
+    "streamUrl": "https://f54364fcc4f84d9d9a72c8915e72704b.msvdn.net/live/S95445963/z3dZO4LpABmG/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "uno4",
+    "name": "Uno4",
+    "logo": "https://channels.zappr.stream/logos/uno4",
+    "streamUrl": "https://cdn.uno4.it/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "odeon24sardegna",
+    "name": "Odeon 24 Sardegna",
+    "logo": "https://channels.zappr.stream/logos/odeon24sardegna",
+    "streamUrl": "https://streaming.softwarecreation.it/Odeon24SA/Odeon24SA/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "aristanistv",
+    "name": "Aristanis TV",
+    "logo": "https://channels.zappr.stream/logos/aristanistv",
+    "streamUrl": "https://video2.azotosolutions.com:1936/supertvoristano/supertvoristano/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiotelevisionesarda",
+    "name": "Radio Televisione Sarda",
+    "logo": "https://channels.zappr.stream/logos/radiotelevisionesarda.svg",
+    "streamUrl": "https://stream.ejatv.com/memfs/dff807e1-b3b2-49f5-92d6-5b178be4eb6d.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleregionelive",
+    "name": "Teleregione Live",
+    "logo": "https://channels.zappr.stream/logos/teleregionelive",
+    "streamUrl": "teleregione_sardegna",
+    "license": null
+  },
+  {
+    "id": "sardegna1",
+    "name": "Sardegna 1",
+    "logo": "https://channels.zappr.stream/logos/sardegna1",
+    "streamUrl": "https://7e1cc2454f2242afabe05cc0a2f483cd.msvdn.net/live/S30721796/ZS3Xu8mn5f0J/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "radiosintony",
+    "name": "Radio Sintony",
+    "logo": "https://channels.zappr.stream/logos/radiosintony",
+    "streamUrl": "https://stream5.xdevel.com/audio0s976204-1069/stream/icecast.audio",
+    "license": null
+  },
+  {
+    "id": "rai3tgrsicilia",
+    "name": "Rai 3 TGR Sicilia",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrsicilia-live.akamaized.net/hls/live/2025573/tgrsicilia/tgrsicilia/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "antennasicilia",
+    "name": "Antenna Sicilia",
+    "logo": "https://channels.zappr.stream/logos/antennasicilia",
+    "streamUrl": "antennasicilia",
+    "license": null
+  },
+  {
+    "id": "tgs",
+    "name": "TGS",
+    "logo": "https://channels.zappr.stream/logos/tgs.svg",
+    "streamUrl": "https://router.xdevel.com/video1s975436-143/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telerent7gold",
+    "name": "Telerent 7 Gold",
+    "logo": "https://channels.zappr.stream/logos/telerent7gold",
+    "streamUrl": "https://5db313b643fd8.streamlock.net/telerent/telerent/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "teleone",
+    "name": "Tele One",
+    "logo": "https://channels.zappr.stream/logos/teleone",
+    "streamUrl": "https://648026e87a75e.streamlock.net/teleone/teleone/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "videomediterraneo",
+    "name": "Video Mediterraneo",
+    "logo": "https://channels.zappr.stream/logos/videomediterraneo",
+    "streamUrl": "https://bfbe5f347ac4424faf719dda285bc39e.msvdn.net/live/S54897858/4gWO7tTzpK3N/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "reitv",
+    "name": "Rei TV",
+    "logo": "https://channels.zappr.stream/logos/reitv",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/reitv/reitv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "tvm",
+    "name": "TVM",
+    "logo": "https://channels.zappr.stream/logos/tvm",
+    "streamUrl": "https://5db313b643fd8.streamlock.net/tvmpa/tvmpa/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rtp",
+    "name": "RTP",
+    "logo": "https://channels.zappr.stream/logos/rtp.svg",
+    "streamUrl": "https://router.xdevel.com/video0s975966-797/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "ondatvgiovani",
+    "name": "Onda TV Giovani",
+    "logo": "https://channels.zappr.stream/logos/ondatvgiovani",
+    "streamUrl": "https://5926fc9c7c5b2.streamlock.net/9040/9040/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "vintageradiotv",
+    "name": "Vintage Radio TV",
+    "logo": "https://channels.zappr.stream/logos/vintageradiotv",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/vintageradiotv/vintageradiotv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "rmktv",
+    "name": "RMK TV",
+    "logo": "https://channels.zappr.stream/logos/rmktv",
+    "streamUrl": "https://648026e87a75e.streamlock.net/rmktv/rmktv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "antennadelmediterraneo",
+    "name": "Antenna del Mediterraneo",
+    "logo": "https://channels.zappr.stream/logos/antennadelmediterraneo",
+    "streamUrl": "zappr://streamingvideoprovider/ajraqwugiagc",
+    "license": null
+  },
+  {
+    "id": "latr3",
+    "name": "La Tr3",
+    "logo": "https://channels.zappr.stream/logos/latr3",
+    "streamUrl": "https://player.restream.io/?token=9b0a435cfc15411abc2d34dbfeb97370",
+    "license": null
+  },
+  {
+    "id": "tfn",
+    "name": "TFN",
+    "logo": "https://channels.zappr.stream/logos/tfn",
+    "streamUrl": "tfn_tv",
+    "license": null
+  },
+  {
+    "id": "tris",
+    "name": "TRIS",
+    "logo": "https://channels.zappr.stream/logos/tris",
+    "streamUrl": "https://streaming.teletris.it/tmp_hls/live/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "alpauno",
+    "name": "Alpauno",
+    "logo": "https://channels.zappr.stream/logos/alpauno.svg",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/alpaunotv/alpaunotv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telesud",
+    "name": "Telesud",
+    "logo": "https://channels.zappr.stream/logos/telesud.svg",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/asdfgh/asdfgh/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "primatv",
+    "name": "Prima TV",
+    "logo": "https://channels.zappr.stream/logos/primatv",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/primatv/primatv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleiblea",
+    "name": "Teleiblea",
+    "logo": "https://channels.zappr.stream/logos/teleiblea.svg",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/teleiblea/teleiblea/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telespaziomessina",
+    "name": "Telespazio Messina",
+    "logo": "https://channels.zappr.stream/logos/telespaziomessina.svg",
+    "streamUrl": "https://rtm.cyberspazio.cloud:5443/LiveApp/streams/049229794390395765037801.m3u8",
+    "license": null
+  },
+  {
+    "id": "telemistretta",
+    "name": "TeleMistretta",
+    "logo": "https://channels.zappr.stream/logos/telemistretta.svg",
+    "streamUrl": "https://live.mariatvcdn.com/telemistretta/8fbcd205ada81b295ee6c211c3a80dde.sdp/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "tele8",
+    "name": "Tele8",
+    "logo": "https://channels.zappr.stream/logos/tele8",
+    "streamUrl": "https://57068da1deb21.streamlock.net/teletv8/teletv8/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "bellaradiotv",
+    "name": "Bella Radio TV",
+    "logo": "https://channels.zappr.stream/logos/bellaradiotv",
+    "streamUrl": "https://server.bellaradio.it:1443/live/bellaradiotv/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "canale97",
+    "name": "Canale 97",
+    "logo": "https://channels.zappr.stream/logos/canale97",
+    "streamUrl": "https://5db313b643fd8.streamlock.net/canale97/canale97/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "telegela",
+    "name": "Telegela",
+    "logo": "https://channels.zappr.stream/logos/telegela",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/telegela/telegela/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "tcf",
+    "name": "TCF",
+    "logo": "https://channels.zappr.stream/logos/tcf",
+    "streamUrl": "https://stream10.xdevel.com/video1s977294-1864/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiotaorminatv",
+    "name": "Radio Taormina TV",
+    "logo": "https://channels.zappr.stream/logos/radiotaormina",
+    "streamUrl": "https://router.xdevel.com/video1s3-7/stream/playlist_dvr.m3u8",
+    "license": null
+  },
+  {
+    "id": "doctv",
+    "name": "Doc TV",
+    "logo": "https://channels.zappr.stream/logos/doctv",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/radiodoctv/radiodoctv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telejato",
+    "name": "Telejato",
+    "logo": "https://channels.zappr.stream/logos/telejato.svg",
+    "streamUrl": "https://648026e87a75e.streamlock.net/telejato/telejato/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "etnachannel",
+    "name": "Etna Channel",
+    "logo": "https://channels.zappr.stream/logos/etnachannel",
+    "streamUrl": "https://5db313b643fd8.streamlock.net/Etnachannelponte/Etnachannelponte/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telepegaso",
+    "name": "TelePegaso",
+    "logo": "https://channels.zappr.stream/logos/telepegaso",
+    "streamUrl": "https://stream10.xdevel.com/video0s977504-2067/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai3tgrtoscana",
+    "name": "Rai 3 TGR Toscana",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrtoscana-live.akamaized.net/hls/live/2025574/tgrtoscana/tgrtoscana/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rtv38",
+    "name": "RTV38",
+    "logo": "https://channels.zappr.stream/logos/rtv38",
+    "streamUrl": "https://845d8509d2cb4f249dd0b2ae5755b6c2.msvdn.net/rtv38/rtv38_live_main/mainabr/playlist_dvr.m3u8",
+    "license": null
+  },
+  {
+    "id": "noitv",
+    "name": "NoiTV",
+    "logo": "https://channels.zappr.stream/logos/noitv",
+    "streamUrl": "https://player.restream.io/?token=2f048c14b27d49d291bdd84c991ad032",
+    "license": null
+  },
+  {
+    "id": "tv9telemaremma",
+    "name": "TV9 Telemaremma",
+    "logo": "https://channels.zappr.stream/logos/tv9telemaremma",
+    "streamUrl": "https://view.dacast.com/76305317bd6d5f2af13478c9b0ef4aef-live-6339ee65498e3ca8e75590daa7e447f5/adaptive.m3u8",
+    "license": null
+  },
+  {
+    "id": "tvl",
+    "name": "TVL",
+    "logo": "https://channels.zappr.stream/logos/tvl.svg",
+    "streamUrl": "https://oj7lnw79lg82-hls-live.mariatvcdn.it/mariatvcdn/70564e1c6884c007c76f0c128d679eed.sdp/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "granducatotv",
+    "name": "Granducato TV",
+    "logo": "https://channels.zappr.stream/logos/granducatotv",
+    "streamUrl": "https://www.telegranducato.com/VOD/tv/",
+    "license": null
+  },
+  {
+    "id": "teletruria",
+    "name": "Teletruria",
+    "logo": "https://channels.zappr.stream/logos/teletruria",
+    "streamUrl": "https://cb01a76aa80f4069b2bf82c90466134a.msvdn.net/live/S79636643/7iyY76l3IDBd/playlist_dvr.m3u8",
+    "license": null
+  },
+  {
+    "id": "50canale",
+    "name": "50 Canale",
+    "logo": "https://channels.zappr.stream/logos/50canale",
+    "streamUrl": "https://player.restream.io/?token=f9d7d8512f7547279acd18a4481171af",
+    "license": null
+  },
+  {
+    "id": "italia7",
+    "name": "Italia 7",
+    "logo": "https://channels.zappr.stream/logos/italia7.svg",
+    "streamUrl": "https://streaming.softwarecreation.it/Italia7/Italia7/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "tvp",
+    "name": "TVP",
+    "logo": "https://channels.zappr.stream/logos/tvprato",
+    "streamUrl": "https://live.mariatvcdn.com/tvprato/2db0dd5674586686a867ec52c3aa8e06.sdp/mono.m3u8",
+    "license": null
+  },
+  {
+    "id": "tv1",
+    "name": "TV1",
+    "logo": "https://channels.zappr.stream/logos/tv1",
+    "streamUrl": "https://stream10.xdevel.com/video0s978282-2579/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "teleregionetoscana",
+    "name": "Teleregione Toscana",
+    "logo": "https://channels.zappr.stream/logos/teleregionetoscana",
+    "streamUrl": "https://srvx1.selftv.video/teleregionetoscana/live/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "firenzetv",
+    "name": "Firenze TV",
+    "logo": "https://channels.zappr.stream/logos/firenzetv.svg",
+    "streamUrl": "https://39f0a786c3fb4d3fab9ec6870cc428f9.msvdn.net/live/S10341261/Wl6aWcmb8xsQ/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "arezzotv",
+    "name": "Arezzo TV",
+    "logo": "https://channels.zappr.stream/logos/arezzotv.svg",
+    "streamUrl": "https://www.arezzotv.it/",
+    "license": null
+  },
+  {
+    "id": "telecentro2",
+    "name": "TeleCentro 2",
+    "logo": "https://channels.zappr.stream/logos/telecentro2",
+    "streamUrl": "https://5f22d76e220e1.streamlock.net/telecentro2/telecentro2/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "canale3toscana",
+    "name": "Canale 3 Toscana",
+    "logo": "https://channels.zappr.stream/logos/canale3toscana",
+    "streamUrl": "https://router.xdevel.com/video0s976737-1453/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "tsd",
+    "name": "TSD",
+    "logo": "https://channels.zappr.stream/logos/telesandomenico",
+    "streamUrl": "https://stream.mariatvcdn.com/tsd/7c59373bfdb38201b9215ff86f0ce6af.sdp/mono.m3u8",
+    "license": null
+  },
+  {
+    "id": "umbriatv",
+    "name": "Umbria TV",
+    "logo": "https://channels.zappr.stream/logos/umbriatv",
+    "streamUrl": "https://umbriatv.stream.rubidia.it:8083/live/umbriatv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telecamaiorenuoviorizzonti",
+    "name": "Telecamaiore Nuovi Orizzonti",
+    "logo": "https://channels.zappr.stream/logos/telecamaiorenuoviorizzonti",
+    "streamUrl": "https://tv.ccn.it/hls/0/stream.m3u8",
+    "license": null
+  },
+  {
+    "id": "sienatv",
+    "name": "Siena TV",
+    "logo": "https://channels.zappr.stream/logos/sienatv",
+    "streamUrl": "https://router.xdevel.com/video0s976727-1441/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiofirenzeviola",
+    "name": "Radio Firenze Viola",
+    "logo": "https://channels.zappr.stream/logos/radiofirenzeviola",
+    "streamUrl": "https://tmw.fluid.stream/rfviola_tv/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "nti",
+    "name": "NTI",
+    "logo": "https://channels.zappr.stream/logos/ntitoscana",
+    "streamUrl": "https://www.ntimedia.it/video/S0B/S0B_master.m3u8",
+    "license": null
+  },
+  {
+    "id": "amarantochannel",
+    "name": "Amaranto Channel",
+    "logo": "https://channels.zappr.stream/logos/ssarezzo.svg",
+    "streamUrl": "https://10529e63b0a84fb6bdf487096cc5eaab.msvdn.net/live/S10857183/qMq5TNxA3ouH/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "ideaplus",
+    "name": "Idea Plus",
+    "logo": "https://channels.zappr.stream/logos/ideaplus",
+    "streamUrl": "https://rst2.saiuzwebnetwork.it:8081/ideaplus/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "radioitaliacina",
+    "name": "Radio Italia Cina",
+    "logo": "https://channels.zappr.stream/logos/radioitaliacina",
+    "streamUrl": "https://585b674743bbb.streamlock.net/9054/9054/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "retetoscanaclassica",
+    "name": "Rete Toscana Classica",
+    "logo": "https://channels.zappr.stream/logos/retetoscanaclassica",
+    "streamUrl": "https://nr12.newradio.it:8744/stream",
+    "license": null
+  },
+  {
+    "id": "rai3tgrtrento",
+    "name": "Rai 3 TGR Trento",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrtrento-dash-live.akamaized.net/dash/live/2025613/tgrtrento/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "trentinotv",
+    "name": "Trentino TV",
+    "logo": "https://channels.zappr.stream/logos/trentinotv",
+    "streamUrl": "https://5e73cf528f404.streamlock.net/TrentinoTV/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "rttr",
+    "name": "RTTR",
+    "logo": "https://channels.zappr.stream/logos/rttr",
+    "streamUrl": "https://rttr.fluid.stream/RTTRlive/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telepacetrento",
+    "name": "Telepace Trento",
+    "logo": "https://channels.zappr.stream/logos/telepacetrento.svg",
+    "streamUrl": "https://5a1178b42cc03.streamlock.net/telepacetrento/telepacetrento/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telenuovo",
+    "name": "Telenuovo",
+    "logo": "https://channels.zappr.stream/logos/telenuovo.svg",
+    "streamUrl": "https://liveac901.b-cdn.net/channel02.smil/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "tv7triveneta",
+    "name": "TV7 Triveneta",
+    "logo": "https://channels.zappr.stream/logos/tv7triveneta.svg",
+    "streamUrl": "https://uvotv.zappr.stream/545.m3u8",
+    "license": null
+  },
+  {
+    "id": "tv33trento",
+    "name": "TV33 Trento",
+    "logo": "https://channels.zappr.stream/logos/tv33.svg",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/tv33tn/tv33tn/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "orf1",
+    "name": "ORF 1",
+    "logo": "https://channels.zappr.stream/logos/orf1.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/orf1/browser-HLS8/orf1.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai3tgrbolzano",
+    "name": "Rai 3 TGR Bolzano",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrbolzano-live.akamaized.net/hls/live/2025560/tgrbolzano/tgrbolzano/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "altoadigetv",
+    "name": "Alto Adige TV",
+    "logo": "https://channels.zappr.stream/logos/altoadigetv",
+    "streamUrl": "https://5f204aff97bee.streamlock.net/AltoAdigeTV/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "peertv",
+    "name": "Peer.tv",
+    "logo": "https://channels.zappr.stream/logos/peertv.svg",
+    "streamUrl": "https://iptv.peer.biz/live/peertv.m3u8",
+    "license": null
+  },
+  {
+    "id": "tv33bolzano",
+    "name": "TV33 Bolzano",
+    "logo": "https://channels.zappr.stream/logos/tv33.svg",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/tv33bz/tv33bz/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "servustv",
+    "name": "ServusTV",
+    "logo": "https://channels.zappr.stream/logos/servustv.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/servustvhd/browser-HLS8/servustvhd.m3u8",
+    "license": null
+  },
+  {
+    "id": "daserste",
+    "name": "Das Erste",
+    "logo": "https://channels.zappr.stream/logos/daserste.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/daserstehd/browser-HLS8/daserstehd.m3u8",
+    "license": null
+  },
+  {
+    "id": "zdf",
+    "name": "ZDF",
+    "logo": "https://channels.zappr.stream/logos/zdf.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/zdfhd/browser-HLS8/zdfhd.m3u8",
+    "license": null
+  },
+  {
+    "id": "orf2",
+    "name": "ORF 2",
+    "logo": "https://channels.zappr.stream/logos/orf2.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/orf2/browser-HLS8/orf2.m3u8",
+    "license": null
+  },
+  {
+    "id": "orf3",
+    "name": "ORF 3",
+    "logo": "https://channels.zappr.stream/logos/orf3.svg",
+    "streamUrl": "https://orf3-247.mdn.ors.at/orf/orf3/qxa-247/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "srf1",
+    "name": "SRF 1",
+    "logo": "https://channels.zappr.stream/logos/srf1.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/srf1hd/browser-HLS8/srf1hd.m3u8",
+    "license": null
+  },
+  {
+    "id": "srfzwei",
+    "name": "SRF Zwei",
+    "logo": "https://channels.zappr.stream/logos/srfzwei.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/srf2hd/browser-HLS8/srf2hd.m3u8",
+    "license": null
+  },
+  {
+    "id": "zdfneo",
+    "name": "ZDFneo",
+    "logo": "https://channels.zappr.stream/logos/zdfneo.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/zdfneohd/browser-HLS8/zdfneohd.m3u8",
+    "license": null
+  },
+  {
+    "id": "3sat",
+    "name": "3sat",
+    "logo": "https://channels.zappr.stream/logos/3sat.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/3sathd/browser-HLS8/3sathd.m3u8",
+    "license": null
+  },
+  {
+    "id": "brsüd",
+    "name": "BR Süd",
+    "logo": "https://channels.zappr.stream/logos/br.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/brhdsud/browser-HLS8/brhdsud.m3u8",
+    "license": null
+  },
+  {
+    "id": "kika",
+    "name": "KiKA",
+    "logo": "https://channels.zappr.stream/logos/kika.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/kikahd/browser-HLS8/kikahd.m3u8",
+    "license": null
+  },
+  {
+    "id": "arte",
+    "name": "ARTE",
+    "logo": "https://channels.zappr.stream/logos/arte.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/artehd/browser-HLS8/artehd.m3u8",
+    "license": null
+  },
+  {
+    "id": "rsila1",
+    "name": "RSI LA1",
+    "logo": "https://channels.zappr.stream/logos/rsila1.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/rsila1hd/browser-HLS8/rsila1hd.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai3tgrumbria",
+    "name": "Rai 3 TGR Umbria",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrumbria-live.akamaized.net/hls/live/2025576/tgrumbria/tgrumbria/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "trg",
+    "name": "TRG",
+    "logo": "https://channels.zappr.stream/logos/trg",
+    "streamUrl": "https://www.trgmedia.it/hls/livestreamHD.m3u8",
+    "license": null
+  },
+  {
+    "id": "umbria+",
+    "name": "Umbria+",
+    "logo": "https://channels.zappr.stream/logos/umbria+",
+    "streamUrl": "https://diretta.umbriapiu.it:8080/show/show.m3u8",
+    "license": null
+  },
+  {
+    "id": "ètvumbria",
+    "name": "èTV Umbria",
+    "logo": "https://channels.zappr.stream/logos/ètvumbria",
+    "streamUrl": "https://live.ipstream.it/etvumbria/etvumbria.stream/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "super24",
+    "name": "Super24",
+    "logo": "https://channels.zappr.stream/logos/super24",
+    "streamUrl": "https://5db313b643fd8.streamlock.net/leotv/leotv/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "amternitelevision",
+    "name": "AM Terni Television",
+    "logo": "https://channels.zappr.stream/logos/amternitelevision.svg",
+    "streamUrl": "https://stream9.xdevel.com/video0s976364-1176/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiocalima",
+    "name": "Radio Calima",
+    "logo": "https://channels.zappr.stream/logos/radiocalima",
+    "streamUrl": "https://nrvideo1.newradio.it/calimafm/calimafm/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "galileotelevision",
+    "name": "Galileo Television",
+    "logo": "https://channels.zappr.stream/logos/teleradiogalileo.svg",
+    "streamUrl": "https://samson.streamerr.co:8081/telegalileo-1/index.m3u8",
+    "license": null
+  },
+  {
+    "id": "errevutì",
+    "name": "Errevutì",
+    "logo": "https://channels.zappr.stream/logos/errevutì",
+    "streamUrl": "https://stream10.xdevel.com/video0s977339-1877/stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radiogalileo",
+    "name": "Radio Galileo",
+    "logo": "https://channels.zappr.stream/logos/teleradiogalileo.svg",
+    "streamUrl": "https://live.radiokrishna.com:8443/RG",
+    "license": null
+  },
+  {
+    "id": "radiohitfm",
+    "name": "Radio Hit FM",
+    "logo": "https://channels.zappr.stream/logos/hitfm",
+    "streamUrl": "https://ns3159873.ip-51-91-131.eu:8026/stream",
+    "license": null
+  },
+  {
+    "id": "radioleo",
+    "name": "Radio Leo",
+    "logo": "https://channels.zappr.stream/logos/radioleo",
+    "streamUrl": "https://ns3159873.ip-51-91-131.eu:8130/stream",
+    "license": null
+  },
+  {
+    "id": "rai3tgrvalledaosta",
+    "name": "Rai 3 TGR Valle d'Aosta",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrvaldaosta-live.akamaized.net/hls/live/2025577/tgrvaldaosta/tgrvaldaosta/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telecityvalledaosta",
+    "name": "Telecity Valle d'Aosta",
+    "logo": "https://channels.zappr.stream/logos/telecity",
+    "streamUrl": "https://64b16f23efbee.streamlock.net/telecityvda/telecityvda/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "tv5mondeeurope",
+    "name": "TV5Monde Europe",
+    "logo": "https://channels.zappr.stream/logos/tv5mondeeurope.svg",
+    "streamUrl": "https://live.tv5monde.com/europe.html",
+    "license": null
+  },
+  {
+    "id": "rts1",
+    "name": "RTS 1",
+    "logo": "https://channels.zappr.stream/logos/rts1.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/rts1hd/browser-HLS8/rts1hd.m3u8",
+    "license": null
+  },
+  {
+    "id": "rai3tgrveneto",
+    "name": "Rai 3 TGR Veneto",
+    "logo": "https://channels.zappr.stream/logos/rai3.svg",
+    "streamUrl": "https://tgrveneto-live.akamaized.net/hls/live/2025578/tgrveneto/tgrveneto/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "tvavicenza",
+    "name": "TVA Vicenza",
+    "logo": "https://channels.zappr.stream/logos/tvavicenza.svg",
+    "streamUrl": "https://fms.telemar.it:1936/live/diretta_1/manifest.mpd",
+    "license": null
+  },
+  {
+    "id": "reteveneta",
+    "name": "Rete Veneta",
+    "logo": "https://channels.zappr.stream/logos/reteveneta.svg",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/reteveneta/reteveneta/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telearena",
+    "name": "Telearena",
+    "logo": "https://channels.zappr.stream/logos/telearena.svg",
+    "streamUrl": "https://5f204aff97bee.streamlock.net/TeleArena/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telebelluno",
+    "name": "Telebelluno",
+    "logo": "https://channels.zappr.stream/logos/telebelluno",
+    "streamUrl": "https://g2qd3exzy7an-hls-live.mariatvcdn.it/livetelebelluno/be0e3154b820953ce1a94a937bb2bb5d.sdp/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "televenezia",
+    "name": "Televenezia",
+    "logo": "https://channels.zappr.stream/logos/televenezia",
+    "streamUrl": "https://59d7d6f47d7fc.streamlock.net/televenezia/televenezia.stream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "dolomitilifetv",
+    "name": "Dolomiti Life TV",
+    "logo": "https://channels.zappr.stream/logos/dolomitilifetv",
+    "streamUrl": "https://stream.mariatvcdn.com/teledolomiti/a66b8b8ac2baee06f136e87b9805774d.sdp/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "telecittà",
+    "name": "Telecittà",
+    "logo": "https://channels.zappr.stream/logos/telecittà",
+    "streamUrl": "https://soobeat.fluid.stream/Telecitta/livestream/playlist.m3u8",
+    "license": null
+  },
+  {
+    "id": "radioadigetv",
+    "name": "Radio Adige TV",
+    "logo": "https://channels.zappr.stream/logos/radioadigetv",
+    "streamUrl": "https://stream9.xdevel.com/video0s976463-1250/stream/playlist.m3u8",
+    "license": null
+  }
+]
