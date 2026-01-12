@@ -19,6 +19,8 @@ dependencies:
   media_kit_libs_video: ^1.0.5
 
   json_annotation: ^4.9.0
+  shared_preferences: ^2.3.3
+  google_mobile_ads: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -33,6 +35,7 @@ flutter:
   # Assets per canali (fallback locale)
   assets:
     - assets/channels.json
+    - assets/countries.json
 
   # Font Poppins - decommenta quando aggiungi i file font
   # fonts:

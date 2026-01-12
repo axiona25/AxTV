@@ -4,6 +4,13 @@ class Env {
   static const vercelApiBase = 'https://vercel-api.zappr.stream/api';
   static const alwaysdataApiBase = 'https://zappr.alwaysdata.net';
 
+  // TMDB API rimosso - TMDB non fornisce link riproducibili direttamente
+  // Gli URL TMDB sono solo placeholder e richiederebbero ricerca link da fonti esterne
+  // static const tmdbApiKey = '...';
+  // static const tmdbApiBase = 'https://api.themoviedb.org/3';
+  // static const tmdbImageBase = 'https://image.tmdb.org/t/p/w500';
+  // static const tmdbImageBaseThumb = 'https://image.tmdb.org/t/p/w200';
+
   /// URL del file JSON dei canali.
   /// 
   /// Opzioni:
@@ -20,4 +27,3 @@ class Env {
   /// 2. Fai commit e push
   /// 3. L'app caricherà automaticamente i nuovi canali
 }
-

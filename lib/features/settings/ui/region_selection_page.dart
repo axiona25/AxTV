@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../../../core/theme/app_theme.dart';
 
 class RegionSelectionPage extends StatefulWidget {
@@ -40,34 +39,15 @@ class _RegionSelectionPageState extends State<RegionSelectionPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppTheme.darkBackground,
-      appBar: AppBar(
-        backgroundColor: AppTheme.darkBackground,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: AppTheme.textPrimary),
-          onPressed: () => context.pop(),
+    return Column(
+      children: [
+        _buildSearchBar(),
+        Expanded(
+          child: _buildRegionsList(),
         ),
-        title: const Text(
-          'Seleziona Regione',
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      body: Column(
-        children: [
-          _buildSearchBar(),
-          Expanded(
-            child: _buildRegionsList(),
-          ),
-          _buildRestoreButton(),
-          const SizedBox(height: 16),
-        ],
-      ),
-      bottomNavigationBar: _buildBottomNav(3),
+        _buildRestoreButton(),
+        const SizedBox(height: 16),
+      ],
     );
   }
 
@@ -231,7 +211,7 @@ class _RegionSelectionPageState extends State<RegionSelectionPage> {
 
   Widget _buildRestoreButton() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: SizedBox(
         width: double.infinity,
         child: OutlinedButton(
@@ -264,45 +244,6 @@ class _RegionSelectionPageState extends State<RegionSelectionPage> {
     );
   }
 
-  Widget _buildBottomNav(int currentIndex) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppTheme.cardBackground,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.3),
-            blurRadius: 8,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
-      child: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (index) {
-          if (index == 0) {
-            context.go('/');
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Preferiti',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Lista',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Impostazioni',
-          ),
-        ],
-      ),
-    );
-  }
+
 }
 

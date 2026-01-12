@@ -4,21 +4,46 @@ import 'dart:convert';
 import '../../../config/env.dart';
 import '../../../core/http/dio_client.dart';
 import '../../../core/security/content_validator.dart';
+import 'zappr_protocol_resolver.dart';
 
 class StreamResolver {
   final Dio _dio = dioProvider;
+  final _zapprResolver = ZapprProtocolResolver();
   
   // Cache per autenticazione Rai (come fa Zappr)
   String? _cachedRaiAuth;
   int? _cachedRaiAuthExpiration;
+  
+  /// Risolve un URL con schema zappr://
+  /// Usa il risolutore dedicato
+  Future<Uri> _resolveZapprProtocol(String zapprUrl) async {
+    // Usa il componente dedicato per risolvere URL zappr://
+    // Prova prima con la strategia principale, poi con fallback
+    try {
+      return await _zapprResolver.resolve(zapprUrl);
+    } catch (e) {
+      // ignore: avoid_print
+      print('StreamResolver: Strategia principale fallita, provo fallback: $e');
+      return await _zapprResolver.resolveWithFallback(zapprUrl);
+    }
+  }
+  
 
   /// Risolve l'URL originale in un URL riproducibile
   /// Se necessario, chiama le API Zappr per ottenere l'URL finale
   Uri resolvePlayableUrl(String originalUrl) {
     final url = originalUrl.trim();
     
-    // Validazione sicurezza
-    if (!ContentValidator.validateUrl(url)) {
+    // URL con schema zappr:// sono sempre validi (schema personalizzato Zappr)
+    final isZapprProtocol = url.startsWith('zappr://');
+    
+    // TMDB non supportato - gli URL TMDB non sono riproducibili direttamente
+    // if (url.startsWith('tmdb://')) {
+    //   return Uri.parse('${Env.cloudflareApiBase}?${Uri.encodeComponent(url)}');
+    // }
+    
+    // Validazione sicurezza (skip per URL zappr://)
+    if (!isZapprProtocol && !ContentValidator.validateUrl(url)) {
       ContentValidator.logSecurityEvent(
         'Blocked URL in resolvePlayableUrl',
         {'url': url.substring(0, 100)},
@@ -36,7 +61,8 @@ class StreamResolver {
     // Casi che Zappr risolve con Cloudflare
     // Zappr costruisce: ${backend.host[api]}/api?${url}
     // Env.cloudflareApiBase già include /api
-    if (isDailymotion || isLivestream || isNetplus) {
+    // URL zappr:// vengono risolti tramite API Cloudflare
+    if (isZapprProtocol || isDailymotion || isLivestream || isNetplus) {
       return Uri.parse('${Env.cloudflareApiBase}?${Uri.encodeComponent(url)}');
     }
 
@@ -232,16 +258,41 @@ class StreamResolver {
   /// Restituisce l'URL finale riproducibile
   /// [license] può essere "rai-akamai" per canali Rai che richiedono autenticazione
   Future<Uri> resolvePlayableUrlAsync(String originalUrl, {String? license}) async {
+    final resolverStart = DateTime.now();
     final url = originalUrl.trim();
     
-    // Validazione sicurezza
-    if (!ContentValidator.validateUrl(url)) {
+    // TMDB non supportato - gli URL TMDB non sono riproducibili direttamente
+    // if (url.startsWith('tmdb://')) {
+    //   throw Exception('Film TMDB non riproducibile - richiedono ricerca link streaming');
+    // }
+    
+    // ignore: avoid_print
+    print('═══════════════════════════════════════════════════════════');
+    print('StreamResolver: [RESOLVE_START] Risolvo URL');
+    print('StreamResolver: [RESOLVE] URL originale: $url');
+    print('StreamResolver: [RESOLVE] License: ${license ?? "nessuna"}');
+    print('StreamResolver: [RESOLVE] Timestamp: ${resolverStart.toIso8601String()}');
+    
+    // URL con schema zappr:// sono sempre validi (schema personalizzato Zappr)
+    final isZapprProtocol = url.startsWith('zappr://');
+    
+    // ignore: avoid_print
+    print('StreamResolver: [RESOLVE] URL trimmed: $url');
+    print('StreamResolver: [RESOLVE] È zappr://: $isZapprProtocol');
+    
+    // Validazione sicurezza (skip per URL zappr://)
+    if (!isZapprProtocol && !ContentValidator.validateUrl(url)) {
+      // ignore: avoid_print
+      print('StreamResolver: [SECURITY] URL bloccato dalla validazione');
       ContentValidator.logSecurityEvent(
         'Blocked URL in resolvePlayableUrlAsync',
         {'url': url.substring(0, 100), 'license': license},
       );
       throw Exception('URL non autorizzato rilevato per test di sicurezza');
     }
+    
+    // ignore: avoid_print
+    print('StreamResolver: [RESOLVE] Validazione superata');
 
     final isDailymotion = url.contains('dailymotion.com/video/');
     final isLivestream = url.contains('livestream.com/accounts/');
@@ -298,12 +349,28 @@ class StreamResolver {
     // Determina quale API usare
     // Zappr costruisce: ${backend.host[api]}/api?${url}
     // Env.cloudflareApiBase e Env.vercelApiBase già includono /api
-    if (isDailymotion || isLivestream || isNetplus) {
+    
+    // URL con schema zappr:// vengono risolti con sistema dedicato
+    if (isZapprProtocol) {
+      // ignore: avoid_print
+      print('StreamResolver: [RESOLVE] Rilevato URL zappr://, uso risolutore dedicato');
+      final result = await _resolveZapprProtocol(url);
+      final resolverDuration = DateTime.now().difference(resolverStart);
+      // ignore: avoid_print
+      print('StreamResolver: [RESOLVE_END] Completato in ${resolverDuration.inMilliseconds}ms');
+      print('StreamResolver: [RESOLVE] URL risolto: ${result.toString().length > 200 ? '${result.toString().substring(0, 200)}...' : result}');
+      print('═══════════════════════════════════════════════════════════');
+      return result;
+    } else if (isDailymotion || isLivestream || isNetplus) {
+      // ignore: avoid_print
+      print('StreamResolver: [RESOLVE] Rilevato URL che richiede API Cloudflare');
       apiUrl = '${Env.cloudflareApiBase}?${Uri.encodeComponent(url)}';
     } else if (isRaiMediapolis || isBabylonCloud) {
       apiUrl = '${Env.vercelApiBase}?${Uri.encodeComponent(url)}';
     } else {
-      // Già riproducibile direttamente (es. HLS diretto)
+      // Già riproducibile direttamente (es. HLS diretto, URL MP4, URL da m3u8-xtream-playlist)
+      // NOTA: Gli URL da m3u8-xtream-playlist (es. zplaypro.lat) NON sono URL Zappr
+      // e non devono essere risolti tramite API Zappr - vanno usati direttamente
       return Uri.parse(url);
     }
 
@@ -312,7 +379,8 @@ class StreamResolver {
     // Quindi seguiamo i redirect manualmente per ottenere l'URL finale HLS
     try {
       // ignore: avoid_print
-      print('StreamResolver: Risolvo URL API Zappr: $apiUrl');
+      print('StreamResolver: [API_REQUEST] Risolvo URL API Zappr: $apiUrl');
+      final apiRequestStart = DateTime.now();
       
       // Usa GET con followRedirects per seguire i redirect
       // Timeout breve per non scaricare tutto lo stream
@@ -326,6 +394,13 @@ class StreamResolver {
         ),
       );
       
+      final apiRequestDuration = DateTime.now().difference(apiRequestStart);
+      // ignore: avoid_print
+      print('StreamResolver: [API_RESPONSE] Richiesta completata in ${apiRequestDuration.inMilliseconds}ms');
+      print('StreamResolver: [API_RESPONSE] Status: ${response.statusCode}');
+      print('StreamResolver: [API_RESPONSE] Redirect: ${response.redirects.length}');
+      print('StreamResolver: [API_RESPONSE] Real URI: ${response.realUri}');
+      
       // Ottieni l'URL finale dal redirect
       String finalUrl = apiUrl; // Default all'URL API
       
@@ -334,32 +409,51 @@ class StreamResolver {
         final lastRedirect = response.redirects.last;
         finalUrl = lastRedirect.location.toString();
         // ignore: avoid_print
-        print('StreamResolver: Redirect trovato: ${lastRedirect.statusCode} -> $finalUrl');
+        print('StreamResolver: [REDIRECT] Redirect trovato: ${lastRedirect.statusCode} -> $finalUrl');
+        print('StreamResolver: [REDIRECT] URL finale length: ${finalUrl.length} caratteri');
       } else {
         // Se non ci sono redirect, usa l'URL della risposta finale
         finalUrl = response.realUri.toString();
         // ignore: avoid_print
-        print('StreamResolver: Nessun redirect, URL finale: $finalUrl');
+        print('StreamResolver: [NO_REDIRECT] Nessun redirect, URL finale: $finalUrl');
       }
       
       // Verifica se è un URL di errore
-      if (finalUrl.contains('video_no_available') || 
+      final hasError = finalUrl.contains('video_no_available') || 
           finalUrl.contains('error') ||
-          finalUrl.contains('unavailable')) {
+          finalUrl.contains('unavailable');
+      
+      // ignore: avoid_print
+      print('StreamResolver: [VALIDATION] Verifica URL finale per errori...');
+      print('StreamResolver: [VALIDATION] Contiene "video_no_available": ${finalUrl.contains('video_no_available')}');
+      print('StreamResolver: [VALIDATION] Contiene "error": ${finalUrl.contains('error')}');
+      print('StreamResolver: [VALIDATION] Contiene "unavailable": ${finalUrl.contains('unavailable')}');
+      print('StreamResolver: [VALIDATION] URL ha errori: $hasError');
+      
+      if (hasError) {
         // ignore: avoid_print
-        print('StreamResolver: API restituisce URL di errore: $finalUrl');
-        print('StreamResolver: L\'URL del canale potrebbe essere scaduto o non valido');
-        print('StreamResolver: Prova a verificare l\'URL sul sito zappr.stream');
+        print('StreamResolver: [ERROR] API restituisce URL di errore: $finalUrl');
+        print('StreamResolver: [ERROR] L\'URL del canale potrebbe essere scaduto o non valido');
+        print('StreamResolver: [ERROR] Prova a verificare l\'URL sul sito zappr.stream');
         throw Exception('Stream non disponibile: L\'API restituisce un video di errore. L\'URL del canale potrebbe essere scaduto.');
       }
       
       // ignore: avoid_print
-      print('StreamResolver: URL finale HLS: $finalUrl');
+      print('StreamResolver: [SUCCESS] URL finale HLS valido: $finalUrl');
+      final resolverDuration = DateTime.now().difference(resolverStart);
+      print('StreamResolver: [RESOLVE_END] Completato in ${resolverDuration.inMilliseconds}ms');
+      print('═══════════════════════════════════════════════════════════');
       return Uri.parse(finalUrl);
-    } catch (e) {
-      // Se fallisce, lancia eccezione per permettere fallback all'URL originale
+    } catch (e, stackTrace) {
+      final resolverDuration = DateTime.now().difference(resolverStart);
       // ignore: avoid_print
-      print('StreamResolver: Errore nel risolvere URL: $e');
+      print('StreamResolver: [EXCEPTION] Errore dopo ${resolverDuration.inMilliseconds}ms');
+      print('StreamResolver: [EXCEPTION] Tipo: ${e.runtimeType}');
+      print('StreamResolver: [EXCEPTION] Messaggio: $e');
+      print('StreamResolver: [EXCEPTION] Stack trace:');
+      print(stackTrace);
+      print('═══════════════════════════════════════════════════════════');
+      // Se fallisce, lancia eccezione per permettere fallback all'URL originale
       rethrow;
     }
   }
