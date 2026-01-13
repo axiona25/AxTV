@@ -488,19 +488,33 @@ class _PlayerPageState extends State<PlayerPage> {
         // Prova prima con risoluzione Zappr (gestisce anche autenticazione Rai)
         try {
           // ignore: avoid_print
-          print('PlayerPage: Risolvo URL per canale ${widget.channel.name}');
-          print('PlayerPage: URL originale: ${widget.channel.streamUrl}');
-          print('PlayerPage: License: ${widget.channel.license ?? "nessuna"}');
+          print('═══════════════════════════════════════════════════════════');
+          print('PlayerPage: [RESOLVE_START] Risolvo URL per canale ${widget.channel.name}');
+          print('PlayerPage: [RESOLVE] URL originale: ${widget.channel.streamUrl}');
+          print('PlayerPage: [RESOLVE] License: ${widget.channel.license ?? "nessuna"}');
+          print('PlayerPage: [RESOLVE] Category: ${widget.channel.category ?? "nessuna"}');
+          print('PlayerPage: [RESOLVE] Region: ${widget.channel.region ?? "nessuna"}');
           
+          final resolveStart = DateTime.now();
           final playable = await _resolver.resolvePlayableUrlAsync(
             widget.channel.streamUrl,
             license: widget.channel.license,
           );
+          final resolveDuration = DateTime.now().difference(resolveStart);
+          
           urlToPlay = playable.toString();
           _resolvedUrl = urlToPlay;
           
           // ignore: avoid_print
-          print('PlayerPage: URL risolto: ${urlToPlay.substring(0, urlToPlay.length > 150 ? 150 : urlToPlay.length)}...');
+          print('PlayerPage: [RESOLVE_END] Risoluzione completata in ${resolveDuration.inMilliseconds}ms');
+          print('PlayerPage: [RESOLVE] URL risolto length: ${urlToPlay.length} caratteri');
+          print('PlayerPage: [RESOLVE] URL risolto (primi 200 char): ${urlToPlay.length > 200 ? urlToPlay.substring(0, 200) + "..." : urlToPlay}');
+          print('PlayerPage: [RESOLVE] URL risolto (ultimi 100 char): ${urlToPlay.length > 100 ? "...${urlToPlay.substring(urlToPlay.length - 100)}" : urlToPlay}');
+          print('PlayerPage: [RESOLVE] Contiene JWT token: ${urlToPlay.contains("/tok_")}');
+          print('PlayerPage: [RESOLVE] Contiene cloudflare-api: ${urlToPlay.contains("cloudflare-api.zappr.stream")}');
+          print('PlayerPage: [RESOLVE] Contiene vercel-api: ${urlToPlay.contains("vercel-api.zappr.stream")}');
+          print('PlayerPage: [RESOLVE] Contiene .m3u8: ${urlToPlay.contains(".m3u8")}');
+          print('═══════════════════════════════════════════════════════════');
           
           // Verifica che per canali Rai l'URL contenga l'autenticazione
           // MA: 
@@ -961,10 +975,35 @@ class _PlayerPageState extends State<PlayerPage> {
             print('PlayerPage: [OPEN] URL finale: $urlToPlay');
             print('PlayerPage: [OPEN] URL length: ${urlToPlay.length} caratteri');
             print('PlayerPage: [OPEN] Is proxato: ${urlToPlay.contains('localhost:3000')}');
-            print('PlayerPage: [OPEN] Header finali:');
+            print('PlayerPage: [OPEN] Is Cloudflare API: ${urlToPlay.contains('cloudflare-api.zappr.stream')}');
+            print('PlayerPage: [OPEN] Is Vercel API: ${urlToPlay.contains('vercel-api.zappr.stream')}');
+            print('PlayerPage: [OPEN] Contiene JWT token: ${urlToPlay.contains("/tok_")}');
+            print('PlayerPage: [OPEN] Contiene .m3u8: ${urlToPlay.contains(".m3u8")}');
+            print('PlayerPage: [OPEN] Contiene .mp4: ${urlToPlay.contains(".mp4")}');
+            print('PlayerPage: [OPEN] Header finali (${headers.length} header):');
             headers.forEach((key, value) {
-              print('PlayerPage: [OPEN]   $key: ${value.toString().length > 100 ? '${value.toString().substring(0, 100)}...' : value}');
+              final valueStr = value.toString();
+              print('PlayerPage: [OPEN]   $key: ${valueStr.length > 100 ? '${valueStr.substring(0, 100)}...' : valueStr}');
             });
+            
+            // Verifica se l'URL è valido
+            try {
+              final uri = Uri.parse(urlToPlay);
+              print('PlayerPage: [OPEN] URI parsed:');
+              print('PlayerPage: [OPEN]   - Scheme: ${uri.scheme}');
+              print('PlayerPage: [OPEN]   - Host: ${uri.host}');
+              print('PlayerPage: [OPEN]   - Path: ${uri.path}');
+              print('PlayerPage: [OPEN]   - Query: ${uri.query.length > 200 ? '${uri.query.substring(0, 200)}...' : uri.query}');
+              print('PlayerPage: [OPEN]   - Query length: ${uri.query.length} caratteri');
+              if (uri.queryParameters.isNotEmpty) {
+                print('PlayerPage: [OPEN]   - Query parameters count: ${uri.queryParameters.length}');
+                uri.queryParameters.forEach((key, value) {
+                  print('PlayerPage: [OPEN]     - $key: ${value.length > 100 ? '${value.substring(0, 100)}...' : value}');
+                });
+              }
+            } catch (e) {
+              print('PlayerPage: [OPEN] ⚠️ ERRORE parsing URI: $e');
+            }
 
             try {
               // Controlla se stiamo disattivando prima di aprire
@@ -991,14 +1030,26 @@ class _PlayerPageState extends State<PlayerPage> {
               // ignore: avoid_print
               print('PlayerPage: [OPEN] ✅ _player.open() completato in ${openDuration.inMilliseconds}ms');
               print('═══════════════════════════════════════════════════════════');
-            } catch (e) {
+            } catch (e, stackTrace) {
               final openDuration = DateTime.now().difference(openStart);
               // ignore: avoid_print
               print('PlayerPage: [OPEN] ❌ ERRORE durante _player.open() dopo ${openDuration.inMilliseconds}ms');
               print('PlayerPage: [OPEN] Tipo errore: ${e.runtimeType}');
               print('PlayerPage: [OPEN] Errore: $e');
-              print('PlayerPage: [OPEN] Stack trace: ${StackTrace.current}');
-              print('═══════════════════════════════════════════════════════════');
+              print('PlayerPage: [OPEN] Stack trace completo:');
+              print(stackTrace);
+              
+              // Se è un'eccezione specifica, mostra più dettagli
+              if (e is TimeoutException) {
+                print('PlayerPage: [OPEN] ⚠️ TIMEOUT: Il player non ha risposto entro 30 secondi');
+                print('PlayerPage: [OPEN] ⚠️ Possibili cause:');
+                print('PlayerPage: [OPEN]   - URL non accessibile');
+                print('PlayerPage: [OPEN]   - Server troppo lento');
+                print('PlayerPage: [OPEN]   - Problemi di rete');
+                print('PlayerPage: [OPEN]   - URL con formato non supportato');
+              }
+              
+              print('PlayerPage: [OPEN] ═══════════════════════════════════════════════════════════');
               rethrow; // Rilancia per essere gestito dal catch esterno
             }
             print('PlayerPage: [OPEN] Stato player dopo open:');
