@@ -12,8 +12,9 @@ class ChannelsCache {
   /// Versione della cache (incrementare quando cambia il formato)
   static const int _currentVersion = 1;
   
-  /// Durata della cache prima di considerarla obsoleta (24 ore)
-  static const Duration _cacheExpiration = Duration(hours: 24);
+  /// Durata della cache prima di considerarla obsoleta (48 ore)
+  /// La cache viene aggiornata automaticamente 2 volte al giorno dal background refresh
+  static const Duration _cacheExpiration = Duration(hours: 48);
   
   /// Carica i canali dalla cache
   /// Restituisce null se la cache non esiste o è obsoleta

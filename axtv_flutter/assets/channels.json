@@ -181,6 +181,159 @@
     "license": null
   },
   {
+    "id": "disneychannel",
+    "name": "Disney Channel",
+    "logo": "https://channels.zappr.stream/logos/disneychannel.svg",
+    "streamUrl": "https://live3-mediaset-it.akamaized.net/Content/hls_h0_clr_vos/live/channel(ka)/index.m3u8",
+    "region": "Italia",
+    "category": "Bambini",
+    "license": null
+  },
+  {
+    "id": "disneyjunior",
+    "name": "Disney Junior",
+    "logo": "https://channels.zappr.stream/logos/disneyjunior.svg",
+    "streamUrl": "https://live3-mediaset-it.akamaized.net/Content/hls_h0_clr_vos/live/channel(kb)/index.m3u8",
+    "region": "Italia",
+    "category": "Bambini",
+    "license": null
+  },
+  {
+    "id": "nickelodeon",
+    "name": "Nickelodeon",
+    "logo": "https://channels.zappr.stream/logos/nickelodeon.svg",
+    "streamUrl": "https://live3-mediaset-it.akamaized.net/Content/hls_h0_clr_vos/live/channel(kc)/index.m3u8",
+    "region": "Italia",
+    "category": "Bambini",
+    "license": null
+  },
+  {
+    "id": "cartoonnetwork",
+    "name": "Cartoon Network",
+    "logo": "https://channels.zappr.stream/logos/cartoonnetwork.svg",
+    "streamUrl": "https://live3-mediaset-it.akamaized.net/Content/hls_h0_clr_vos/live/channel(kd)/index.m3u8",
+    "region": "Italia",
+    "category": "Bambini",
+    "license": null
+  },
+  {
+    "id": "frisbee",
+    "name": "Frisbee",
+    "logo": "https://channels.zappr.stream/logos/frisbee.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-fr/fr-clr.isml/index.m3u8",
+    "region": "Italia",
+    "category": "Bambini",
+    "license": null
+  },
+  {
+    "id": "k2",
+    "name": "K2",
+    "logo": "https://channels.zappr.stream/logos/k2.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-k2/k2-clr.isml/index.m3u8",
+    "region": "Italia",
+    "category": "Bambini",
+    "license": null
+  },
+  {
+    "id": "poptv",
+    "name": "Pop TV",
+    "logo": "https://channels.zappr.stream/logos/poptv.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-po/po-clr.isml/index.m3u8",
+    "region": "Italia",
+    "category": "Bambini",
+    "license": null
+  },
+  {
+    "id": "skysport",
+    "name": "Sky Sport",
+    "logo": "https://channels.zappr.stream/logos/skysport.svg",
+    "streamUrl": "zappr://sky/sport",
+    "region": "Italia",
+    "category": "Sport",
+    "license": null
+  },
+  {
+    "id": "eurosport",
+    "name": "Eurosport",
+    "logo": "https://channels.zappr.stream/logos/eurosport.svg",
+    "streamUrl": "https://d15umi5iaezxgx.cloudfront.net/EUROSPORT/CLN/HLS-B/Live.m3u8",
+    "region": "Italia",
+    "category": "Sport",
+    "license": null
+  },
+  {
+    "id": "dazn",
+    "name": "DAZN",
+    "logo": "https://channels.zappr.stream/logos/dazn.svg",
+    "streamUrl": "zappr://dazn/main",
+    "region": "Italia",
+    "category": "Sport",
+    "license": null
+  },
+  {
+    "id": "la7",
+    "name": "LA7",
+    "logo": "https://channels.zappr.stream/logos/la7.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/la7/browser-dash/la7.mpd",
+    "region": "Italia",
+    "category": "Generale",
+    "license": null
+  },
+  {
+    "id": "nove",
+    "name": "Nove",
+    "logo": "https://channels.zappr.stream/logos/nove.svg",
+    "streamUrl": "https://streaming.softwarecreation.it/tnove/tnove/playlist.m3u8",
+    "region": "Italia",
+    "category": "Generale",
+    "license": null
+  },
+  {
+    "id": "realtime",
+    "name": "Real Time",
+    "logo": "https://channels.zappr.stream/logos/realtime.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-rt/rt-clr.isml/index.m3u8",
+    "region": "Italia",
+    "category": "Intrattenimento",
+    "license": null
+  },
+  {
+    "id": "dmax",
+    "name": "DMAX",
+    "logo": "https://channels.zappr.stream/logos/dmax.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-dm/dm-clr.isml/index.m3u8",
+    "region": "Italia",
+    "category": "Intrattenimento",
+    "license": null
+  },
+  {
+    "id": "giallo",
+    "name": "Giallo",
+    "logo": "https://channels.zappr.stream/logos/giallo.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-gi/gi-clr.isml/index.m3u8",
+    "region": "Italia",
+    "category": "Intrattenimento",
+    "license": null
+  },
+  {
+    "id": "mtv",
+    "name": "MTV",
+    "logo": "https://channels.zappr.stream/logos/mtv.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-mt/mt-clr.isml/index.m3u8",
+    "region": "Italia",
+    "category": "Musica",
+    "license": null
+  },
+  {
+    "id": "virginradiotv",
+    "name": "Virgin Radio TV",
+    "logo": "https://channels.zappr.stream/logos/virginradiotv.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-vr/vr-clr.isml/index.m3u8",
+    "region": "Italia",
+    "category": "Musica",
+    "license": null
+  },
+  {
     "id": "boingplus",
     "name": "Boing Plus",
     "logo": "https://channels.zappr.stream/logos/boingplus.svg",
