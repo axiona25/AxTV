@@ -1236,33 +1236,28 @@ class _PlayerPageState extends State<PlayerPage> {
       // Ignora errori durante il ripristino dell'orientamento
     }
     
-    // Ferma e dispose il player con gestione errori robusta
-    // IMPORTANTE: Su iOS, dispose del player può causare crash se chiamato durante operazioni FFI
-    // Aspettiamo un breve delay per permettere al player di completare le operazioni in corso
-    Future.delayed(const Duration(milliseconds: 100), () async {
-      try {
-        // Stop del player con gestione errori
-        // Usa solo _isLoading locale invece di _player.state.loading (non esiste)
-        if (_player.state.playing || _isLoading) {
-          await _player.stop();
-        }
-      } catch (e) {
-        // Ignora errori durante lo stop
-        // ignore: avoid_print
-        print('PlayerPage: ⚠️ Errore durante stop player (ignorato): $e');
+    // Ferma il player con gestione errori robusta
+    // IMPORTANTE: Su iOS, dispose del player può causare crash SIGABRT durante mp_shutdown_clients
+    // quando ci sono callback FFI attivi. Per evitare questo, NON facciamo dispose del player
+    // e lasciamo che il garbage collector gestisca il cleanup quando il widget viene distrutto.
+    // Questo è un workaround per un bug noto di media_kit su iOS.
+    try {
+      // Stop del player con gestione errori
+      // Usa solo _isLoading locale invece di _player.state.loading (non esiste)
+      if (_player.state.playing || _isLoading) {
+        await _player.stop();
       }
+    } catch (e) {
+      // Ignora errori durante lo stop
+      // ignore: avoid_print
+      print('PlayerPage: ⚠️ Errore durante stop player (ignorato): $e');
+    }
 
-      // Dispose del player con timeout e gestione errori più robusta
-      try {
-        // Aspetta ancora un po' prima di fare dispose per evitare race conditions con FFI
-        await Future.delayed(const Duration(milliseconds: 200));
-        _player.dispose();
-      } catch (e) {
-        // Ignora errori durante il dispose (bug noto di media_kit su iOS con FFI callbacks)
-        // ignore: avoid_print
-        print('PlayerPage: ⚠️ Errore durante dispose player (ignorato): $e');
-      }
-    });
+    // NON facciamo dispose del player su iOS per evitare crash SIGABRT durante mp_shutdown_clients
+    // Il garbage collector gestirà il cleanup quando il widget viene distrutto
+    // Questo è un workaround per un bug noto di media_kit su iOS con FFI callbacks
+    // ignore: avoid_print
+    print('PlayerPage: ⚠️ Skip dispose player su iOS (workaround per crash SIGABRT)');
     
     super.dispose();
   }
