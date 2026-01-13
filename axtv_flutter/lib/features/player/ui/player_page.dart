@@ -10,6 +10,8 @@ import '../../channels/data/stream_resolver.dart';
 import '../../../core/http/proxy_resolver.dart' show ProxyResolver, GeoLocation, ProxyMethod;
 import '../../../core/http/dio_client.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../theme/zappr_tokens.dart';
+import '../../../widgets/neon_glass.dart';
 
 class PlayerPage extends StatefulWidget {
   final Channel channel;
@@ -37,6 +39,9 @@ class _PlayerPageState extends State<PlayerPage> {
   int _errorRetryCount = 0; // Contatore retry errori (massimo 5 prima di mostrare errore)
   static const int _maxErrorRetries = 5; // Massimo numero di retry prima di mostrare errore
   bool _isDisposing = false; // Flag per prevenire operazioni durante dispose
+  Timer? _loadingTimeoutTimer; // Timer per timeout caricamento
+  bool _showTimeoutPlaceholder = false; // Flag per mostrare placeholder timeout
+  static const Duration _loadingTimeout = Duration(seconds: 15); // Timeout caricamento (15 secondi)
 
   @override
   void initState() {
@@ -59,6 +64,8 @@ class _PlayerPageState extends State<PlayerPage> {
             // Video in riproduzione - rimuovi errori e reset contatori
             _error = null;
             _errorRetryCount = 0;
+            _showTimeoutPlaceholder = false;
+            _stopLoadingTimeout(); // Ferma il timer quando il video parte
           }
         });
         // ignore: avoid_print
@@ -221,11 +228,13 @@ class _PlayerPageState extends State<PlayerPage> {
       if (mounted) {
         // URL proxati: mostra errore direttamente (non possono beneficiare di retry)
         setState(() {
-          _error = errorMessage;
-          _isLoading = false;
-        });
-        // ignore: avoid_print
-        print('PlayerPage: [EVENT_ERROR] Stato aggiornato (URL proxato, nessun retry): error=$_error, loading=$_isLoading');
+            _error = errorMessage;
+            _isLoading = false;
+            _showTimeoutPlaceholder = false; // Nascondi placeholder se c'è errore
+            _stopLoadingTimeout(); // Ferma il timer
+          });
+          // ignore: avoid_print
+          print('PlayerPage: [EVENT_ERROR] Stato aggiornato (URL proxato, nessun retry): error=$_error, loading=$_isLoading');
       }
       return; // Esci senza fare retry
     }
@@ -414,6 +423,8 @@ class _PlayerPageState extends State<PlayerPage> {
       setState(() {
         _error = errorMessage;
         _isLoading = false;
+        _showTimeoutPlaceholder = false; // Nascondi placeholder se c'è errore
+        _stopLoadingTimeout(); // Ferma il timer
       });
       // ignore: avoid_print
       print('PlayerPage: [EVENT_ERROR] Stato aggiornato (max retry raggiunto): error=$_error, loading=$_isLoading');
@@ -538,7 +549,11 @@ class _PlayerPageState extends State<PlayerPage> {
         setState(() {
           _isLoading = true;
           _error = null;
+          _showTimeoutPlaceholder = false;
         });
+        
+        // Avvia timer di timeout per mostrare placeholder se il caricamento impiega troppo
+        _startLoadingTimeout();
       }
 
       // Ferma il player se sta già riproducendo qualcosa
@@ -1184,10 +1199,33 @@ class _PlayerPageState extends State<PlayerPage> {
     }
   }
 
+  /// Avvia il timer di timeout per il caricamento
+  void _startLoadingTimeout() {
+    _loadingTimeoutTimer?.cancel();
+    _loadingTimeoutTimer = Timer(_loadingTimeout, () {
+      if (mounted && _isLoading && !_player.state.playing && !_isDisposing) {
+        // ignore: avoid_print
+        print('PlayerPage: ⏱️ Timeout caricamento raggiunto (${_loadingTimeout.inSeconds}s), mostro placeholder');
+        setState(() {
+          _showTimeoutPlaceholder = true;
+        });
+      }
+    });
+  }
+  
+  /// Ferma il timer di timeout
+  void _stopLoadingTimeout() {
+    _loadingTimeoutTimer?.cancel();
+    _loadingTimeoutTimer = null;
+  }
+
   @override
   void dispose() {
     // Marca che stiamo disattivando per prevenire operazioni concorrenti
     _isDisposing = true;
+    
+    // Ferma il timer di timeout
+    _stopLoadingTimeout();
     
     // Ripristina l'orientamento verticale quando si esce dal player
     try {
@@ -1271,8 +1309,8 @@ class _PlayerPageState extends State<PlayerPage> {
               // Video player
               Video(controller: _controller),
               
-              // Loading indicator
-              if (_isLoading)
+              // Loading indicator (solo se non c'è timeout placeholder)
+              if (_isLoading && !_showTimeoutPlaceholder)
                 Container(
                   color: AppTheme.darkBackground,
                   child: const Center(
@@ -1294,6 +1332,10 @@ class _PlayerPageState extends State<PlayerPage> {
                     ),
                   ),
                 ),
+              
+              // Placeholder timeout (quando il caricamento impiega troppo tempo)
+              if (_showTimeoutPlaceholder && _error == null)
+                _buildTimeoutPlaceholder(),
               
               // Error message
               if (_error != null)
@@ -1435,6 +1477,138 @@ class _PlayerPageState extends State<PlayerPage> {
       print('PlayerPage: [GEOBLOCK_RETRY] Retry fallito: $e');
       // Se il retry fallisce, l'errore verrà gestito dal listener degli errori
     }
+  }
+  
+  /// Costruisce il placeholder grafico per timeout/errore
+  Widget _buildTimeoutPlaceholder() {
+    return Container(
+      color: ZapprTokens.bg0, // Nero puro come sfondo
+      child: Center(
+        child: NeonGlass(
+          radius: ZapprTokens.r22,
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
+          margin: const EdgeInsets.all(24),
+          glowStrength: 0.8,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Icona con effetto glow
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: ZapprTokens.electricBlueGradient,
+                  boxShadow: ZapprTokens.electricBlueGlow(1.0),
+                ),
+                child: const Icon(
+                  Icons.signal_wifi_off_rounded,
+                  color: ZapprTokens.textPrimary,
+                  size: 48,
+                ),
+              ),
+              const SizedBox(height: 24),
+              
+              // Titolo con gradiente
+              ShaderMask(
+                shaderCallback: (bounds) => ZapprTokens.electricBlueGradient.createShader(bounds),
+                child: const Text(
+                  'Canale non disponibile',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              
+              // Messaggio
+              Text(
+                'in questo momento',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: ZapprTokens.textSecondary,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(height: 32),
+              
+              // Pulsante Riprova con stile neon
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(ZapprTokens.r12),
+                  gradient: ZapprTokens.electricBlueGradient,
+                  boxShadow: ZapprTokens.electricBlueGlow(0.6),
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      _stopLoadingTimeout();
+                      setState(() {
+                        _showTimeoutPlaceholder = false;
+                        _hasTriedFallback = false;
+                        _isRetrying = false;
+                        _error = null;
+                        _alternativeGeoLocations = null;
+                        _currentGeoLocationIndex = 0;
+                        _errorRetryCount = 0;
+                      });
+                      _loadVideo(isRetry: true);
+                    },
+                    borderRadius: BorderRadius.circular(ZapprTokens.r12),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 32,
+                        vertical: 14,
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.refresh_rounded,
+                            color: ZapprTokens.textPrimary,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 8),
+                          const Text(
+                            'Riprova',
+                            style: TextStyle(
+                              color: ZapprTokens.textPrimary,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              
+              // Nome canale
+              Text(
+                widget.channel.name,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: ZapprTokens.textMuted,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
