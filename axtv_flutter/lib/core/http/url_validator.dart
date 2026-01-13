@@ -63,6 +63,9 @@ class UrlValidator {
         'netplus.ch',         // Netplus (usato da RAI)
         'cloudfront.net',     // AWS CloudFront (usato da IPTV-org)
         'archive.org',        // Archive.org (file statici)
+        'msvdn.net',          // MSVDN (usato da Super!, Boing Plus, ecc.)
+        'zappr.stream',       // Zappr stream (provider legittimo)
+        'uvotv.zappr.stream', // UVO TV via Zappr
       ];
       
       // Se l'URL è da un dominio trusted, considera valido senza validazione HTTP
