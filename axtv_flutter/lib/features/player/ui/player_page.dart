@@ -1242,7 +1242,8 @@ class _PlayerPageState extends State<PlayerPage> {
     Future.delayed(const Duration(milliseconds: 100), () async {
       try {
         // Stop del player con gestione errori
-        if (_player.state.playing || _player.state.loading) {
+        // Usa solo _isLoading locale invece di _player.state.loading (non esiste)
+        if (_player.state.playing || _isLoading) {
           await _player.stop();
         }
       } catch (e) {
