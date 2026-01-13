@@ -1237,23 +1237,31 @@ class _PlayerPageState extends State<PlayerPage> {
     }
     
     // Ferma e dispose il player con gestione errori robusta
-    try {
-      // Stop del player con gestione errori
-      _player.stop();
-    } catch (e) {
-      // Ignora errori durante lo stop
-      // ignore: avoid_print
-      print('PlayerPage: ⚠️ Errore durante stop player (ignorato): $e');
-    }
-    
-    // Dispose del player con timeout
-    try {
-      _player.dispose();
-    } catch (e) {
-      // Ignora errori durante il dispose (bug noto di media_kit su iOS)
-      // ignore: avoid_print
-      print('PlayerPage: ⚠️ Errore durante dispose player (ignorato): $e');
-    }
+    // IMPORTANTE: Su iOS, dispose del player può causare crash se chiamato durante operazioni FFI
+    // Aspettiamo un breve delay per permettere al player di completare le operazioni in corso
+    Future.delayed(const Duration(milliseconds: 100), () async {
+      try {
+        // Stop del player con gestione errori
+        if (_player.state.playing || _player.state.loading) {
+          await _player.stop();
+        }
+      } catch (e) {
+        // Ignora errori durante lo stop
+        // ignore: avoid_print
+        print('PlayerPage: ⚠️ Errore durante stop player (ignorato): $e');
+      }
+
+      // Dispose del player con timeout e gestione errori più robusta
+      try {
+        // Aspetta ancora un po' prima di fare dispose per evitare race conditions con FFI
+        await Future.delayed(const Duration(milliseconds: 200));
+        _player.dispose();
+      } catch (e) {
+        // Ignora errori durante il dispose (bug noto di media_kit su iOS con FFI callbacks)
+        // ignore: avoid_print
+        print('PlayerPage: ⚠️ Errore durante dispose player (ignorato): $e');
+      }
+    });
     
     super.dispose();
   }
