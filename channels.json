@@ -154,6 +154,33 @@
     "license": "rai-akamai"
   },
   {
+    "id": "raiyoyo",
+    "name": "Rai Yoyo",
+    "logo": "https://channels.zappr.stream/logos/raiyoyo.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/raiyoyo/browser-HLS8/raiyoyo.m3u8",
+    "region": "Italia",
+    "category": "Bambini",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "raicartoonito",
+    "name": "Rai Cartoonito",
+    "logo": "https://channels.zappr.stream/logos/raicartoonito.svg",
+    "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/raicartoonito/browser-HLS8/raicartoonito.m3u8",
+    "region": "Italia",
+    "category": "Bambini",
+    "license": "rai-akamai"
+  },
+  {
+    "id": "boing",
+    "name": "Boing",
+    "logo": "https://channels.zappr.stream/logos/boing.svg",
+    "streamUrl": "https://live02-col.msf.cdn.mediaset.net/live/ch-bo/bo-clr.isml/index.m3u8",
+    "region": "Italia",
+    "category": "Bambini",
+    "license": null
+  },
+  {
     "id": "boingplus",
     "name": "Boing Plus",
     "logo": "https://channels.zappr.stream/logos/boingplus.svg",
