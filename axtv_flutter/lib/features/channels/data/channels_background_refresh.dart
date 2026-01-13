@@ -85,7 +85,12 @@ class ChannelsBackgroundRefresh {
   /// Esegue un refresh manuale forzato
   /// Scannerizza tutti i repository e aggiorna la cache con tutti i canali mancanti
   /// Accetta un Ref per invalidare i provider (può essere Ref o WidgetRef)
+  /// Cancella la cache prima del refresh per forzare il reload completo
   Future<void> performManualRefresh(dynamic ref) async {
+    // Cancella la cache prima del refresh manuale per forzare il reload completo
+    await ChannelsCache.clearCache();
+    // ignore: avoid_print
+    print('ChannelsBackgroundRefresh: 🗑️ Cache cancellata per refresh manuale forzato');
     return _performBackgroundRefresh(ref, isScheduled: false);
   }
   
