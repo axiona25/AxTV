@@ -10,12 +10,13 @@ import '../security/content_validator.dart';
 class UrlValidator {
   /// Istanza Dio dedicata per validazioni URL con timeout molto brevi
   /// Separata da dioProvider per avere controllo sui timeout specifici per validazioni
+  /// Timeout ridotti ulteriormente per connessioni lente (WiFi assente)
   late final Dio _dio = Dio(
     BaseOptions(
-      connectTimeout: const Duration(milliseconds: 500), // Timeout connessione molto breve
-      receiveTimeout: const Duration(milliseconds: 800), // Timeout ricezione breve
-      sendTimeout: const Duration(milliseconds: 500), // Timeout invio breve
-      maxRedirects: 2, // Ridotto per velocità
+      connectTimeout: const Duration(milliseconds: 300), // Timeout connessione molto breve (ridotto da 500ms)
+      receiveTimeout: const Duration(milliseconds: 500), // Timeout ricezione breve (ridotto da 800ms)
+      sendTimeout: const Duration(milliseconds: 300), // Timeout invio breve (ridotto da 500ms)
+      maxRedirects: 1, // Ridotto per velocità (da 2 a 1)
       headers: {
         'User-Agent': 'AxTV-Flutter-App',
         'Accept': '*/*',

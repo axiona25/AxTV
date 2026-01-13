@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:async';
 import '../model/channel.dart';
@@ -98,6 +99,7 @@ class ChannelsRepository {
       // FASE 1: Carica cache e emetti immediatamente (se disponibile e valida)
       final cachedChannels = forceRefresh ? null : await ChannelsCache.loadCachedChannels();
       final loadedChannels = <String, Channel>{}; // Mappa per evitare duplicati (key: channel.id)
+      bool shouldSkipValidation = false; // Flag per saltare validazione se cache recente
     
       if (cachedChannels != null && cachedChannels.isNotEmpty) {
         // ignore: avoid_print
@@ -105,6 +107,20 @@ class ChannelsRepository {
         for (final channel in cachedChannels) {
           loadedChannels[channel.id] = channel;
         }
+        
+        // Verifica se la cache è recente (< 1 ora) per saltare validazione HTTP
+        final cacheTimestamp = await _getCacheTimestamp();
+        if (cacheTimestamp != null) {
+          final cacheAge = DateTime.now().difference(
+            DateTime.fromMillisecondsSinceEpoch(cacheTimestamp),
+          );
+          if (cacheAge.inHours < 1) {
+            shouldSkipValidation = true;
+            // ignore: avoid_print
+            print('ChannelsRepository: ⚡ Cache recente (< 1h), salto validazione HTTP per velocità');
+          }
+        }
+        
         yield loadedChannels.values.toList(); // Emetti immediatamente i canali cached
       } else {
         // ignore: avoid_print
@@ -113,6 +129,13 @@ class ChannelsRepository {
       }
 
       // FASE 2: Carica/valida nuovi canali da repository in background
+      // Se la cache è recente, salta la validazione HTTP per velocità
+      if (shouldSkipValidation) {
+        // ignore: avoid_print
+        print('ChannelsRepository: ⚡ Saltando validazione HTTP (cache recente), usando solo cache');
+        return; // Esci subito, usa solo cache
+      }
+      
       // Processa ogni repository in sequenza ma emetti canali progressivamente
       for (final repo in activeRepositories) {
         try {
@@ -233,14 +256,24 @@ class ChannelsRepository {
     }
   }
   
+  /// Ottiene il timestamp della cache
+  Future<int?> _getCacheTimestamp() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      return prefs.getInt('channels_cache_timestamp');
+    } catch (e) {
+      return null;
+    }
+  }
+  
   /// Valida gli URL dei canali progressivamente (in batch) ed emette via Stream
-  /// Processa in batch di 10 canali alla volta per evitare sovraccarico
+  /// Processa in batch di 5 canali alla volta per velocità (ridotto da 10)
   Stream<List<Channel>> _validateChannelsUrlsStream(List<Channel> channels) async* {
     if (channels.isEmpty) {
       return;
     }
     
-    const batchSize = 10; // Processa 10 canali alla volta
+    const batchSize = 5; // Processa 5 canali alla volta (ridotto per velocità)
     final validChannels = <Channel>[];
     
     for (var i = 0; i < channels.length; i += batchSize) {
