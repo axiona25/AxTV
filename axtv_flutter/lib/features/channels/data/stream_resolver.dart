@@ -690,6 +690,27 @@ class StreamResolver {
         throw Exception('Stream non disponibile: L\'API restituisce un video di errore. L\'URL del canale potrebbe essere scaduto.');
       }
       
+      // IMPORTANTE: Se l'URL contiene un token JWT nel path (es. cache1a.netplus.ch/tok_...),
+      // il player nativo potrebbe non gestirlo correttamente. In questo caso, usiamo l'API Cloudflare
+      // come proxy per gestire l'autenticazione e fornire un URL più semplice al player.
+      final hasJwtTokenInPath = finalUrl.contains('/tok_') && finalUrl.contains('cache1a.netplus.ch');
+      
+      if (hasJwtTokenInPath) {
+        // ignore: avoid_print
+        print('StreamResolver: [JWT_TOKEN] Rilevato token JWT nel path, uso API Cloudflare come proxy');
+        print('StreamResolver: [JWT_TOKEN] URL originale con token: ${finalUrl.length > 200 ? finalUrl.substring(0, 200) + "..." : finalUrl}');
+        
+        // Usa l'API Cloudflare come proxy per gestire l'autenticazione
+        // L'API gestirà il token JWT internamente e fornirà un URL più semplice al player
+        final proxyUrl = '${Env.cloudflareApiBase}?${Uri.encodeComponent(finalUrl)}';
+        // ignore: avoid_print
+        print('StreamResolver: [JWT_TOKEN] URL proxy: $proxyUrl');
+        final resolverDuration = DateTime.now().difference(resolverStart);
+        print('StreamResolver: [RESOLVE_END] Completato in ${resolverDuration.inMilliseconds}ms (con proxy JWT)');
+        print('═══════════════════════════════════════════════════════════');
+        return Uri.parse(proxyUrl);
+      }
+      
       // ignore: avoid_print
       print('StreamResolver: [SUCCESS] URL finale HLS valido: $finalUrl');
       final resolverDuration = DateTime.now().difference(resolverStart);
