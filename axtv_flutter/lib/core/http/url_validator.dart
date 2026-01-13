@@ -55,6 +55,25 @@ class UrlValidator {
       
       final lowerUrl = url.toLowerCase();
       
+      // Whitelist di domini noti e affidabili che possono saltare la validazione HTTP
+      // Questi domini sono usati da provider legittimi (MediaSet, Akamai, ecc.)
+      final trustedDomains = [
+        'akamaized.net',      // Akamai CDN (usato da MediaSet per Disney, ecc.)
+        'mediaset.net',       // MediaSet (provider legittimo italiano)
+        'netplus.ch',         // Netplus (usato da RAI)
+        'cloudfront.net',     // AWS CloudFront (usato da IPTV-org)
+        'archive.org',        // Archive.org (file statici)
+      ];
+      
+      // Se l'URL è da un dominio trusted, considera valido senza validazione HTTP
+      // Questo velocizza il caricamento e evita falsi negativi per connessioni lente
+      final isTrustedDomain = trustedDomains.any((domain) => lowerUrl.contains(domain));
+      if (isTrustedDomain) {
+        // ignore: avoid_print
+        // print('UrlValidator: ✅ URL da dominio trusted, skip validazione HTTP: ${url.substring(0, 60)}...');
+        return true; // Domini trusted sono sempre validi
+      }
+      
       // Per URL M3U8/HLS/DASH (live streaming), fai un HEAD request veloce
       // Questi sono i più problematici e devono essere validati completamente
       if (lowerUrl.contains('.m3u8') || lowerUrl.contains('.mpd')) {
@@ -67,8 +86,8 @@ class UrlValidator {
         }
         
         try {
-          // Usa timeout brevi già configurati in _dio (500ms connect, 800ms receive)
-          // URL che rispondono lentamente (>800ms) sono considerati problematici
+          // Usa timeout brevi già configurati in _dio (300ms connect, 500ms receive)
+          // URL che rispondono lentamente (>500ms) sono considerati problematici
           final response = await _dio.head(
             url,
             options: Options(
