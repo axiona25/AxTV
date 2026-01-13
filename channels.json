@@ -338,6 +338,8 @@
     "name": "Boing Plus",
     "logo": "https://channels.zappr.stream/logos/boingplus.svg",
     "streamUrl": "https://uvotv.zappr.stream/101.m3u8",
+    "region": "Italia",
+    "category": "Bambini",
     "license": null
   },
   {
