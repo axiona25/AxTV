@@ -10,7 +10,8 @@ class ChannelsCache {
   static const String _cacheVersionKey = 'channels_cache_version';
   
   /// Versione della cache (incrementare quando cambia il formato)
-  static const int _currentVersion = 1;
+  /// Versione 2: aggiunta categoria "Bambini" per tutti i canali per bambini
+  static const int _currentVersion = 2;
   
   /// Durata della cache prima di considerarla obsoleta (48 ore)
   /// La cache viene aggiornata automaticamente 2 volte al giorno dal background refresh
