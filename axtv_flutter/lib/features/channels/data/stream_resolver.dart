@@ -647,6 +647,8 @@ class StreamResolver {
       // Ottieni l'URL finale dal redirect
       String finalUrl = apiUrl; // Default all'URL API
       
+      // IMPORTANTE: Per API Cloudflare, anche se status è 404, se c'è un redirect o Real URI, usalo
+      // L'API Cloudflare può restituire 404 ma con un redirect valido (es. per URL RAI con token JWT)
       if (response.redirects.isNotEmpty) {
         // Usa l'ultimo redirect (URL finale)
         final lastRedirect = response.redirects.last;
@@ -654,8 +656,15 @@ class StreamResolver {
         // ignore: avoid_print
         print('StreamResolver: [REDIRECT] Redirect trovato: ${lastRedirect.statusCode} -> $finalUrl');
         print('StreamResolver: [REDIRECT] URL finale length: ${finalUrl.length} caratteri');
+      } else if (response.realUri.toString() != apiUrl && response.realUri.toString().contains('.m3u8')) {
+        // Se non ci sono redirect ma Real URI è diverso dall'URL API e contiene .m3u8, usalo
+        // Questo gestisce il caso in cui l'API restituisce 404 ma con un Real URI valido
+        finalUrl = response.realUri.toString();
+        // ignore: avoid_print
+        print('StreamResolver: [REAL_URI] Usa Real URI (diverso da API URL): $finalUrl');
+        print('StreamResolver: [REAL_URI] URL finale length: ${finalUrl.length} caratteri');
       } else {
-        // Se non ci sono redirect, usa l'URL della risposta finale
+        // Se non ci sono redirect e Real URI non è valido, usa l'URL della risposta finale
         finalUrl = response.realUri.toString();
         // ignore: avoid_print
         print('StreamResolver: [NO_REDIRECT] Nessun redirect, URL finale: $finalUrl');
