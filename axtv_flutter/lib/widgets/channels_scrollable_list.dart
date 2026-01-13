@@ -231,6 +231,12 @@ class ChannelsScrollableList extends StatelessWidget {
             final channel = channels[index];
             final isSelected = selectedChannelId == channel.id;
             
+            // Log per debug canali per bambini
+            if (channel.category?.toLowerCase() == 'bambini' && index < 5) {
+              // ignore: avoid_print
+              print('ChannelsScrollableList: 📺 Rendering canale per bambini #${index + 1}: "${channel.name}"');
+            }
+            
             return ChannelTile(
               channelName: channel.name,
               logoUrl: channel.logo,
