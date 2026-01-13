@@ -9,7 +9,7 @@ class LiveRepositoriesConfig {
       id: 'axtv-channels',
       name: 'AxTV Canali',
       description: 'Canali live dal repository principale AxTV',
-      baseUrl: 'https://raw.githubusercontent.com/axiona25/AxTV/main',
+      baseUrl: 'https://raw.githubusercontent.com/axiona25/AxTV/feature/ios-app-config-v1.0.2',
       jsonPath: '/channels.json',
       enabled: true, // Attivo di default
     ),
