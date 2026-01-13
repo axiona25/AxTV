@@ -1241,16 +1241,15 @@ class _PlayerPageState extends State<PlayerPage> {
     // quando ci sono callback FFI attivi. Per evitare questo, NON facciamo dispose del player
     // e lasciamo che il garbage collector gestisca il cleanup quando il widget viene distrutto.
     // Questo è un workaround per un bug noto di media_kit su iOS.
-    try {
-      // Stop del player con gestione errori
-      // Usa solo _isLoading locale invece di _player.state.loading (non esiste)
-      if (_player.state.playing || _isLoading) {
-        await _player.stop();
-      }
-    } catch (e) {
-      // Ignora errori durante lo stop
-      // ignore: avoid_print
-      print('PlayerPage: ⚠️ Errore durante stop player (ignorato): $e');
+    // 
+    // NOTA: dispose() non può essere async, quindi facciamo lo stop in modo asincrono senza attendere
+    if (_player.state.playing || _isLoading) {
+      // Stop del player in modo asincrono senza attendere (dispose non può essere async)
+      _player.stop().catchError((e) {
+        // Ignora errori durante lo stop
+        // ignore: avoid_print
+        print('PlayerPage: ⚠️ Errore durante stop player (ignorato): $e');
+      });
     }
 
     // NON facciamo dispose del player su iOS per evitare crash SIGABRT durante mp_shutdown_clients
