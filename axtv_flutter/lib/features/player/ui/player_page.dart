@@ -42,6 +42,14 @@ class _PlayerPageState extends State<PlayerPage> {
   Timer? _loadingTimeoutTimer; // Timer per timeout caricamento
   bool _showTimeoutPlaceholder = false; // Flag per mostrare placeholder timeout
   static const Duration _loadingTimeout = Duration(seconds: 15); // Timeout caricamento (15 secondi)
+  
+  // Stream subscriptions per poterli cancellare nel dispose
+  StreamSubscription? _playingSubscription;
+  StreamSubscription? _errorSubscription;
+  StreamSubscription? _completedSubscription;
+  StreamSubscription? _bufferingSubscription;
+  StreamSubscription? _durationSubscription;
+  StreamSubscription? _positionSubscription;
 
   @override
   void initState() {
@@ -51,7 +59,8 @@ class _PlayerPageState extends State<PlayerPage> {
     _controller = VideoController(_player);
 
     // Ascolta gli eventi del player con protezione contro race conditions
-    _player.stream.playing.listen((playing) {
+    // IMPORTANTE: Salviamo tutte le subscription per poterle cancellare nel dispose
+    _playingSubscription = _player.stream.playing.listen((playing) {
       // Ignora eventi se stiamo disattivando
       if (_isDisposing || !mounted) return;
       
@@ -73,17 +82,17 @@ class _PlayerPageState extends State<PlayerPage> {
       }
     });
 
-    _player.stream.error.listen((error) {
+    _errorSubscription = _player.stream.error.listen((error) {
       // Gestisci errori solo se non stiamo disattivando
       if (!_isDisposing && mounted) {
         _handlePlayerError(error);
       }
     });
 
-    _player.stream.completed.listen((completed) {
+    _completedSubscription = _player.stream.completed.listen((completed) {
       // ignore: avoid_print
       print('PlayerPage: [EVENT] Completed changed: $completed');
-      if (mounted && completed) {
+      if (mounted && completed && !_isDisposing) {
         setState(() {
           _isLoading = false;
         });
@@ -93,28 +102,32 @@ class _PlayerPageState extends State<PlayerPage> {
     });
     
     // Ascolta anche altri eventi utili per debug
-    _player.stream.buffering.listen((buffering) {
+    _bufferingSubscription = _player.stream.buffering.listen((buffering) {
       // Log solo quando cambia lo stato di buffering
-      // ignore: avoid_print
-      print('PlayerPage: [EVENT] Buffering: $buffering');
+      if (!_isDisposing) {
+        // ignore: avoid_print
+        print('PlayerPage: [EVENT] Buffering: $buffering');
+      }
     });
     
-    _player.stream.duration.listen((duration) {
+    _durationSubscription = _player.stream.duration.listen((duration) {
       // Log solo quando la durata cambia (utile per stream live che iniziano senza durata)
-      if (duration.inSeconds > 0) {
+      if (!_isDisposing && duration.inSeconds > 0) {
         // ignore: avoid_print
         print('PlayerPage: [EVENT] Duration: $duration');
       }
     });
     
-    _player.stream.position.listen((position) {
+    _positionSubscription = _player.stream.position.listen((position) {
       // Log solo ogni 5 secondi per non intasare i log
-      final currentSeconds = position.inSeconds;
-      if (_lastLoggedPositionSeconds == null || 
-          currentSeconds - _lastLoggedPositionSeconds! >= 5) {
-        // ignore: avoid_print
-        print('PlayerPage: [EVENT] Position: $position');
-        _lastLoggedPositionSeconds = currentSeconds;
+      if (!_isDisposing) {
+        final currentSeconds = position.inSeconds;
+        if (_lastLoggedPositionSeconds == null || 
+            currentSeconds - _lastLoggedPositionSeconds! >= 5) {
+          // ignore: avoid_print
+          print('PlayerPage: [EVENT] Position: $position');
+          _lastLoggedPositionSeconds = currentSeconds;
+        }
       }
     });
 
@@ -1272,12 +1285,15 @@ class _PlayerPageState extends State<PlayerPage> {
 
   @override
   void dispose() {
+    // ignore: avoid_print
+    print('PlayerPage: [DISPOSE] Inizio dispose...');
+    
     // Marca che stiamo disattivando per prevenire operazioni concorrenti
     _isDisposing = true;
-    
+
     // Ferma il timer di timeout
     _stopLoadingTimeout();
-    
+
     // Ripristina l'orientamento verticale quando si esce dal player
     try {
       SystemChrome.setPreferredOrientations([
@@ -1286,28 +1302,51 @@ class _PlayerPageState extends State<PlayerPage> {
     } catch (e) {
       // Ignora errori durante il ripristino dell'orientamento
     }
-    
+
+    // ⚠️ CRITICO: Cancella TUTTI i listener PRIMA di fermare il player
+    // Questo previene che callback FFI vengano chiamati durante mp_shutdown_clients
+    // ignore: avoid_print
+    print('PlayerPage: [DISPOSE] Cancello tutte le subscription...');
+    _playingSubscription?.cancel();
+    _playingSubscription = null;
+    _errorSubscription?.cancel();
+    _errorSubscription = null;
+    _completedSubscription?.cancel();
+    _completedSubscription = null;
+    _bufferingSubscription?.cancel();
+    _bufferingSubscription = null;
+    _durationSubscription?.cancel();
+    _durationSubscription = null;
+    _positionSubscription?.cancel();
+    _positionSubscription = null;
+    // ignore: avoid_print
+    print('PlayerPage: [DISPOSE] Tutte le subscription cancellate');
+
     // Ferma il player con gestione errori robusta
-    // IMPORTANTE: Su iOS, dispose del player può causare crash SIGABRT durante mp_shutdown_clients
-    // quando ci sono callback FFI attivi. Per evitare questo, NON facciamo dispose del player
-    // e lasciamo che il garbage collector gestisca il cleanup quando il widget viene distrutto.
-    // Questo è un workaround per un bug noto di media_kit su iOS.
-    // 
-    // NOTA: dispose() non può essere async, quindi facciamo lo stop in modo asincrono senza attendere
-    if (_player.state.playing || _isLoading) {
-      // Stop del player in modo asincrono senza attendere (dispose non può essere async)
-      _player.stop().catchError((e) {
-        // Ignora errori durante lo stop
+    // IMPORTANTE: Dopo aver cancellato tutti i listener, possiamo fermare il player
+    // ma NON facciamo dispose per evitare crash SIGABRT durante mp_shutdown_clients
+    try {
+      if (_player.state.playing || _isLoading) {
         // ignore: avoid_print
-        print('PlayerPage: ⚠️ Errore durante stop player (ignorato): $e');
-      });
+        print('PlayerPage: [DISPOSE] Fermo il player...');
+        // Stop del player in modo asincrono senza attendere (dispose non può essere async)
+        _player.stop().catchError((e) {
+          // Ignora errori durante lo stop
+          // ignore: avoid_print
+          print('PlayerPage: [DISPOSE] ⚠️ Errore durante stop player (ignorato): $e');
+        });
+      }
+    } catch (e) {
+      // ignore: avoid_print
+      print('PlayerPage: [DISPOSE] ⚠️ Errore durante stop player (ignorato): $e');
     }
 
     // NON facciamo dispose del player su iOS per evitare crash SIGABRT durante mp_shutdown_clients
     // Il garbage collector gestirà il cleanup quando il widget viene distrutto
     // Questo è un workaround per un bug noto di media_kit su iOS con FFI callbacks
     // ignore: avoid_print
-    print('PlayerPage: ⚠️ Skip dispose player su iOS (workaround per crash SIGABRT)');
+    print('PlayerPage: [DISPOSE] ⚠️ Skip dispose player su iOS (workaround per crash SIGABRT)');
+    print('PlayerPage: [DISPOSE] Dispose completato');
     
     super.dispose();
   }
