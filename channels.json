@@ -151,7 +151,9 @@
     "name": "Rai Gulp",
     "logo": "https://channels.zappr.stream/logos/raigulp.svg",
     "streamUrl": "https://viamotionhsi.netplus.ch/live/eds/raigulp/browser-HLS8/raigulp.m3u8",
-    "license": "rai-akamai"
+    "license": "rai-akamai",
+    "category": "Bambini",
+    "region": "Italia"
   },
   {
     "id": "raiyoyo",
@@ -347,7 +349,9 @@
     "name": "Super!",
     "logo": "https://channels.zappr.stream/logos/super.svg",
     "streamUrl": "https://495c5a85d9074f29acffeaea9e0215eb.msvdn.net/super/super_main/super_main_hbbtv/playlist_dvr.m3u8",
-    "license": null
+    "license": null,
+    "category": "Bambini",
+    "region": "Italia"
   },
   {
     "id": "rainews24",
