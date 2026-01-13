@@ -691,13 +691,17 @@ class StreamResolver {
       }
       
       // IMPORTANTE: Se l'URL contiene un token JWT nel path (es. cache1a.netplus.ch/tok_...),
-      // il player nativo potrebbe non gestirlo correttamente. In questo caso, usiamo l'API Cloudflare
-      // come proxy per gestire l'autenticazione e fornire un URL più semplice al player.
+      // il player nativo potrebbe non gestirlo correttamente. Tuttavia, NON usiamo l'API Cloudflare
+      // come proxy se l'URL proviene già da un redirect dell'API Cloudflare (per evitare loop infiniti).
+      // In questo caso, passiamo direttamente l'URL al player e gestiamo eventuali errori con retry.
       final hasJwtTokenInPath = finalUrl.contains('/tok_') && finalUrl.contains('cache1a.netplus.ch');
+      final isFromCloudflareApi = response.redirects.isNotEmpty || 
+                                  response.realUri.toString().contains('cloudflare-api.zappr.stream');
       
-      if (hasJwtTokenInPath) {
+      if (hasJwtTokenInPath && !isFromCloudflareApi) {
+        // Solo se l'URL con token JWT NON proviene già dall'API Cloudflare, usiamo l'API come proxy
         // ignore: avoid_print
-        print('StreamResolver: [JWT_TOKEN] Rilevato token JWT nel path, uso API Cloudflare come proxy');
+        print('StreamResolver: [JWT_TOKEN] Rilevato token JWT nel path (non da API Cloudflare), uso API Cloudflare come proxy');
         print('StreamResolver: [JWT_TOKEN] URL originale con token: ${finalUrl.length > 200 ? finalUrl.substring(0, 200) + "..." : finalUrl}');
         
         // Usa l'API Cloudflare come proxy per gestire l'autenticazione
@@ -709,6 +713,13 @@ class StreamResolver {
         print('StreamResolver: [RESOLVE_END] Completato in ${resolverDuration.inMilliseconds}ms (con proxy JWT)');
         print('═══════════════════════════════════════════════════════════');
         return Uri.parse(proxyUrl);
+      } else if (hasJwtTokenInPath && isFromCloudflareApi) {
+        // Se l'URL con token JWT proviene già dall'API Cloudflare, passalo direttamente al player
+        // Il player dovrebbe gestirlo, anche se potrebbe fallire (gestito con retry nel player)
+        // ignore: avoid_print
+        print('StreamResolver: [JWT_TOKEN] Rilevato token JWT nel path (già da API Cloudflare), passo direttamente al player');
+        print('StreamResolver: [JWT_TOKEN] URL con token: ${finalUrl.length > 200 ? finalUrl.substring(0, 200) + "..." : finalUrl}');
+        print('StreamResolver: [JWT_TOKEN] ⚠️ Il player potrebbe non gestirlo correttamente, ma evitiamo loop infiniti');
       }
       
       // ignore: avoid_print
