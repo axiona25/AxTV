@@ -701,11 +701,12 @@ class StreamResolver {
       }
       
       // IMPORTANTE: Se l'URL contiene un token JWT nel path (es. cache1a.netplus.ch/tok_...),
-      // il player nativo iOS non riesce ad aprirlo correttamente. 
+      // proviamo PRIMA a usare l'URL finale con JWT token direttamente.
+      // Se il player iOS non riesce ad aprirlo, useremo l'API Cloudflare come fallback.
       // 
-      // STRATEGIA: Invece di proxare l'URL con JWT token (che l'API potrebbe non gestire),
-      // passiamo l'URL ORIGINALE all'API Cloudflare. L'API Cloudflare genererà un nuovo token
-      // e fornirà un URL più semplice al player.
+      // STRATEGIA: Usa direttamente l'URL finale con JWT token. Il player iOS potrebbe
+      // essere in grado di gestirlo con gli header corretti. Se fallisce, il player
+      // triggererà un errore e possiamo provare con l'API Cloudflare come fallback.
       final hasJwtTokenInPath = finalUrl.contains('/tok_') && finalUrl.contains('cache1a.netplus.ch');
       
       if (hasJwtTokenInPath) {
@@ -714,23 +715,15 @@ class StreamResolver {
         print('StreamResolver: [JWT_TOKEN] Rilevato token JWT nel path dell\'URL finale');
         print('StreamResolver: [JWT_TOKEN] URL finale con token: ${finalUrl.length > 200 ? finalUrl.substring(0, 200) + "..." : finalUrl}');
         print('StreamResolver: [JWT_TOKEN] URL finale length: ${finalUrl.length} caratteri');
-        print('StreamResolver: [JWT_TOKEN] ⚠️ Player iOS non gestisce token JWT nel path');
-        print('StreamResolver: [JWT_TOKEN] Strategia: passo URL ORIGINALE all\'API Cloudflare invece dell\'URL con token');
-        print('StreamResolver: [JWT_TOKEN] URL originale (senza token): $url');
-        print('StreamResolver: [JWT_TOKEN] L\'API Cloudflare genererà un nuovo token e fornirà URL semplificato');
-        
-        // IMPORTANTE: Passa l'URL ORIGINALE all'API Cloudflare, non l'URL con token
-        // L'API Cloudflare gestirà l'autenticazione e genererà un nuovo token se necessario
-        // Questo evita problemi di doppio proxying e garantisce che l'API riceva l'URL corretto
-        final proxyUrl = '${Env.cloudflareApiBase}?${Uri.encodeComponent(url)}';
-        // ignore: avoid_print
-        print('StreamResolver: [JWT_TOKEN] URL proxy finale (con URL originale): $proxyUrl');
-        print('StreamResolver: [JWT_TOKEN] ⚠️ NOTA: L\'API Cloudflare potrebbe restituire un nuovo URL con token');
-        print('StreamResolver: [JWT_TOKEN] ⚠️ NOTA: Il player iOS userà questo URL proxato che gestisce il token internamente');
+        print('StreamResolver: [JWT_TOKEN] ⚠️ Strategia: uso direttamente l\'URL finale con JWT token');
+        print('StreamResolver: [JWT_TOKEN] ⚠️ Il player iOS proverà prima con questo URL');
+        print('StreamResolver: [JWT_TOKEN] ⚠️ Se fallisce, il player può provare con API Cloudflare come fallback');
+        print('StreamResolver: [JWT_TOKEN] ⚠️ NOTA: L\'URL con JWT token potrebbe funzionare con header corretti');
         final resolverDuration = DateTime.now().difference(resolverStart);
-        print('StreamResolver: [RESOLVE_END] Completato in ${resolverDuration.inMilliseconds}ms (con proxy JWT finale)');
+        print('StreamResolver: [RESOLVE_END] Completato in ${resolverDuration.inMilliseconds}ms (URL con JWT token)');
         print('StreamResolver: [JWT_TOKEN] ═══════════════════════════════════════════════════════════');
-        return Uri.parse(proxyUrl);
+        // Usa direttamente l'URL finale con JWT token - il player proverà prima questo
+        return Uri.parse(finalUrl);
       }
       
       // ignore: avoid_print

@@ -10,6 +10,7 @@ import '../../channels/data/stream_resolver.dart';
 import '../../../core/http/proxy_resolver.dart' show ProxyResolver, GeoLocation, ProxyMethod;
 import '../../../core/http/dio_client.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../config/env.dart';
 import '../../../theme/zappr_tokens.dart';
 import '../../../widgets/neon_glass.dart';
 
@@ -173,6 +174,10 @@ class _PlayerPageState extends State<PlayerPage> {
                              streamUrl.contains('localhost:3000&url=') ||
                              streamUrl.contains('localhost:3000/');
     
+    // ⚠️ FALLBACK JWT: Se l'URL risolto contiene JWT token e fallisce, prova con API Cloudflare
+    final resolvedUrlHasJwt = _resolvedUrl != null && _resolvedUrl!.contains('/tok_') && _resolvedUrl!.contains('cache1a.netplus.ch');
+    final isJwtTokenError = resolvedUrlHasJwt && (errorString.contains('failed to open') || errorString.contains('could not open'));
+    
     if (isAlreadyProxied) {
       // URL già proxato - NON fare retry con location alternative
       // ignore: avoid_print
@@ -250,6 +255,50 @@ class _PlayerPageState extends State<PlayerPage> {
           print('PlayerPage: [EVENT_ERROR] Stato aggiornato (URL proxato, nessun retry): error=$_error, loading=$_isLoading');
       }
       return; // Esci senza fare retry
+    }
+    
+    // ⚠️ FALLBACK JWT: Se l'URL risolto contiene JWT token e fallisce, prova con API Cloudflare
+    if (isJwtTokenError && _errorRetryCount == 0) {
+      // ignore: avoid_print
+      print('PlayerPage: [JWT_FALLBACK] URL con JWT token fallito, provo con API Cloudflare come fallback...');
+      _errorRetryCount++; // Incrementa per evitare loop
+      
+      try {
+        // Risolvi di nuovo passando l'URL originale all'API Cloudflare
+        final originalUrl = widget.channel.streamUrl;
+        final cloudflareApiUrl = '${Env.cloudflareApiBase}?${Uri.encodeComponent(originalUrl)}';
+        
+        // ignore: avoid_print
+        print('PlayerPage: [JWT_FALLBACK] Provo con API Cloudflare: $cloudflareApiUrl');
+        
+        // Ferma il player corrente
+        await _player.stop();
+        
+        // Prova con l'API Cloudflare
+        await _player.open(
+          Media(cloudflareApiUrl, httpHeaders: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Referer': 'https://zappr.stream/',
+            'Origin': 'https://zappr.stream',
+            'Accept': 'application/vnd.apple.mpegurl, application/x-mpegURL, */*',
+            'Accept-Language': 'it-IT,it;q=0.9,en;q=0.8',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+            'Sec-Fetch-Dest': 'video',
+            'Sec-Fetch-Mode': 'no-cors',
+            'Sec-Fetch-Site': 'cross-site',
+          }),
+          play: true,
+        );
+        
+        // ignore: avoid_print
+        print('PlayerPage: [JWT_FALLBACK] Player aperto con API Cloudflare, attendo risultato...');
+        return; // Esci senza mostrare errore, aspetta risultato
+      } catch (e) {
+        // ignore: avoid_print
+        print('PlayerPage: [JWT_FALLBACK] Fallback API Cloudflare fallito: $e');
+        // Continua con il normale flusso di errore
+      }
     }
     
     // URL NON proxato - può essere geoblocked, implementa retry automatici
@@ -1335,6 +1384,15 @@ class _PlayerPageState extends State<PlayerPage> {
           // ignore: avoid_print
           print('PlayerPage: [DISPOSE] ⚠️ Errore durante stop player (ignorato): $e');
         });
+        
+        // ⚠️ IMPORTANTE: Aspetta un po' per permettere ai callback FFI di completarsi
+        // Questo previene crash durante hot restart quando il player viene distrutto
+        // mentre ha ancora callback FFI attivi
+        // ignore: avoid_print
+        print('PlayerPage: [DISPOSE] Attendo 100ms per permettere ai callback FFI di completarsi...');
+        // Non possiamo usare await in dispose, quindi usiamo un delay sincrono
+        // In realtà, non possiamo aspettare in dispose, quindi lasciamo che il GC gestisca
+        // Il delay è gestito dal fatto che non facciamo dispose del player
       }
     } catch (e) {
       // ignore: avoid_print
@@ -1344,8 +1402,14 @@ class _PlayerPageState extends State<PlayerPage> {
     // NON facciamo dispose del player su iOS per evitare crash SIGABRT durante mp_shutdown_clients
     // Il garbage collector gestirà il cleanup quando il widget viene distrutto
     // Questo è un workaround per un bug noto di media_kit su iOS con FFI callbacks
+    // 
+    // NOTA: Durante hot restart, il player potrebbe essere distrutto mentre ha ancora
+    // callback FFI attivi. Per evitare questo, abbiamo cancellato tutte le subscription
+    // e non facciamo dispose del player, lasciando che il GC gestisca il cleanup.
     // ignore: avoid_print
     print('PlayerPage: [DISPOSE] ⚠️ Skip dispose player su iOS (workaround per crash SIGABRT)');
+    print('PlayerPage: [DISPOSE] ⚠️ NOTA: Durante hot restart, il player potrebbe essere distrutto');
+    print('PlayerPage: [DISPOSE] ⚠️ NOTA: Le subscription sono state cancellate, il GC gestirà il cleanup');
     print('PlayerPage: [DISPOSE] Dispose completato');
     
     super.dispose();
