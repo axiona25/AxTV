@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart' as riverpod;
 import 'channels_repository.dart';
 import 'channels_cache.dart';
 import 'live_repositories_storage.dart';
@@ -83,14 +84,14 @@ class ChannelsBackgroundRefresh {
   
   /// Esegue un refresh manuale forzato
   /// Scannerizza tutti i repository e aggiorna la cache con tutti i canali mancanti
-  /// Accetta un Ref (può essere WidgetRef o Ref) per invalidare i provider
-  Future<void> performManualRefresh(Ref ref) async {
+  /// Accetta un Ref per invalidare i provider (può essere Ref o WidgetRef)
+  Future<void> performManualRefresh(dynamic ref) async {
     return _performBackgroundRefresh(ref, isScheduled: false);
   }
   
   /// Esegue il refresh in background
   /// Scannerizza i repository, confronta con la cache e aggiunge i canali mancanti
-  Future<void> _performBackgroundRefresh(Ref ref, {required bool isScheduled}) async {
+  Future<void> _performBackgroundRefresh(dynamic ref, {required bool isScheduled}) async {
     try {
       // ignore: avoid_print
       print('ChannelsBackgroundRefresh: 🔄 Inizio scan repository e confronto con cache...');
