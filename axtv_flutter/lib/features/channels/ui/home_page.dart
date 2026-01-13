@@ -402,13 +402,25 @@ class _HomePageState extends ConsumerState<HomePage> {
   void _updateTabsFromChannels(List<Channel> channels) {
     // Estrai tutte le categorie uniche dai canali
     final categories = <String>{};
+    int canaliBambini = 0;
     for (final channel in channels) {
       if (channel.category != null && channel.category!.isNotEmpty) {
         // Escludi "Generale" perché è equivalente a "Tutti"
         if (channel.category!.toLowerCase() != 'generale') {
           categories.add(channel.category!);
+          if (channel.category!.toLowerCase() == 'bambini') {
+            canaliBambini++;
+          }
         }
       }
+    }
+    
+    // Log per debug canali per bambini
+    if (canaliBambini > 0) {
+      // ignore: avoid_print
+      print('HomePage: 📊 Trovati $canaliBambini canali con categoria "Bambini"');
+      // ignore: avoid_print
+      print('HomePage: 📋 Categorie disponibili: ${categories.toList()..sort()}');
     }
     
     // Ordina le categorie per un ordine consistente
@@ -416,6 +428,14 @@ class _HomePageState extends ConsumerState<HomePage> {
     
     // Crea lista tabs: "Tutti" + categorie ordinate
     final newTabs = ['Tutti', ...sortedCategories];
+    
+    // Log per debug tabs
+    if (canaliBambini > 0) {
+      // ignore: avoid_print
+      print('HomePage: 📑 Tabs creati: $newTabs');
+      // ignore: avoid_print
+      print('HomePage: 🔍 Tab "Bambini" presente: ${newTabs.contains("Bambini")}');
+    }
     
     // Aggiorna i tabs solo se sono cambiati (per evitare rebuild infiniti)
     if (!_areTabsEqual(_tabs, newTabs)) {
@@ -432,6 +452,11 @@ class _HomePageState extends ConsumerState<HomePage> {
           _selectedTabIndex = 0; // Reset a "Tutti" se la categoria non esiste più
         }
       });
+      
+      if (canaliBambini > 0) {
+        // ignore: avoid_print
+        print('HomePage: ✅ Tabs aggiornati, tab selezionato: ${_tabs[_selectedTabIndex]} (indice: $_selectedTabIndex)');
+      }
     }
   }
   
@@ -463,11 +488,44 @@ class _HomePageState extends ConsumerState<HomePage> {
     final selectedCategory = _tabs[_selectedTabIndex];
 
     // Filtra i canali che appartengono alla categoria selezionata
-    return channels.where((channel) {
+    final filtered = channels.where((channel) {
       final category = channel.category ?? '';
       // Confronto esatto della categoria (case-insensitive)
       return category.toLowerCase() == selectedCategory.toLowerCase();
     }).toList();
+    
+    // Log per debug filtro categoria "Bambini"
+    if (selectedCategory.toLowerCase() == 'bambini') {
+      // ignore: avoid_print
+      print('HomePage: 🔍 Filtro categoria "Bambini":');
+      // ignore: avoid_print
+      print('HomePage:    Canali totali: ${channels.length}');
+      // ignore: avoid_print
+      print('HomePage:    Canali filtrati: ${filtered.length}');
+      if (filtered.length > 0) {
+        // ignore: avoid_print
+        print('HomePage:    Primi 5 canali filtrati:');
+        for (final ch in filtered.take(5)) {
+          // ignore: avoid_print
+          print('HomePage:      - ${ch.name} (category: "${ch.category}")');
+        }
+      } else {
+        // ignore: avoid_print
+        print('HomePage:    ⚠️ NESSUN canale trovato per categoria "Bambini"!');
+        // ignore: avoid_print
+        print('HomePage:    Verifica canali con categoria simile:');
+        final similar = channels.where((ch) => 
+          ch.category?.toLowerCase().contains('bambini') == true ||
+          ch.category?.toLowerCase().contains('kids') == true
+        ).take(5).toList();
+        for (final ch in similar) {
+          // ignore: avoid_print
+          print('HomePage:      - ${ch.name} (category: "${ch.category}")');
+        }
+      }
+    }
+    
+    return filtered;
   }
   
   /// Gestisce il refresh manuale dei canali
