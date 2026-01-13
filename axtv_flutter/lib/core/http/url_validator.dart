@@ -73,7 +73,7 @@ class UrlValidator {
       final isTrustedDomain = trustedDomains.any((domain) => lowerUrl.contains(domain));
       if (isTrustedDomain) {
         // ignore: avoid_print
-        // print('UrlValidator: ✅ URL da dominio trusted, skip validazione HTTP: ${url.substring(0, 60)}...');
+        print('UrlValidator: ✅ URL da dominio trusted, skip validazione HTTP: ${url.length > 80 ? url.substring(0, 80) + "..." : url}');
         return true; // Domini trusted sono sempre validi
       }
       

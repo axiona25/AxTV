@@ -309,9 +309,32 @@ class ChannelsRepository {
       final validationFutures = preFilteredBatch.map((channel) async {
         final lowerUrl = channel.streamUrl.toLowerCase();
         
+        // Log per debug canali per bambini
+        if (channel.category?.toLowerCase() == 'bambini' || 
+            channel.name.toLowerCase().contains('yoyo') ||
+            channel.name.toLowerCase().contains('gulp')) {
+          // ignore: avoid_print
+          print('ChannelsRepository: 🔍 Validazione canale per bambini: "${channel.name}" (${channel.id})');
+          // ignore: avoid_print
+          print('ChannelsRepository:    URL: ${channel.streamUrl}');
+        }
+        
         // Per M3U8/HLS, fai validazione HTTP rapida
         if (lowerUrl.contains('.m3u8') || lowerUrl.contains('.mpd')) {
           final isValid = await _urlValidator.validateUrlAccessibility(channel.streamUrl);
+          if (!isValid) {
+            // ignore: avoid_print
+            print('ChannelsRepository: ⚠️ Canale "${channel.name}" (${channel.id}) filtrato: URL non valido o non accessibile');
+            // ignore: avoid_print
+            print('ChannelsRepository:    URL: ${channel.streamUrl.length > 100 ? channel.streamUrl.substring(0, 100) + "..." : channel.streamUrl}');
+          } else {
+            if (channel.category?.toLowerCase() == 'bambini' || 
+                channel.name.toLowerCase().contains('yoyo') ||
+                channel.name.toLowerCase().contains('gulp')) {
+              // ignore: avoid_print
+              print('ChannelsRepository: ✅ Canale per bambini "${channel.name}" validato con successo');
+            }
+          }
           if (isValid) {
             return channel;
           }
@@ -477,6 +500,18 @@ class ChannelsRepository {
         
         final channel = Channel.fromJson(item);
         
+        // Log per debug canali per bambini durante parsing
+        if (channel.category?.toLowerCase() == 'bambini' || 
+            channel.name.toLowerCase().contains('yoyo') ||
+            channel.name.toLowerCase().contains('gulp')) {
+          // ignore: avoid_print
+          print('ChannelsRepository: 🔍 Parsing canale per bambini: "${channel.name}" (${channel.id})');
+          // ignore: avoid_print
+          print('ChannelsRepository:    URL: ${channel.streamUrl}');
+          // ignore: avoid_print
+          print('ChannelsRepository:    Category: ${channel.category}');
+        }
+        
         // Valida ogni canale per sicurezza
         final isValid = ContentValidator.validateChannel(
           streamUrl: channel.streamUrl,
@@ -484,9 +519,21 @@ class ChannelsRepository {
         );
         
         if (isValid) {
+          if (channel.category?.toLowerCase() == 'bambini' || 
+              channel.name.toLowerCase().contains('yoyo') ||
+              channel.name.toLowerCase().contains('gulp')) {
+            // ignore: avoid_print
+            print('ChannelsRepository: ✅ Canale per bambini "${channel.name}" passato ContentValidator');
+          }
           channels.add(channel);
         } else {
           // Log per test di sicurezza
+          if (channel.category?.toLowerCase() == 'bambini' || 
+              channel.name.toLowerCase().contains('yoyo') ||
+              channel.name.toLowerCase().contains('gulp')) {
+            // ignore: avoid_print
+            print('ChannelsRepository: ❌ Canale per bambini "${channel.name}" BLOCCATO da ContentValidator');
+          }
           ContentValidator.logSecurityEvent(
             'Channel blocked',
             {
