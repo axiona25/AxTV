@@ -157,13 +157,25 @@ class ChannelsRepository {
           // Se la cache è recente, salta la validazione HTTP ma carica comunque i canali
           await for (final validatedChannels in _validateChannelsUrlsStream(channels, skipHttpValidation: shouldSkipValidation)) {
             // Aggiungi nuovi canali validati (sostituisce quelli esistenti con stesso ID)
+            int nuoviCanaliBambini = 0;
             for (final channel in validatedChannels) {
-              if (!loadedChannels.containsKey(channel.id)) {
+              final isNew = !loadedChannels.containsKey(channel.id);
+              if (isNew) {
                 loadedChannels[channel.id] = channel;
+                if (channel.category?.toLowerCase() == 'bambini') {
+                  nuoviCanaliBambini++;
+                  // ignore: avoid_print
+                  print('ChannelsRepository: ✨ NUOVO canale per bambini aggiunto: "${channel.name}" (${channel.id})');
+                }
               } else {
                 // Aggiorna canale esistente se il nuovo è più recente (es: URL aggiornato)
                 loadedChannels[channel.id] = channel;
               }
+            }
+            
+            if (nuoviCanaliBambini > 0) {
+              // ignore: avoid_print
+              print('ChannelsRepository: 📊 Batch validato: ${validatedChannels.length} canali, ${nuoviCanaliBambini} nuovi canali per bambini');
             }
             
             // Emetti lista aggiornata progressivamente
@@ -332,8 +344,12 @@ class ChannelsRepository {
           if (skipHttpValidation) {
             // Salta validazione HTTP ma verifica solo ContentValidator (già fatto prima)
             isValid = true;
-            // ignore: avoid_print
-            // print('ChannelsRepository: ⚡ Canale "${channel.name}" skip validazione HTTP (cache recente)');
+            if (channel.category?.toLowerCase() == 'bambini' || 
+                channel.name.toLowerCase().contains('yoyo') ||
+                channel.name.toLowerCase().contains('gulp')) {
+              // ignore: avoid_print
+              print('ChannelsRepository: ⚡ Canale per bambini "${channel.name}" skip validazione HTTP (cache recente) - CONSIDERATO VALIDO');
+            }
           } else {
             isValid = await _urlValidator.validateUrlAccessibility(channel.streamUrl);
             if (!isValid) {
@@ -351,7 +367,19 @@ class ChannelsRepository {
             }
           }
           if (isValid) {
+            if (channel.category?.toLowerCase() == 'bambini' || 
+                channel.name.toLowerCase().contains('yoyo') ||
+                channel.name.toLowerCase().contains('gulp')) {
+              // ignore: avoid_print
+              print('ChannelsRepository: ✅ Canale per bambini "${channel.name}" AGGIUNTO alla lista validata');
+            }
             return channel;
+          }
+          if (channel.category?.toLowerCase() == 'bambini' || 
+              channel.name.toLowerCase().contains('yoyo') ||
+              channel.name.toLowerCase().contains('gulp')) {
+            // ignore: avoid_print
+            print('ChannelsRepository: ❌ Canale per bambini "${channel.name}" NON aggiunto (validazione fallita)');
           }
           return null;
         } else {
