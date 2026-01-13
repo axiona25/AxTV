@@ -129,11 +129,14 @@ class ChannelsRepository {
       }
 
       // FASE 2: Carica/valida nuovi canali da repository in background
-      // Se la cache è recente, salta la validazione HTTP per velocità
+      // IMPORTANTE: Anche se la cache è recente, carichiamo comunque i nuovi canali dal repository
+      // per assicurarci che i canali appena aggiunti vengano sempre inclusi
+      // La validazione HTTP può essere saltata per velocità, ma i canali devono essere caricati
       if (shouldSkipValidation) {
         // ignore: avoid_print
-        print('ChannelsRepository: ⚡ Saltando validazione HTTP (cache recente), usando solo cache');
-        return; // Esci subito, usa solo cache
+        print('ChannelsRepository: ⚡ Cache recente (< 1h), salto validazione HTTP ma carico comunque nuovi canali dal repository');
+        // NON uscire qui - continua a caricare i canali dal repository
+        // La validazione HTTP verrà saltata durante _validateChannelsUrlsStream
       }
       
       // Processa ogni repository in sequenza ma emetti canali progressivamente
@@ -149,9 +152,10 @@ class ChannelsRepository {
           
           // ignore: avoid_print
           print('ChannelsRepository: 🔍 Stream: Validazione URL per ${channels.length} canali da ${repo.name}...');
-          
+
           // Valida canali progressivamente (in batch) ed emetti man mano
-          await for (final validatedChannels in _validateChannelsUrlsStream(channels)) {
+          // Se la cache è recente, salta la validazione HTTP ma carica comunque i canali
+          await for (final validatedChannels in _validateChannelsUrlsStream(channels, skipHttpValidation: shouldSkipValidation)) {
             // Aggiungi nuovi canali validati (sostituisce quelli esistenti con stesso ID)
             for (final channel in validatedChannels) {
               if (!loadedChannels.containsKey(channel.id)) {
@@ -268,7 +272,8 @@ class ChannelsRepository {
   
   /// Valida gli URL dei canali progressivamente (in batch) ed emette via Stream
   /// Processa in batch di 5 canali alla volta per velocità (ridotto da 10)
-  Stream<List<Channel>> _validateChannelsUrlsStream(List<Channel> channels) async* {
+  /// [skipHttpValidation] Se true, salta la validazione HTTP (per cache recente)
+  Stream<List<Channel>> _validateChannelsUrlsStream(List<Channel> channels, {bool skipHttpValidation = false}) async* {
     if (channels.isEmpty) {
       return;
     }
@@ -319,20 +324,30 @@ class ChannelsRepository {
           print('ChannelsRepository:    URL: ${channel.streamUrl}');
         }
         
-        // Per M3U8/HLS, fai validazione HTTP rapida
+        // Per M3U8/HLS, fai validazione HTTP rapida (a meno che non sia saltata)
         if (lowerUrl.contains('.m3u8') || lowerUrl.contains('.mpd')) {
-          final isValid = await _urlValidator.validateUrlAccessibility(channel.streamUrl);
-          if (!isValid) {
+          // Se skipHttpValidation è true, considera valido senza validazione HTTP
+          // (per velocità quando la cache è recente, ma vogliamo comunque includere nuovi canali)
+          bool isValid;
+          if (skipHttpValidation) {
+            // Salta validazione HTTP ma verifica solo ContentValidator (già fatto prima)
+            isValid = true;
             // ignore: avoid_print
-            print('ChannelsRepository: ⚠️ Canale "${channel.name}" (${channel.id}) filtrato: URL non valido o non accessibile');
-            // ignore: avoid_print
-            print('ChannelsRepository:    URL: ${channel.streamUrl.length > 100 ? channel.streamUrl.substring(0, 100) + "..." : channel.streamUrl}');
+            // print('ChannelsRepository: ⚡ Canale "${channel.name}" skip validazione HTTP (cache recente)');
           } else {
-            if (channel.category?.toLowerCase() == 'bambini' || 
-                channel.name.toLowerCase().contains('yoyo') ||
-                channel.name.toLowerCase().contains('gulp')) {
+            isValid = await _urlValidator.validateUrlAccessibility(channel.streamUrl);
+            if (!isValid) {
               // ignore: avoid_print
-              print('ChannelsRepository: ✅ Canale per bambini "${channel.name}" validato con successo');
+              print('ChannelsRepository: ⚠️ Canale "${channel.name}" (${channel.id}) filtrato: URL non valido o non accessibile');
+              // ignore: avoid_print
+              print('ChannelsRepository:    URL: ${channel.streamUrl.length > 100 ? channel.streamUrl.substring(0, 100) + "..." : channel.streamUrl}');
+            } else {
+              if (channel.category?.toLowerCase() == 'bambini' || 
+                  channel.name.toLowerCase().contains('yoyo') ||
+                  channel.name.toLowerCase().contains('gulp')) {
+                // ignore: avoid_print
+                print('ChannelsRepository: ✅ Canale per bambini "${channel.name}" validato con successo');
+              }
             }
           }
           if (isValid) {
