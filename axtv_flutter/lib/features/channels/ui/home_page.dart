@@ -28,6 +28,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   int _currentBottomNavIndex = 0;
   late final TextEditingController _searchController;
   late final FocusNode _searchFocusNode;
+  bool _isRefreshing = false; // Flag per indicare se il refresh è in corso
 
   @override
   void initState() {
@@ -209,22 +210,51 @@ class _HomePageState extends ConsumerState<HomePage> {
                   ),
             SizedBox(height: scaler.spacing(20)),
             
-            // "Canali in diretta" section
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  left: scaler.spacing(ZapprTokens.horizontalPadding),
-                ),
-                child: Text(
-                  'Canali in diretta (${filteredChannels.length})',
-                  style: TextStyle(
-                    fontSize: scaler.fontSize(ZapprTokens.fontSizeSectionTitle),
-                    fontWeight: FontWeight.w700,
-                    color: ZapprTokens.textPrimary,
-                    fontFamily: ZapprTokens.fontFamily,
+            // "Canali in diretta" section con icona refresh
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: scaler.spacing(ZapprTokens.horizontalPadding),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Canali in diretta (${filteredChannels.length})',
+                    style: TextStyle(
+                      fontSize: scaler.fontSize(ZapprTokens.fontSizeSectionTitle),
+                      fontWeight: FontWeight.w700,
+                      color: ZapprTokens.textPrimary,
+                      fontFamily: ZapprTokens.fontFamily,
+                    ),
                   ),
-                ),
+                  // Icona refresh
+                  _isRefreshing
+                      ? SizedBox(
+                          width: scaler.s(20),
+                          height: scaler.s(20),
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              ZapprTokens.neonCyan,
+                            ),
+                          ),
+                        )
+                      : IconButton(
+                          icon: Icon(
+                            Icons.refresh_rounded,
+                            color: ZapprTokens.neonCyan,
+                            size: scaler.s(24),
+                          ),
+                          onPressed: () => _handleManualRefresh(),
+                          tooltip: 'Aggiorna canali',
+                          padding: EdgeInsets.zero,
+                          constraints: BoxConstraints(
+                            minWidth: scaler.s(40),
+                            minHeight: scaler.s(40),
+                          ),
+                        ),
+                ],
               ),
             ),
             SizedBox(height: scaler.spacing(12)),
@@ -431,12 +461,102 @@ class _HomePageState extends ConsumerState<HomePage> {
     }
 
     final selectedCategory = _tabs[_selectedTabIndex];
-    
+
     // Filtra i canali che appartengono alla categoria selezionata
     return channels.where((channel) {
       final category = channel.category ?? '';
       // Confronto esatto della categoria (case-insensitive)
       return category.toLowerCase() == selectedCategory.toLowerCase();
     }).toList();
+  }
+  
+  /// Gestisce il refresh manuale dei canali
+  Future<void> _handleManualRefresh() async {
+    if (_isRefreshing) {
+      return; // Evita refresh multipli simultanei
+    }
+    
+    setState(() {
+      _isRefreshing = true;
+    });
+    
+    try {
+      // ignore: avoid_print
+      print('HomePage: 🔄 Avvio refresh manuale canali...');
+      
+      // Ottieni il service di background refresh
+      final refreshService = ref.read(channelsBackgroundRefreshProvider);
+      
+      // Esegui il refresh manuale (ref è WidgetRef che estende Ref)
+      await refreshService.performManualRefresh(ref);
+      
+      // Mostra un messaggio di successo
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Row(
+              children: [
+                Icon(
+                  Icons.check_circle_outline,
+                  color: ZapprTokens.neonCyan,
+                  size: 20,
+                ),
+                const SizedBox(width: 8),
+                const Text(
+                  'Canali aggiornati con successo',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+            backgroundColor: ZapprTokens.bg0.withOpacity(0.9),
+            duration: const Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+      
+      // ignore: avoid_print
+      print('HomePage: ✅ Refresh manuale completato');
+    } catch (e) {
+      // ignore: avoid_print
+      print('HomePage: ❌ Errore nel refresh manuale: $e');
+      
+      // Mostra un messaggio di errore
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Row(
+              children: [
+                Icon(
+                  Icons.error_outline,
+                  color: ZapprTokens.danger,
+                  size: 20,
+                ),
+                const SizedBox(width: 8),
+                const Text(
+                  'Errore durante l\'aggiornamento',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+            backgroundColor: ZapprTokens.bg0.withOpacity(0.9),
+            duration: const Duration(seconds: 3),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isRefreshing = false;
+        });
+      }
+    }
   }
 }

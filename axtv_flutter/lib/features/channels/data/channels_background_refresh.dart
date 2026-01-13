@@ -81,6 +81,13 @@ class ChannelsBackgroundRefresh {
     });
   }
   
+  /// Esegue un refresh manuale forzato
+  /// Scannerizza tutti i repository e aggiorna la cache con tutti i canali mancanti
+  /// Accetta un Ref (può essere WidgetRef o Ref) per invalidare i provider
+  Future<void> performManualRefresh(Ref ref) async {
+    return _performBackgroundRefresh(ref, isScheduled: false);
+  }
+  
   /// Esegue il refresh in background
   /// Scannerizza i repository, confronta con la cache e aggiunge i canali mancanti
   Future<void> _performBackgroundRefresh(Ref ref, {required bool isScheduled}) async {
